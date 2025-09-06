@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXESHOP - Documentation Complète</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e67e22;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --gray: #95a5a6;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-header h2 {
+            color: var(--white);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-header h2 i {
+            color: var(--secondary);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            color: var(--light);
+            padding: 12px 20px;
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .sidebar-menu a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 30px;
+        }
+
+        .section {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .section-header h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-header h2 i {
+            color: var(--secondary);
+        }
+
+        .subsection {
+            margin: 25px 0;
+        }
+
+        .subsection h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subsection h3 i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .content-box {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .content-box h4 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: monospace;
+            line-height: 1.5;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--light);
+        }
+
+        th {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        tr:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background: #ffeaa7;
+            color: #d35400;
+        }
+
+        .status-approved {
+            background: #d1f7c4;
+            color: #27ae60;
+        }
+
+        .status-rejected {
+            background: #ffeef0;
+            color: #e74c3c;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: #d35400;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 15px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .sidebar-menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+            
+            .sidebar-menu li {
+                flex: 1 0 auto;
+                margin-bottom: 0;
+            }
+            
+            .sidebar-menu a {
+                border-left: none;
+                border-bottom: 4px solid transparent;
+                text-align: center;
+                padding: 10px;
+            }
+            
+            .sidebar-menu a:hover, .sidebar-menu a.active {
+                border-left: none;
+                border-bottom: 4px solid var(--secondary);
+            }
+            
+            .sidebar-menu a i {
+                display: block;
+                margin: 0 auto 5px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-content {
+                padding: 15px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .sidebar-menu a span {
+                display: none;
+            }
+            
+            .sidebar-menu a i {
+                margin: 0;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-gem"></i> LUXESHOP</h2>
+                <p>Documentation Complète</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#vision" class="active"><i class="fas fa-binoculars"></i> <span>Vision & Objectifs</span></a></li>
+                <li><a href="#cible"><i class="fas fa-users"></i> <span>Cible & Cas d'Usage</span></a></li>
+                <li><a href="#valeur"><i class="fas fa-star"></i> <span>Valeur Ajoutée</span></a></li>
+                <li><a href="#roles"><i class="fas fa-user-tag"></i> <span>Rôles Utilisateurs</span></a></li>
+                <li><a href="#fonctionnalites"><i class="fas fa-list"></i> <span>Fonctionnalités</span></a></li>
+                <li><a href="#ux"><i class="fas fa-paint-brush"></i> <span>Expérience Utilisateur</span></a></li>
+                <li><a href="#technique"><i class="fas fa-server"></i> <span>Architecture Technique</span></a></li>
+                <li><a href="#donnees"><i class="fas fa-database"></i> <span>Schéma de Données</span></a></li>
+                <li><a href="#api"><i class="fas fa-code"></i> <span>API Endpoints</span></a></li>
+                <li><a href="#paiements"><i class="fas fa-credit-card"></i> <span>Paiements & Wallet</span></a></li>
+                <li><a href="#livraison"><i class="fas fa-truck"></i> <span>Livraison & Logistique</span></a></li>
+                <li><a href="#retours"><i class="fas fa-undo"></i> <span>Retours & Remboursements</span></a></li>
+                <li><a href="#securite"><i class="fas fa-shield-alt"></i> <span>Sécurité & Conformité</span></a></li>
+                <li><a href="#monitoring"><i class="fas fa-chart-line"></i> <span>Monitoring & Maintenance</span></a></li>
+                <li><a href="#roadmap"><i class="fas fa-map-marked"></i> <span>Roadmap & Lancement</span></a></li>
+                <li><a href="#marketing"><i class="fas fa-bullhorn"></i> <span>Marketing & Acquisition</span></a></li>
+                <li><a href="#cicd"><i class="fas fa-cogs"></i> <span>CI/CD & Tests</span></a></li>
+                <li><a href="#equipe"><i class="fas fa-users-cog"></i> <span>Organisation & Équipe</span></a></li>
+                <li><a href="#checklist"><i class="fas fa-tasks"></i> <span>Checklist de Lancement</span></a></li>
+                <li><a href="#annexes"><i class="fas fa-file-alt"></i> <span>Annexes</span></a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Vision & Objectifs Section -->
+            <section id="vision" class="section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-binoculars"></i> Vision & Objectifs</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-eye"></i> Vision</h3>
+                    <p>Devenir la marketplace universelle qui permet à toute personne ou entreprise (vendeur, prestataire, particulier) d'offrir un produit ou service, d'accroître sa visibilité et de monétiser ses compétences.</p>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-bullseye"></i> Objectifs Initiaux</h3>
+                    <ul>
+                        <li>Lancement opérationnel à Conakry (Guinée)</li>
+                        <li>Offrir un système sécurisé (escrow + KYC) et accessible (Mobile Money + carte + wallet)</li>
+                        <li>Réduire le chômage local en valorisant micro-services et talents</li>
+                        <li>Offrir produits physiques, numériques et services (réservation/présentiel)</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-chart-line"></i> Valeur à Long Terme</h3>
+                    <p>Plateforme unifiée où tout se vend et s'achète — produits, services, enseignement, restauration, déplacements, etc.</p>
+                </div>
+            </section>
+
+            <!-- Cible & Cas d'Usage Section -->
+            <section id="cible" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> Cible & Cas d'Usage</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-user-friends"></i> Utilisateurs</h3>
+                    <ul>
+                        <li>Acheteurs / consommateurs</li>
+                        <li>Vendeurs (professionnels & particuliers)</li>
+                        <li>Prestataires de services (ménage, plomberie, cours, nounous, coaching)</li>
+                        <li>Entreprises locales (restaurants, boutiques)</li>
+                        <li>Livreurs internes (employés de LUXESHOP)</li>
+                        <li>Admins & équipes internes (support, logistique, finance, marketing)</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-scroll"></i> Cas d'Usage Clés</h3>
+                    <ul>
+                        <li>Acheter un produit (neuf, occasion, périssable)</li>
+                        <li>Réserver un service (créneaux horaires, prestataire)</li>
+                        <li>Trouver/acheter une formation en ligne</li>
+                        <li>Commander à manger (resto avec livraison directe par le resto)</li>
+                        <li>Proposer un service local (plombier) et être payé via la plateforme</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Valeur Ajoutée Section -->
+            <section id="valeur" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-star"></i> Valeur Ajoutée & Positionnement</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-gem"></i> Points Forts</h3>
+                    <ul>
+                        <li><strong>Tout-en-un</strong> : produits + services + prestataires sur la même plateforme</li>
+                        <li><strong>Inclusif</strong> : particuliers et pros peuvent vendre</li>
+                        <li><strong>Livraison interne</strong> pour garantir qualité et confiance (sauf restaurants)</li>
+                        <li><strong>Support multilingue</strong> (français, anglais, langues locales)</li>
+                        <li><strong>Outils de visibilité</strong> (classement, abonnements premium, sponsorisation)</li>
+                        <li><strong>Modèle social</strong> : mise en avant des compétences locales</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Rôles Utilisateurs Section -->
+            <section id="roles" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-user-tag"></i> Rôles Utilisateurs & Permissions</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-user"></i> Client / Acheteur</h3>
+                    <ul>
+                        <li>Inscription obligatoire</li>
+                        <li>Profil client, historique commandes, wallet, wishlist, avis</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-store"></i> Vendeur (produits)</h3>
+                    <ul>
+                        <li>Demande d'inscription + KYC obligatoire (validation manuelle)</li>
+                        <li>Mini-boutique: logo, description, politique de livraison, produits</li>
+                        <li>Dashboard ventes, stats, gestion stocks, création coupons, promotions</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-concierge-bell"></i> Prestataire de services</h3>
+                    <ul>
+                        <li>Profil avec portfolio, tarifs, horaires, géolocalisation, réservation</li>
+                        <li>Possibilité d'indiquer disponibilités, options « urgent (24h) »</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-truck"></i> Livreur (interne)</h3>
+                    <ul>
+                        <li>Dashboard courses, historique livraisons, rémunération, notes</li>
+                        <li>Attribution des courses via backoffice (ou système d'affectation automatique)</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-user-shield"></i> Admin (multi-niveaux)</h3>
+                    <ul>
+                        <li>Super-admin : accès complet</li>
+                        <li>Admin opérationnel : gestion commandes, litiges</li>
+                        <li>Modérateur : validation annonces, modération contenu</li>
+                        <li>Comptable / Finance : accès aux transactions et virement</li>
+                        <li>Support client : gestion tickets</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-utensils"></i> Restaurant (cas spécial)</h3>
+                    <ul>
+                        <li>Boutiques avec option « livraison par le restaurant » (pas besoin de créer compte livreur)</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-key"></i> Permissions</h3>
+                    <ul>
+                        <li>RBAC (role-based access control) configuré dans Django (groupes + permissions)</li>
+                        <li>Logs d'activité pour actions critiques</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Fonctionnalités Section -->
+            <section id="fonctionnalites" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-list"></i> Fonctionnalités — Liste Complète</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-check-circle"></i> Essentielles (dès le départ)</h3>
+                    <ul>
+                        <li>Inscription & authentification (email + téléphone + OTP optionnel)</li>
+                        <li>KYC pour vendeurs / prestataires (CNI/passport + selfie)</li>
+                        <li>Profils complets : client, vendeur, prestataire</li>
+                        <li>Catalogue produits & services (categories, tags, filtres)</li>
+                        <li>Recherche full-text + suggestions personnalisées</li>
+                        <li>Deux paniers distincts : Panier Produits et Panier Services</li>
+                        <li>Checkout produit & checkout service (flux adaptés)</li>
+                        <li>Paiements : CinetPay (intégrant Mobile Money + cartes) + PayPal/Stripe (international)</li>
+                        <li>Wallet interne (dépôt/retrait, solde, historique)</li>
+                        <li>Escrow : fonds bloqués jusqu'à confirmation</li>
+                        <li>Gestion commandes (statuts) + suivi temps réel (tracking)</li>
+                        <li>Dashboard vendeur / prestataire / livreur / admin</li>
+                        <li>Messagerie interne (acheteur ↔ vendeur / plateforme)</li>
+                        <li>Notation & avis (clients notent vendeurs/prestataires/livreurs)</li>
+                        <li>Système de coupons & promos</li>
+                        <li>Système de fidélité (points échangeables chez certains vendeurs / boutique site)</li>
+                        <li>Blog / FAQ / Centre d'aide</li>
+                        <li>Multi-devises supportées (affichage en GNF par défaut)</li>
+                        <li>Localisation / géolocalisation (cartes pour prestataires)</li>
+                        <li>Mode clair / mode sombre</li>
+                        <li>Responsive + mobile-first + PWA</li>
+                        <li>Logs & audit</li>
+                        <li>Sauvegardes automatiques de la DB</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-rocket"></i> Avancées (à prévoir rapidement)</h3>
+                    <ul>
+                        <li>Abonnements Premium (Basic / Pro) pour vendeurs (visibilité réduite des commissions)</li>
+                        <li>Packs produits / bundles</li>
+                        <li>Produits sponsorisés (placements payants)</li>
+                        <li>Statistiques avancées & BI (tableaux de bord)</li>
+                        <li>Notifications push, email, SMS, WhatsApp</li>
+                        <li>Système d'alerte anti-fraude (scoring)</li>
+                        <li>Intégration d'un ERP léger pour gestion stock / compta</li>
+                        <li>API publique pour intégrations</li>
+                        <li>Outils marketing in-app (campagnes, bannières, vouchers)</li>
+                        <li>Support multi-langue complet</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-futbol"></i> Futures / Scalabilité</h3>
+                    <ul>
+                        <li>Apps natives (React Native / Flutter)</li>
+                        <li>Marketplace internationale multi-devises avancée</li>
+                        <li>Marketplace B2B (achats en gros)</li>
+                        <li>Microservices pour scaling</li>
+                        <li>Recommandations IA (suggestions produits)</li>
+                        <li>Paiement fractionné / BNPL</li>
+                        <li>Gestion de stock warehousing & fulfilment</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Expérience Utilisateur Section -->
+            <section id="ux" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-paint-brush"></i> Expérience Utilisateur / UX</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-home"></i> Comportements Principaux</h3>
+                    <ul>
+                        <li><strong>Home</strong> : mix « moteur de recherche central » + catégories visibles au scroll</li>
+                        <li>Au chargement : moteur + section "Que recherchez-vous ?" (préférences choisies à l'inscription)</li>
+                        <li>En scrollant : catégories, collections, promos, produits sponsorisés</li>
+                        <li>À la fin : « Nouveautés » / « Mis en avant cette semaine » (premium)</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-shopping-cart"></i> 2 Paniers Distincts</h3>
+                    <ul>
+                        <li><strong>Panier Produits</strong> : contenu classique -> livraison, options, délai</li>
+                        <li><strong>Panier Services</strong> : réservation de créneaux + possibilité d'ajouter "option urgent (24h)" (traitée différemment : confirmation admin, assignation prestataire)</li>
+                        <li>Checkout séparé : pour éviter confusions (produit = expédition physique ; service = rendez-vous/prestation)</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-file-alt"></i> Pages Clés</h3>
+                    <ul>
+                        <li>Home, Search, Product Page, Service Page (réservation)</li>
+                        <li>Vendor Store, Cart Product, Cart Service</li>
+                        <li>Checkout Product, Checkout Service, Wallet, Orders</li>
+                        <li>Tracking, Blog, FAQ, Contact, Admin Dashboard</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-store"></i> Profil Vendeur / Prestataire</h3>
+                    <ul>
+                        <li>URL personnalisée /store/&lt;slug&gt;</li>
+                        <li>Note, stats, promos, boutique</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-map-marked-alt"></i> Carte + Géolocalisation</h3>
+                    <ul>
+                        <li>Pour trouver prestataires proches</li>
+                        <li>Filtres distance / prix / note</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-universal-access"></i> Accessibilité</h3>
+                    <ul>
+                        <li>Contrastes, a11y, police lisible</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Architecture Technique Section -->
+            <section id="technique" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-server"></i> Architecture Technique & Stack Recommandée</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-layer-group"></i> Stack Recommandé</h3>
+                    <ul>
+                        <li><strong>Backend</strong> : Django (REST API via Django REST Framework pour endpoints)</li>
+                        <li><strong>Frontend</strong> : Django templates (initial), responsive + option PWA</li>
+                        <li><strong>DB</strong> : PostgreSQL (production)</li>
+                        <li><strong>Cache</strong> : Redis (sessions, cache, tâches)</li>
+                        <li><strong>Asynchrone / Tasks</strong> : Celery + Redis / RabbitMQ</li>
+                        <li><strong>Stockage média</strong> : S3-compatible (DigitalOcean Spaces / AWS S3) + CDN (Cloudflare)</li>
+                        <li><strong>Payments</strong> : CinetPay (intégration principale), fallback Stripe/PayPal pour international</li>
+                        <li><strong>Authentification</strong> : JWT pour API + sessions pour templates. 2FA (optionnel)</li>
+                        <li><strong>Logs & Monitoring</strong> : Sentry (erreurs), Prometheus/Grafana (metrics), Papertrail/ELK pour logs</li>
+                        <li><strong>CI/CD</strong> : GitHub Actions → tests → staging → prod</li>
+                        <li><strong>Hébergement initial</strong> : DigitalOcean droplet (app + DB managed) ou Render/Heroku/Dokku (selon budget)</li>
+                        <li><strong>DNS & sécurité</strong> : Cloudflare (WAF, CDN, SSL)</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-sitemap"></i> Architecture Logique</h3>
+                    <p>Client (Web / Mobile) ⇄ Load Balancer/CDN ⇄ Web App (Django) ⇄ Postgres + Redis ⇄ Celery workers</p>
+                    <p>Services externes : CinetPay (paiement), fournisseur de taux de change (ex: exchangeratesapi), service SMS (Infobip/Twilio/Local), Email (SendGrid/Mailgun), Sentry, CDN.</p>
+                </div>
+            </section>
+
+            <!-- Schéma de Données Section -->
+            <section id="donnees" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-database"></i> Schéma de Données (Modèles Clés)</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-table"></i> Modèles Django (Résumé)</h3>
+                    <div class="code-block">
+# Modèle User étendu
+class User(AbstractUser):
+    role = CharField(choices=['client','vendeur','prestataire','livreur','admin'])
+    phone = CharField()
+    verified = BooleanField()
+    kyc_status = CharField(choices=['none','pending','approved','rejected'])
+    # wallet relation
+
+# Modèle Profil Vendeur
+class VendorProfile(models.Model):
+    user = OneToOneField(User)
+    name = CharField()
+    slug = SlugField()
+    description = TextField()
+    rating = FloatField()
+    is_premium = BooleanField()
+    balance = DecimalField()
+
+# Modèle Produit
+class Product(models.Model):
+    vendor = ForeignKey(VendorProfile)
+    title, description, price, currency
+    stock = IntegerField()
+    is_perishable = BooleanField()
+    expiry_date = DateField(null=True, blank=True)
+    categories = ManyToManyField(Category)
+    images = ...
+
+# Modèle Service
+class Service(models.Model):
+    vendor = ForeignKey(VendorProfile)
+    title, description, price_per_hour, location (PointField)
+    schedule = JSONField()  # availability
+    is_online = BooleanField()
+
+# Modèle Commande
+class Order(models.Model):
+    user, vendor, total_amount, currency
+    status = CharField(choices=['pending','paid','preparing','in_delivery','delivered','cancelled','refunded'])
+    escrow_status = CharField(...)
+    created_at, updated_at
+
+# Autres modèles: Cart, OrderItem, Payment, Escrow, WalletTransaction, Delivery, Review, etc.
+                    </div>
+                </div>
+            </section>
+
+            <!-- API Endpoints Section -->
+            <section id="api" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-code"></i> API — Endpoints Principaux</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-network-wired"></i> Squelette des Endpoints</h3>
+                    <table>
+                        <tr>
+                            <th>Endpoint</th>
+                            <th>Méthode</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code>/api/auth/register/</code></td>
+                            <td>POST</td>
+                            <td>Inscription (role & préférences)</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/auth/login/</code></td>
+                            <td>POST</td>
+                            <td>Login</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/products/</code></td>
+                            <td>GET</td>
+                            <td>Liste & filtres produits</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/products/&lt;id&gt;/</code></td>
+                            <td>GET</td>
+                            <td>Détail produit</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/products/</code></td>
+                            <td>POST</td>
+                            <td>Création produit (vendeur, KYC ok)</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/services/</code></td>
+                            <td>GET</td>
+                            <td>Liste services</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/services/</code></td>
+                            <td>POST</td>
+                            <td>Créer service (prestataire)</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/cart/</code></td>
+                            <td>POST</td>
+                            <td>Add to cart (type product/service)</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/cart/</code></td>
+                            <td>GET</td>
+                            <td>Récupérer panier</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/checkout/product/</code></td>
+                            <td>POST</td>
+                            <td>Checkout panier produits</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/checkout/service/</code></td>
+                            <td>POST</td>
+                            <td>Réserver service</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/payments/cinetpay/init/</code></td>
+                            <td>POST</td>
+                            <td>Init payment</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/payments/cinetpay/webhook/</code></td>
+                            <td>POST</td>
+                            <td>Webhook pour paiement</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/orders/</code></td>
+                            <td>GET</td>
+                            <td>Historique commandes</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Paiements & Wallet Section -->
+            <section id="paiements" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-credit-card"></i> Paiements, Wallet, Escrow & Commissions</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-money-check"></i> Intégration Paiement</h3>
+                    <ul>
+                        <li><strong>CinetPay</strong> : passerelle principale (Mobile Money + cartes)</li>
+                        <li><strong>Stripe / PayPal</strong> : option internationale</li>
+                        <li>SMS/Email for OTP & confirmation</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-wallet"></i> Wallet Interne</h3>
+                    <ul>
+                        <li>Users peuvent déposer de l'argent (via CinetPay) → créditer wallet</li>
+                        <li>Paiements par wallet réduisent friction et facilitent remboursements rapides</li>
+                        <li>Retraits : KYC requis pour vendeurs</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-lock"></i> Escrow</h3>
+                    <ul>
+                        <li>À la confirmation de paiement : fonds placés en escrow (compte bloqué LUXESHOP)</li>
+                        <li>Libération :
+                            <ul>
+                                <li>Automatique : X heures après confirmation de livraison (p. ex. 48h) si pas de dispute</li>
+                                <li>Manuelle : si dispute -> admin tranche</li>
+                                <li>Exception : pour services, libération après validation du prestataire & client</li>
+                            </ul>
+                        </li>
+                        <li>Avantages : réduit chargebacks, protège clients & vendeurs</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-percentage"></i> Commissions & Business Model</h3>
+                    <ul>
+                        <li>Inscription des vendeurs : gratuite</li>
+                        <li>Publication d'annonce : gratuite (pour volume)</li>
+                        <li><strong>Commission sur vente (produits/services)</strong> :
+                            <ul>
+                                <li>Vendeur Standard : 5% du montant de la vente</li>
+                                <li>Abonné Premium Basic : 3%</li>
+                                <li>Abonné Premium Pro : 2%</li>
+                            </ul>
+                        </li>
+                        <li><strong>Abonnements Premium (exemples)</strong> :
+                            <ul>
+                                <li>Premium Basic : 10 USD / mois → mise en avant + réduction commissions (3%)</li>
+                                <li>Premium Pro : 20 USD / mois → forte mise en avant + réduction (2%) + outils marketing</li>
+                            </ul>
+                        </li>
+                        <li>Extra : placements sponsorisés & publicités, service fulfillment/stockage, frais de livraison premium</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-exchange-alt"></i> Multi-devises</h3>
+                    <ul>
+                        <li>Afficher prix en GNF par défaut</li>
+                        <li>Convertir USD/EUR au taux du jour (API de taux) et verrouiller le taux au moment de la commande</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Autres sections à compléter de la même manière -->
+            <section id="livraison" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-truck"></i> Livraison & Logistique (Opérations)</h2>
+                </div>
+                <!-- Contenu de la section -->
+            </section>
+
+            <section id="retours" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-undo"></i> Retours, Remboursements & Litiges</h2>
+                </div>
+                <!-- Contenu de la section -->
+            </section>
+
+            <section id="securite" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-shield-alt"></i> Sécurité, Conformité et Confidentialité</h2>
+                </div>
+                <!-- Contenu de la section -->
+            </section>
+
+            <section id="monitoring" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line"></i> Monitoring, Sauvegardes & Maintenance</h2>
+                </div>
+                <!-- Contenu de la section -->
+            </section>
+
+            <section id="roadmap" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-map-marked"></i> Roadmap & Plan de Lancement</h2>
+                </div>
+                <!-- Contenu de la section -->
+            </section>
+
+            <section id="marketing" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-bullhorn"></i> Marketing, Acquisition & Fidélisation</h2>
+                </div>
+                <!-- Contenu de la section -->
+            </section>
+
+            <section id="cicd" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cogs"></i> CI/CD, Tests & Qualité</h2>
+                </div>
+                <!-- Contenu de la section -->
+            </section>
+
+            <section id="equipe" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-users-cog"></i> Organisation & Rôle de l'Équipe</h2>
+                </div>
+                <!-- Contenu de la section -->
+            </section>
+
+            <section id="checklist" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-tasks"></i> Checklist de Lancement</h2>
+                </div>
+                <!-- Contenu de la section -->
+            </section>
+
+            <section id="annexes" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-file-alt"></i> Annexes</h2>
+                </div>
+                <!-- Contenu de la section -->
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Navigation between sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuLinks = document.querySelectorAll('.sidebar-menu a');
+            const sections = document.querySelectorAll('.section');
+            
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and sections
+                    menuLinks.forEach(l => l.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
