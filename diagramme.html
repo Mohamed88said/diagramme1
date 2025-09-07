@@ -3,32 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Intelligent - Diagrammes Complets Exhaustifs</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Architecture Système - LuxeShop Guinée</title>
     <style>
-        /* CSS Ultra Moderne avec Animations et Thème Sombre/Lumière */
-        :root {
-            --primary-color: #4361ee;
-            --secondary-color: #3f37c9;
-            --success-color: #4cc9f0;
-            --warning-color: #f8961e;
-            --danger-color: #f72585;
-            --dark-color: #212529;
-            --light-color: #f8f9fa;
-            --bg-color: #f4f7fa;
-            --card-color: #ffffff;
-            --text-color: #333333;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #121212;
-            --card-color: #1e1e1e;
-            --text-color: #f0f0f0;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -36,2498 +12,1035 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            transition: var(--transition);
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
 
-        /* Header avec Bouton Thème */
-        header {
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .header {
             text-align: center;
-            padding: 2rem 1rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 50px 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
-            margin-bottom: 2rem;
-            border-radius: 0 0 1rem 1rem;
-            box-shadow: var(--shadow);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="2" fill="rgba(255,255,255,0.1)"/><line x1="5" y1="5" x2="15" y2="5" stroke="rgba(255,255,255,0.05)" stroke-width="1"/><line x1="5" y1="5" x2="5" y2="15" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.4em;
+            font-weight: 300;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .architecture-overview {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 5px solid #667eea;
+        }
+
+        .architecture-overview h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .architecture-overview h2::before {
+            content: '🏗️';
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .main-diagram {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        .diagram-title {
+            text-align: center;
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .architecture-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            min-width: 1200px;
+        }
+
+        .layer {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #e9ecef;
             position: relative;
         }
 
-        .theme-toggle {
+        .layer-title {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .layer-components {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .component {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .component::before {
+            content: '';
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(30deg);
-        }
-
-        h1 {
-            margin: 0 0 0.5rem;
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Navigation entre Diagrammes */
-        .diagram-nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            position: sticky;
             top: 0;
-            z-index: 10;
-            background-color: var(--bg-color);
-            padding: 1rem;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
-        .nav-btn {
-            padding: 0.6rem 1.2rem;
-            border: none;
-            border-radius: 0.5rem;
-            background-color: var(--card-color);
-            color: var(--primary-color);
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            box-shadow: var(--shadow);
+        .component:hover::before {
+            transform: scaleX(1);
+        }
+
+        .component:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .component-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1em;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            white-space: nowrap;
         }
 
-        .nav-btn.active {
-            background-color: var(--primary-color);
+        .component-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .component-description {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .component-tech {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tech-badge {
+            background: #667eea;
             color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 500;
         }
 
-        .nav-btn:hover:not(.active) {
-            background-color: rgba(67, 97, 238, 0.1);
+        .data-flow {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* Conteneur Principal */
-        .main-container {
-            display: flex;
-            flex-direction: column;
-            max-width: 1800px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            gap: 2rem;
-        }
-
-        /* Diagramme avec Zoom et Contrôles */
-        .diagram-section {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .diagram-controls {
+        .flow-diagram {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            position: sticky;
-            top: 60px;
-            z-index: 9;
-            background-color: var(--bg-color);
-            padding: 0.5rem 0;
+            gap: 20px;
+            margin: 30px 0;
+            min-height: 200px;
         }
 
-        .zoom-controls {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0.5rem;
-            background-color: var(--primary-color);
+        .flow-step {
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-        }
-
-        .btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            background-color: rgba(67, 97, 238, 0.1);
-        }
-
-        .btn-sm {
-            padding: 0.3rem 0.7rem;
-            font-size: 0.9rem;
-        }
-
-        .diagram-container {
-            width: 100%;
-            overflow: auto;
-            background-color: var(--card-color);
-            border-radius: 1rem;
-            box-shadow: var(--shadow);
-            padding: 1rem;
-            transition: var(--transition);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 180px;
             position: relative;
-            min-height: 600px;
-        }
-
-        .mermaid {
-            width: max-content;
-            min-width: 100%;
-            transform-origin: 0 0;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
             transition: transform 0.3s ease;
-            margin: 0 auto;
         }
 
-        /* Panneau d'Informations Contextuelles */
-        .info-panel {
-            position: fixed;
+        .flow-step:hover {
+            transform: scale(1.05);
+        }
+
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -30px;
             top: 50%;
-            right: 1rem;
             transform: translateY(-50%);
-            width: 400px;
-            max-height: 85vh;
-            background-color: var(--card-color);
-            border-radius: 0.8rem;
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
-            z-index: 100;
-            overflow-y: auto;
-            transition: var(--transition);
+            font-size: 2em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .flow-step:last-child::after {
             display: none;
         }
 
-        .info-panel.visible {
-            display: block;
-            animation: slideIn 0.3s ease-out;
+        .flow-step-number {
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
         }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-50%) translateX(20px); }
-            to { opacity: 1; transform: translateY(-50%) translateX(0); }
+        .flow-step-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1em;
         }
 
-        .info-header {
+        .flow-step-desc {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .security-layer {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .security-layer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="security" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="3" fill="rgba(255,255,255,0.1)"/><path d="M10,10 L20,10 L20,20 L10,20 Z" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23security)"/></svg>');
+            opacity: 0.2;
+        }
+
+        .security-layer h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .security-layer h3::before {
+            content: '🔒';
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .security-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .security-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .security-feature h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+        }
+
+        .security-feature .icon {
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+
+        .performance-metrics {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            color: #666;
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        .metric-description {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        .deployment-pipeline {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pipeline-stages {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .info-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-color);
-            opacity: 0.7;
-        }
-
-        .info-content {
-            font-size: 0.95rem;
-        }
-
-        .info-content ul {
-            padding-left: 1.2rem;
-            margin: 0.5rem 0;
-        }
-
-        .info-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Sections d'Explications */
-        .explanations {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .section {
-            background-color: var(--card-color);
-            border-radius: 0.8rem;
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section h2 i {
-            font-size: 1.2rem;
-        }
-
-        .section ul {
-            list-style-type: none;
-        }
-
-        .section li {
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .section li:before {
-            content: "•";
-            color: var(--primary-color);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        /* Légende Interactive */
-        .legend-container {
-            background-color: var(--card-color);
-            border-radius: 0.8rem;
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .legend-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .legend-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 1rem;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.95rem;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            background-color: rgba(0, 0, 0, 0.03);
-        }
-
-        .legend-color {
-            width: 22px;
-            height: 22px;
-            border-radius: 4px;
-            flex-shrink: 0;
-        }
-
-        /* Pied de Page */
-        footer {
+        .pipeline-stage {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
             text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
-            background-color: var(--card-color);
-            color: var(--text-color);
-            font-size: 0.9rem;
-            border-radius: 1rem 1rem 0 0;
-            box-shadow: var(--shadow);
-        }
-
-        /* Styles pour le Diagramme Mermaid */
-        .node rect, .node circle, .node polygon {
+            min-width: 150px;
+            border: 2px solid #e9ecef;
+            position: relative;
             transition: all 0.3s ease;
         }
 
-        .node.highlighted rect, .node.highlighted circle, .node.highlighted polygon {
-            stroke-width: 3px;
-            filter: drop-shadow(0 0 8px rgba(67, 97, 238, 0.6));
+        .pipeline-stage:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
         }
 
-        .edgePath.highlighted path {
-            stroke-width: 3px;
-            stroke: var(--primary-color) !important;
-        }
-
-        .edgePath.highlighted marker {
-            fill: var(--primary-color) !important;
-        }
-
-        /* Tooltip personnalisé */
-        .mermaidTooltip {
+        .pipeline-stage::after {
+            content: '▶';
             position: absolute;
-            background-color: var(--card-color) !important;
-            border: 1px solid rgba(0, 0, 0, 0.1) !important;
-            border-radius: 0.5rem !important;
-            padding: 0.5rem 1rem !important;
-            box-shadow: var(--shadow) !important;
-            color: var(--text-color) !important;
-            font-family: inherit !important;
-            max-width: 350px !important;
-            z-index: 1000 !important;
-            pointer-events: none !important;
-            opacity: 0;
-            transition: opacity 0.2s ease;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            font-size: 1.5em;
         }
 
-        .mermaidTooltip.visible {
-            opacity: 1 !important;
-        }
-
-        /* Animation de chargement */
-        .loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 300px;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(67, 97, 238, 0.2);
-            border-radius: 50%;
-            border-top-color: var(--primary-color);
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .explanations {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-            
-            .info-panel {
-                width: 350px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .explanations {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-            
-            .info-panel {
-                position: static;
-                transform: none;
-                width: 100%;
-                max-height: 400px;
-                margin-top: 1rem;
-            }
-            
-            .info-panel.visible {
-                animation: none;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            header {
-                padding: 1.5rem 1rem;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-            
-            .legend-items {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .section {
-                padding: 1.2rem;
-            }
-            
-            .diagram-nav {
-                top: 0;
-                padding: 0.5rem;
-            }
-            
-            .diagram-controls {
-                top: 40px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .diagram-controls {
-                flex-direction: column;
-                align-items: flex-start;
-                top: 80px;
-            }
-            
-            .zoom-controls {
-                width: 100%;
-                justify-content: space-between;
-            }
-            
-            .btn {
-                flex: 1;
-                justify-content: center;
-            }
-            
-            .diagram-nav {
-                flex-direction: column;
-                align-items: stretch;
-                top: 0;
-            }
-            
-            .nav-btn {
-                justify-content: center;
-            }
-            
-            .explanations {
-                grid-template-columns: 1fr;
-            }
-            
-            .legend-items {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Styles pour les sous-menus */
-        .submenu {
+        .pipeline-stage:last-child::after {
             display: none;
-            padding-left: 1rem;
-            margin-top: 0.5rem;
-            border-left: 2px solid var(--primary-color);
         }
-        
-        .has-submenu {
-            position: relative;
+
+        .stage-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        .has-submenu::after {
-            content: "+";
-            position: absolute;
-            right: 0;
-            font-weight: bold;
-            color: var(--primary-color);
+
+        .stage-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
         }
-        
-        .has-submenu.active::after {
-            content: "-";
+
+        .stage-description {
+            font-size: 0.9em;
+            color: #666;
         }
-        
-        .submenu-btn {
-            background: none;
-            border: none;
-            color: var(--primary-color);
-            cursor: pointer;
-            padding: 0.3rem 0.5rem;
-            margin-left: -0.5rem;
-            border-radius: 0.3rem;
-            transition: var(--transition);
-        }
-        
-        .submenu-btn:hover {
-            background-color: rgba(67, 97, 238, 0.1);
-        }
-        
-        /* Styles pour les onglets */
-        .tab-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .tab-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .tab-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0.5rem;
-            background-color: var(--card-color);
-            color: var(--primary-color);
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            box-shadow: var(--shadow);
-        }
-        
-        .tab-btn.active {
-            background-color: var(--primary-color);
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 30px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
         }
-        
-        .tab-content {
-            display: none;
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
         }
-        
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.3s ease-out;
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .architecture-layers {
+                min-width: auto;
+            }
+            
+            .layer-components {
+                grid-template-columns: 1fr;
+            }
+            
+            .flow-diagram {
+                flex-direction: column;
+            }
+            
+            .flow-step::after {
+                content: '↓';
+                right: 50%;
+                top: 100%;
+                transform: translateX(50%);
+            }
+            
+            .pipeline-stages {
+                flex-direction: column;
+            }
+            
+            .pipeline-stage::after {
+                content: '↓';
+                right: 50%;
+                top: 100%;
+                transform: translateX(50%);
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-            <i class="fas fa-moon"></i>
-        </button>
-        <h1>E-Commerce Intelligent - Processus Complet Exhaustif</h1>
-        <p class="subtitle">Diagrammes interactifs avec vues globale, spécifiques par acteur et cas d'utilisation détaillés</p>
-    </header>
+    <div class="container">
+        <header class="header">
+            <h1>🏗️ Architecture Système</h1>
+            <p class="subtitle">Diagramme Complet de la Plateforme LuxeShop Guinée</p>
+        </header>
 
-    <div class="main-container">
-        <!-- Navigation entre les diagrammes -->
-        <div class="diagram-nav">
-            <button class="nav-btn active" id="globalBtn">
-                <i class="fas fa-globe"></i> Vue Globale
-            </button>
+        <section class="architecture-overview">
+            <h2>Vue d'Ensemble de l'Architecture</h2>
+            <p>
+                L'architecture de LuxeShop Guinée est conçue selon les principes de l'architecture moderne cloud-native, avec une approche microservices qui garantit la scalabilité, la résilience, et la maintenabilité. Notre système est optimisé pour les défis spécifiques du marché africain, notamment la connectivité variable et les besoins de performance sur mobile.
+            </p>
+            <p>
+                Cette architecture multicouche sépare clairement les responsabilités, permettant une évolution indépendante de chaque composant tout en maintenant une cohérence globale. L'ensemble du système est conçu pour supporter une croissance exponentielle tout en maintenant des performances optimales.
+            </p>
+        </section>
+
+        <div class="main-diagram">
+            <h3 class="diagram-title">Architecture Microservices Complète</h3>
             
-            <div class="has-submenu">
-                <button class="nav-btn" id="actorsBtn">
-                    <i class="fas fa-users"></i> Par Acteurs
-                </button>
-                <div class="submenu" id="actorsSubmenu">
-                    <button class="nav-btn" id="buyerBtn">
-                        <i class="fas fa-user-tag"></i> Acheteur
-                    </button>
-                    <button class="nav-btn" id="sellerBtn">
-                        <i class="fas fa-store"></i> Vendeur
-                    </button>
-                    <button class="nav-btn" id="deliveryBtn">
-                        <i class="fas fa-truck"></i> Livreur
-                    </button>
-                    <button class="nav-btn" id="adminBtn">
-                        <i class="fas fa-user-shield"></i> Administrateur
-                    </button>
-                </div>
-            </div>
-            
-            <div class="has-submenu">
-                <button class="nav-btn" id="processesBtn">
-                    <i class="fas fa-random"></i> Processus Spéciaux
-                </button>
-                <div class="submenu" id="processesSubmenu">
-                    <button class="nav-btn" id="paymentBtn">
-                        <i class="fas fa-money-bill-wave"></i> Paiement
-                    </button>
-                    <button class="nav-btn" id="multiSellerBtn">
-                        <i class="fas fa-users"></i> Multi-Vendeurs
-                    </button>
-                    <button class="nav-btn" id="multiBuyerBtn">
-                        <i class="fas fa-shopping-basket"></i> Multi-Acheteurs
-                    </button>
-                    <button class="nav-btn" id="giftBtn">
-                        <i class="fas fa-gift"></i> Commande Cadeau
-                    </button>
-                    <button class="nav-btn" id="scheduledBtn">
-                        <i class="fas fa-calendar-alt"></i> Programmée
-                    </button>
-                </div>
-            </div>
-            
-            <div class="has-submenu">
-                <button class="nav-btn" id="exceptionBtn">
-                    <i class="fas fa-exclamation-triangle"></i> Cas Exceptionnels
-                </button>
-                <div class="submenu" id="exceptionSubmenu">
-                    <button class="nav-btn" id="returnBtn">
-                        <i class="fas fa-undo"></i> Retours
-                    </button>
-                    <button class="nav-btn" id="disputeBtn">
-                        <i class="fas fa-gavel"></i> Litiges
-                    </button>
-                    <button class="nav-btn" id="fraudBtn">
-                        <i class="fas fa-user-secret"></i> Fraude
-                    </button>
-                    <button class="nav-btn" id="emergencyBtn">
-                        <i class="fas fa-exclamation"></i> Urgences
-                    </button>
-                </div>
-            </div>
-            
-            <button class="nav-btn" id="dataBtn">
-                <i class="fas fa-database"></i> Modèle de Données
-            </button>
-        </div>
-
-        <div class="diagram-section">
-            <div class="diagram-controls">
-                <div class="zoom-controls">
-                    <button class="btn btn-sm" id="zoomIn" title="Zoom In">
-                        <i class="fas fa-search-plus"></i>
-                    </button>
-                    <button class="btn btn-sm" id="zoomOut" title="Zoom Out">
-                        <i class="fas fa-search-minus"></i>
-                    </button>
-                    <button class="btn btn-sm" id="resetZoom" title="Reset Zoom">
-                        <i class="fas fa-expand"></i>
-                    </button>
-                    <button class="btn btn-sm" id="fullscreenBtn" title="Plein écran">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </button>
-                </div>
-                <div>
-                    <button class="btn btn-sm btn-outline" id="toggleLegend">
-                        <i class="fas fa-info-circle"></i> Légende
-                    </button>
-                    <button class="btn btn-sm btn-outline" id="exportBtn">
-                        <i class="fas fa-download"></i> Exporter
-                    </button>
-                </div>
-            </div>
-
-            <!-- Conteneurs pour les différents diagrammes -->
-            <div class="diagram-container">
-                <div class="loading" id="loading">
-                    <div class="spinner"></div>
-                    <p>Chargement des diagrammes...</p>
-                </div>
-                
-                <!-- Diagramme Global -->
-                <div class="mermaid diagram" id="globalDiagram" style="display: block;">
-                    graph TD
-                        %% ============ CONFIGURATION AVANCÉE ============
-                        classDef default fill:#fff,stroke:#ddd,stroke-width:1px,font-size:12px
-                        classDef start fill:#4CAF50,stroke:#2E7D32,color:white
-                        classDef process fill:#2196F3,stroke:#1565C0,color:white
-                        classDef decision fill:#FFEB3B,stroke:#F57F17,color:#333
-                        classDef success fill:#8BC34A,stroke:#558B2F,color:white
-                        classDef warning fill:#FFC107,stroke:#FF8F00,color:#333
-                        classDef danger fill:#F44336,stroke:#C62828,color:white
-                        classDef parallel fill:#9C27B0,stroke:#7B1FA2,color:white
-                        classDef note fill:#E3F2FD,stroke:#1E88E5,color:#333
-                        classDef system fill:#607D8B,stroke:#37474F,color:white
-
-                        %% ============ PROCESSUS PRINCIPAL ============
-                        A([Début: Panier → Checkout]):::start --> B["Création Commande: Standard (1 Acheteur, 1 Vendeur, COD), Multi-Vendeurs/Adresses, Cadeau/Secours, Programmée, Notes, Restrictions, Stock, Paiement"]:::process
-                        B --> C{"Validation Commande: Acceptée, Refusée, Partielle, Substitution? (SLA: 2h)"}:::decision
-                        
-                        %% ============ BRANCHES VENDEUR ============
-                        C -->|Acceptée entière| D["Préparation Colis: Délai 24h Standard/4h Périssable, Vérif Conformité"]:::process
-                        C -->|Refusée: Rupture, Zone, Fraude| E["Annulation: Sous-Commande/Totale, Notification Acheteur"]:::danger
-                        C -->|Partielle: Multi-Lignes| F["Commande Partielle: Livraison/Remboursement Indépendants"]:::warning
-                        C -->|Substitution Proposée: Taille/Marque| H["Acheteur Accepte/Refuse Substitution"]:::decision
-                        H -->|Accepte| D
-                        H -->|Refuse| E
-                        
-                        D --> G{"Problèmes Préparation? (Endommagé, Rupture, Indisponible)"}:::decision
-                        G -->|Colis Endommagé: Correction| H1["Remplacement: Nouveau Colis Prêt"]:::process
-                        G -->|Rupture Stock: Substitution/Spéciale| I["Commande Spéciale: Approvisionnement Urgent"]:::warning
-                        G -->|Vendeur Indisponible: Absent/Fermé| J["Report Planning: Replanif + Pénalité Possible"]:::warning
-                        G -->|Temps Dépassé: 24h/4h| I1["Alerte Admin: Replanif ou Annulation"]:::warning
-                        I1 --> E
-                        
-                        %% ============ LIVRAISON ============
-                        D --> K["Attribution Livreur: Optimisation (Itinéraire, Périssables), Regroupements (Multi-Vendeurs/Acheteurs), QR Global/Vendeur, Accepte/Refuse/Indispo → Remplacement"]:::process
-                        H1 --> K
-                        I --> K
-                        J --> K
-                        K --> L{"Scénarios Livraison: Standard, Absent, Adresse, Paiement?"}:::decision
-                        
-                        L -->|Standard: Présence Acheteur/Cadeau| M["Scan QR: Global/Sous-Com, Paiement COD (Espèces/Mobile/TPE), Preuve Remise"]:::success
-                        L -->|Client Absent: Non Joignable| N["Procédure Absence: Replanif (1-2 Tentatives), Secours/Relais"]:::warning
-                        L -->|Adresse Incorrecte/Introuvable| O["Correction Adresse: Contact/Position, Sinon Échec + Frais"]:::warning
-                        L -->|Paiement Échoué: Fonds/Réseau| P["Solutions Paiement: Seconde Tentative/Relais/Annulation"]:::danger
-                        
-                        L -->|QR Invalide ou Expiré, Validité Créneau 2h| X1["Échec Livraison: Vérif App, Re-Émission QR"]:::danger
-                        L -->|OTP/PIN Manquant| X2["Échec: OTP Non Fourni, Nouvelle Tentative"]:::danger
-                        L -->|Incident Livreur: Panne/Accident| X3["Handover: Réassignation Livreur, Replanif"]:::warning
-                        X1 --> K
-                        X2 --> K
-                        X3 --> K
-                        
-                        %% ============ GESTION ABSENCE ============
-                        N --> Q{"Contact Secours: Disponible? (QR Secondaire, Paiement Secours)"}:::decision
-                        Q -->|Disponible: Bascule| R["Livraison Secours: Scan QR Secours, Preuve Remise"]:::success
-                        Q -->|Indisponible: Pas Réponse| S["Replanification: Nouvelle Date/Créneau, Frais si Fautif"]:::warning
-                        S -->|Max 2 Tentatives: Météo/Sécurité/Échecs| T["Annulation: Partielle/Totale, Remboursement"]:::danger
-                        
-                        %% ============ POST-LIVRAISON ============
-                        M --> U{"Post-Livraison: Retour, Litige, Avis?"}:::decision
-                        U -->|Retour: Immédiat ou Différé, 3 Jours, Motif, Photos| V["Inspection Retour: Validation Vendeur/Admin, Éligible (Non Périssables)"]:::process
-                        U -->|Litige: Non Conforme/Retard/Endommagé| W["Arbitrage: Gel Fonds, Preuves (Géoloc/Signature/Photos)"]:::warning
-                        U -->|Avis Client: Positif/Négatif| X["Feedback: Analyse Performance, Notifications"]:::process
-                        
-                        V -->|Accepté: Remboursement/Échange| V1["Retour Validé: Retrait Livreur, Remboursement Total/Partiel"]:::success
-                        V -->|Refusé: Non Éligible| W
-                        W -->|Décision Admin: Résolution| AB
-                        
-                        %% ============ SYSTÈMES PARALLÈLES ============
-                        Y["Monitoring Temps Réel: Suivi Live (Création, Livraison), Notifications (Confirmation/Créneau/Arrivée/Reçu)"]:::parallel
-                        Z["Gestion Incidents: Alertes Admin (Retards, Refus, Échecs), Audit (Horodatages, Géoloc, Scans)"]:::parallel
-                        AA["Analyse Performance: Paiements (Vendeurs J+N, Livreurs Course/Prime), Pourboires, Factures/BL"]:::parallel
-                        BB["Système de Recommandation: Suggestions Produits, Optimisation Stock, Prédiction Demande"]:::parallel
-                        CC["Gestion des Stocks: Synchronisation Multi-Entrepôts, Alertes Niveaux, Inventaire Automatique"]:::parallel
-                        
-                        %% ============ CONNECTIONS CROISÉES ============
-                        B -.->|Suivi Création| Y
-                        K -.->|Suivi Attribution| Y
-                        L -.->|Incidents Livraison| Z
-                        U -.->|Incidents Post-Livraison| Z
-                        X -->|Feedback pour Analyse| AA
-                        W -->|Arbitrage pour Stats| AA
-                        B -->|Optimisation| BB
-                        D -->|Mise à jour| CC
-                        
-                        %% ============ TOUS LES CHEMINS POSSIBLES ============
-                        E --> AB([Fin: CLÔTURÉE, ANNULÉE, REMBOURSÉE]):::success
-                        F --> AB
-                        M --> AB
-                        R --> AB
-                        T --> AB
-                        V1 --> AB
-                        
-                        %% ============ NOTES EXPLICATIVES ============
-                        subgraph "Sécurité & Conformité"
-                            NB["KYC Vendeurs/Livreurs, 2FA, Masquage Numéros/Adresses, Preuves Anti-Fraude (Photos, Signature, Géoloc), RGPD-Compliant"]:::note
-                        end
-                        subgraph "Modèle de Données"
-                            NC["Order (Globale) → SubOrder (Vendeur) → OrderItem → Address (Multi/Cadeau) → SecondaryBuyer (Secours) → Schedule (Créneau) → DeliveryTask → RouteBatch → QRToken → Payment → Refund/Dispute → AuditLog"]:::note
-                        end
-                        subgraph "SLA & Règles"
-                            ND["Délais: 2h Confirm Vendeur, 24h/4h Prépa, QR Validité Créneau+2h, 2 Tentatives Livraison, 3 Jours Retours, Frais si Absence Fautive"]:::note
-                        end
-                        subgraph "Scénarios Types"
-                            NE["Vendeur Refuse → Annulation Partielle; Multi-Vendeurs → Paiement Unique/Répartition; Multi-Acheteurs → 1 Livreur Multi-Livraisons; Cadeau → Pas Paiement Réception; Secours → Bascule; Programmée → Discret; Échec → Relais/Annulation; Retour → Remboursement; Mutualisée → Optimale"]:::note
-                        end
-                        subgraph "Infrastructure Technique"
-                            NF["Microservices: Commande, Paiement, Livraison, Notification; API Gateway; Event Bus; Bases de données distribuées; Cache Redis; File d'attente Kafka; Monitoring Prometheus/Grafana"]:::system
-                        end
-
-                        %% ============ LÉGENDE ============
-                        subgraph "Légende"
-                            direction TB
-                            start([Début/Fin: Entrée/Sortie]):::start
-                            process[[Processus: Étapes Opérationnelles]]:::process
-                            decision{Décision: Branches Conditionnelles}:::decision
-                            success[Succès: Résolution Positive]:::success
-                            warning[Attention: Cas Intermédiaires]:::warning
-                            danger[Échec: Annulations/Refus]:::danger
-                            parallel[Système: Parallèle/Transversal]:::parallel
-                            note[Note: Explications]:::note
-                            system[Infrastructure: Composants Techniques]:::system
-                        end
-
-                        %% ============ INTERACTIVITÉ ============
-                        click A "Début du Processus: Transition du Panier vers le Checkout\n\n- Conversion du panier en commande\n- Vérification des informations client\n- Calcul des frais de livraison\n- Sélection des options de paiement\n\nDonnées:\n- ID Panier\n- ID Utilisateur\n- Date/Heure\n- Adresses\n- Méthode Livraison\n\nValidation:\n- Stock disponible\n- Restrictions produits\n- Compatibilité adresse"
-                        click B "Création de Commande\n\nTypes:\n- Standard: 1 acheteur, 1 vendeur, paiement à la livraison (COD)\n- Multi-vendeurs: Commande divisée en sous-commandes\n- Multi-adresses: Livraison à plusieurs endroits\n- Cadeau: Livraison à un tiers avec message\n- Secours: Personne alternative pour réception\n- Programmée: Livraison à date future\n\nOptions:\n- Notes de livraison\n- Restrictions produits (périssables, volumineux)\n- Gestion du stock en temps réel\n- Options de paiement (COD, acompte)\n\nDonnées:\n- ID Commande\n- Statut\n- Montant Total\n- Liste Produits\n- Dates Limites"
-                        click C "Validation par le Vendeur\n\nScénarios:\n- Acceptée entière: Commande confirmée\n- Refusée: Rupture stock, zone non couverte, suspicion de fraude\n- Partielle: Certains articles disponibles\n- Substitution: Proposition d'alternative\n\nSLA: 2h maximum pour réponse\n\nConséquences:\n- Annulation totale ou partielle\n- Notification immédiate à l'acheteur\n- Proposition de solutions alternatives\n\nDétection Fraude:\n- Historique client\n- Comportement inhabituel\n- Adresse IP suspecte\n- Paiement risqué"
-                        click D "Préparation du Colis\n\nDélais:\n- Standard: 24h maximum\n- Périssables: 4h maximum\n\nProcessus:\n- Vérification de la conformité\n- Emballage sécurisé\n- Étiquetage avec QR code\n- Gestion des spécificités (fragile, température)\n\nContrôles:\n- Poids et dimensions\n- Correspondance avec la commande\n- Documents requis (facture, notice)\n\nSystème:\n- Génération QR unique\n- Impression étiquette\n- Mise à jour statut\n- Notification livreur"
-                        click K "Attribution Livreur\n\nOptimisation:\n- Itinéraire le plus efficace\n- Regroupement des livraisons proches\n- Priorité aux périssables\n\nGestion des Livreurs:\n- Acceptation/refus de la mission\n- Indisponibilité (remplacement immédiat)\n- Assignation en fonction des compétences\n\nSystème QR:\n- QR global pour la commande\n- QR par vendeur pour les sous-commandes\n- Validité limitée dans le temps\n\nAlgorithmes:\n- Calcul d'itinéraire\n- Regroupement géographique\n- Priorisation urgences\n- Gestion contraintes (véhicule)"
-                        click L "Scénarios de Livraison\n\nCas Standards:\n- Client présent\n- Paiement COD réussi\n- Adresse correcte\n\nCas Exceptionnels:\n- Client absent\n- Adresse introuvable\n- Paiement échoué\n- QR invalide\n- Incident livreur\n\nProcédures:\n- Tentatives de contact\n- Utilisation du contact de secours\n- Replanification\n- Annulation partielle si nécessaire\n\nPreuves:\n- Photos\n- Géolocalisation\n- Horodatage\n- Signature électronique"
-                        click U "Post-Livraison\n\nRetours:\n- Immédiats (refus à la livraison)\n- Différés (sous 3 jours)\n- Motifs valables (non conforme, endommagé)\n\nLitiges:\n- Enregistrement des preuves\n- Gel des fonds si nécessaire\n- Arbitrage par l'admin\n\nFeedback:\n- Avis client\n- Notation du vendeur/livreur\n- Analyse des performances\n\nStatistiques:\n- Taux de réussite\n- Temps moyen\n- Raisons échecs\n- Satisfaction client"
-                        click Y "Monitoring Temps Réel\n\nFonctionnalités:\n- Suivi position livreurs\n- Estimation temps livraison\n- Alertes retards\n- Notifications push\n\nTechnologies:\n- WebSockets\n- Service Workers\n- Geolocation API\n- Push Notifications\n\nDashboard:\n- Commandes en cours\n- Incidents\n- Performances\n- KPI clés"
-                        click Z "Gestion Incidents\n\nTypes:\n- Retards accumulation\n- Refus répétés\n- Échecs techniques\n- Problèmes paiement\n\nProcessus:\n- Catégorisation\n- Priorisation\n- Escalade\n- Résolution\n\nOutils:\n- Système de tickets\n- ChatOps\n- Automatisation\n- Post-mortems"
-                </div>
-                
-                <!-- Diagramme Processus Acheteur -->
-                <div class="mermaid diagram" id="buyerDiagram">
-                graph TD
-                    %% ============ PROCESSUS ACHETEUR ============
-                    A1([Début: Navigation Produits]):::start --> B1["Recherche: Filtres, Suggestions, Comparaison"]:::process
-                    B1 --> C1["Sélection: Ajout au Panier, Quantité, Options"]:::process
-                    C1 --> D1{"Validation Panier: Stock, Disponibilité, Restrictions"}:::decision
-                    D1 -->|OK| E1["Passage Commande: Adresse, Créneau, Paiement, Notes"]:::process
-                    D1 -->|Problème| F1["Ajustement Panier: Stock Insuffisant, Restrictions"]:::warning
-                    F1 --> C1
-                    
-                    E1 --> G1{"Validation Commande: Acceptée/Refusée/Partielle/Substitution"}:::decision
-                    G1 -->|Acceptée| H1["Confirmation: Détails Commande, Suivi"]:::success
-                    G1 -->|Refusée| I1["Notification: Motifs, Alternatives Proposées"]:::danger
-                    G1 -->|Partielle| J1["Option: Accepter Partiel ou Annuler"]:::warning
-                    G1 -->|Substitution| K1["Option: Accepter Substitution ou Refuser"]:::warning
-                    
-                    H1 --> L1["Suivi en Temps Réel: Préparation, Livraison"]:::process
-                    L1 --> M1{"Livraison: Présent/Absent"}:::decision
-                    M1 -->|Présent| N1["Réception: Scan QR, Paiement COD si applicable"]:::success
-                    M1 -->|Absent| O1["Options: Secours, Replanification, Annulation"]:::warning
-                    
-                    N1 --> P1{"Post-Livraison: Satisfait?"}:::decision
-                    P1 -->|Oui| Q1["Feedback Positif, Notation"]:::success
-                    P1 -->|Non| R1["Retour/Litige: Motif, Preuves"]:::warning
-                    
-                    R1 --> S1{"Résolution: Remboursement/Échange"}:::decision
-                    S1 -->|Remboursement| T1["Remboursement Total/Partiel"]:::success
-                    S1 -->|Échange| U1["Nouvelle Livraison"]:::process
-                    
-                    %% ============ SOUS-PROCESSUS ============
-                    subgraph "Gestion Compte"
-                        V1["Profil Utilisateur: Préférences, Adresses, Paiements"]:::process
-                        W1["Historique Commandes: Suivi, Réachat"]:::process
-                        X1["Listes: Favoris, Souhaits, Récurrentes"]:::process
-                    end
-                    
-                    subgraph "Support Client"
-                        Y1["Assistance: Chat, Ticket, Téléphone"]:::process
-                        Z1["FAQ & Guides"]:::process
-                    end
-                    
-                    %% ============ CONNECTIONS ============
-                    B1 -.-> V1
-                    C1 -.-> W1
-                    E1 -.-> V1
-                    R1 --> Y1
-                </div>
-
-                <!-- Diagramme Processus Vendeur -->
-                <div class="mermaid diagram" id="sellerDiagram">
-                graph TD
-                    %% ============ PROCESSUS VENDEUR ============
-                    A2([Nouvelle Commande Reçue]):::start --> B2{"Validation Commande: Stock, Zone, Fraude?"}:::decision
-                    B2 -->|OK| C2["Confirmation Commande: Notification Acheteur"]:::success
-                    B2 -->|Rupture Stock| D2["Option: Refuser ou Proposer Substitution"]:::warning
-                    B2 -->|Hors Zone| E2["Refus: Notification avec Explication"]:::danger
-                    B2 -->|Fraude Suspectée| F2["Refus: Alerte Sécurité"]:::danger
-                    
-                    C2 --> G2["Préparation Commande: Délai 24h/4h"]:::process
-                    G2 --> H2{"Problèmes Rencontrés?"}:::decision
-                    H2 -->|Non| I2["Colis Prêt: Génération QR, Étiquetage"]:::success
-                    H2 -->|Oui| J2["Gestion Problème: Rupture, Endommagé, Indisponibilité"]:::warning
-                    
-                    J2 --> K2{"Type de Problème?"}:::decision
-                    K2 -->|Rupture Stock| L2["Option: Approvisionnement Urgent ou Annulation"]:::warning
-                    K2 -->|Produit Endommagé| M2["Remplacement: Nouveau Colis"]:::process
-                    K2 -->|Indisponibilité| N2["Report: Nouveau Créneau Préparation"]:::warning
-                    
-                    I2 --> O2["Attente Livreur: Scan Prise en Charge"]:::process
-                    O2 --> P2{"Suivi Livraison: Temps Réel"}:::process
-                    P2 --> Q2{"Statut Livraison?"}:::decision
-                    Q2 -->|Livré| R2["Confirmation: Paiement COD Reçu ou En Ligne"]:::success
-                    Q2 -->|Échec| S2["Raison: Absence, Adresse, Paiement"]:::warning
-                    
-                    R2 --> T2{"Post-Livraison: Retour/Litige?"}:::decision
-                    T2 -->|Oui| U2["Traitement: Inspection, Validation, Remboursement"]:::warning
-                    T2 -->|Non| V2["Clôture: Paiement Vendeur J+1"]:::success
-                    
-                    %% ============ GESTION BOUTIQUE ============
-                    subgraph "Gestion Produits"
-                        W2["Catalogue: Ajout, Modification, Suppression"]:::process
-                        X2["Stocks: Niveaux, Alertes, Synchronisation"]:::process
-                        Y2["Prix: Promotions, Taxes, Frais"]:::process
-                    end
-                    
-                    subgraph "Analytique"
-                        Z2["Performances: Ventes, Retours, Avis"]:::process
-                        AA2["Rapports: Journalier, Hebdo, Mensuel"]:::process
-                    end
-                    
-                    %% ============ CONNECTIONS ============
-                    B2 -.-> X2
-                    G2 -.-> X2
-                    V2 --> Z2
-                    U2 --> Z2
-                </div>
-
-                <!-- Diagramme Processus Livreur -->
-                <div class="mermaid diagram" id="deliveryDiagram">
-                graph TD
-                    %% ============ PROCESSUS LIVREUR ============
-                    A3([Nouvelle Livraison Assignée]):::start --> B3["Acceptation Mission: Délai 15min"]:::process
-                    B3 --> C3{"Acceptée?"}:::decision
-                    C3 -->|Oui| D3["Préparation: Itinéraire, Colis, Documents"]:::process
-                    C3 -->|Non| E3["Réassignation à un Autre Livreur"]:::warning
-                    
-                    D3 --> F3["Récupération Colis: Scan QR Prise en Charge"]:::process
-                    F3 --> G3["Livraison: Suivi Itinéraire Optimisé"]:::process
-                    G3 --> H3{"Arrivée sur Place"}:::decision
-                    H3 -->|Client Présent| I3["Livraison: Scan QR, Paiement COD si Applicable"]:::success
-                    H3 -->|Client Absent| J3["Procédure Absence: Contact, Secours, Replanif"]:::warning
-                    
-                    I3 --> K3{"Paiement COD?"}:::decision
-                    K3 -->|Oui| L3["Encaissement: Espèces/Mobile/TPE, Reçu"]:::process
-                    K3 -->|Non| M3["Validation Livraison Gratuite"]:::process
-                    
-                    L3 --> N3["Remise Fonds: Dépôt Sécurisé"]:::process
-                    M3 --> N3
-                    N3 --> O3["Feedback: Notation, Commentaires"]:::process
-                    
-                    J3 --> P3{"Contact Secours Disponible?"}:::decision
-                    P3 -->|Oui| Q3["Livraison au Secours: Scan QR Spécial"]:::success
-                    P3 -->|Non| R3["Replanification: Nouveau Créneau"]:::warning
-                    
-                    %% ============ GESTION LIVREUR ============
-                    subgraph "Profil Livreur"
-                        S3["Disponibilité: Créneaux, Zones"]:::process
-                        T3["Véhicule: Type, Capacité, Spécificités"]:::process
-                        U3["Documents: Permis, Assurance, Certifications"]:::process
-                    end
-                    
-                    subgraph "Performance"
-                        V3["Statistiques: Livraisons, Retards, Notes"]:::process
-                        W3["Récompenses: Primes, Bonus, Classement"]:::process
-                    end
-                    
-                    %% ============ CONNECTIONS ============
-                    B3 -.-> S3
-                    D3 -.-> T3
-                    O3 --> V3
-                    V3 --> W3
-                </div>
-
-                <!-- Diagramme Processus Administrateur -->
-                <div class="mermaid diagram" id="adminDiagram">
-                graph TD
-                    %% ============ PROCESSUS ADMIN ============
-                    A4([Incident Signalé]):::start --> B4{"Type d'Incident?"}:::decision
-                    B4 -->|Problème Livraison| C4["Audit: Géoloc, Scans, Horodatages"]:::process
-                    B4 -->|Litige Paiement| D4["Vérification: Transaction, Preuves"]:::process
-                    B4 -->|Retour Produit| E4["Inspection: Photos, Raison"]:::process
-                    B4 -->|Suspicion Fraude| F4["Enquête: Historique, Comportement"]:::process
-                    
-                    C4 --> G4{"Décision?"}:::decision
-                    G4 -->|Responsabilité Livreur| H4["Application Pénalités"]:::warning
-                    G4 -->|Problème Système| I4["Correction Bug, Amélioration"]:::process
-                    G4 -->|Erreur Client| J4["Notification, Pénalité Possible"]:::warning
-                    
-                    D4 --> K4{"Validité Réclamation?"}:::decision
-                    K4 -->|Oui| L4["Remboursement Client, Sanction Vendeur si Nécessaire"]:::success
-                    K4 -->|Non| M4["Rejet, Explication"]:::danger
-                    
-                    E4 --> N4{"Produit Éligible Retour?"}:::decision
-                    N4 -->|Oui| O4["Remboursement/Échange, Prélèvement Vendeur"]:::success
-                    N4 -->|Non| P4["Rejet, Conservation Produit"]:::danger
-                    
-                    F4 --> Q4{"Fraude Confirmée?"}:::decision
-                    Q4 -->|Oui| R4["Bloquer Compte, Signalement Autorités"]:::danger
-                    Q4 -->|Non| S4["Archivage, Surveillance"]:::warning
-                    
-                    %% ============ GESTION PLATEFORME ============
-                    subgraph "Modération"
-                        T4["Vendeurs: Vérification KYC, Suspensions"]:::process
-                        U4["Acheteurs: Comportement, Restrictions"]:::process
-                        V4["Contenu: Produits, Avis, Messages"]:::process
-                    end
-                    
-                    subgraph "Optimisation"
-                        W4["Analyse Données: Tendances, Goulots"]:::process
-                        X4["Tests A/B: Interfaces, Processus"]:::process
-                        Y4["Maintenance: Corrective, Évolutive"]:::process
-                    end
-                    
-                    %% ============ CONNECTIONS ============
-                    B4 -.-> T4
-                    B4 -.-> U4
-                    W4 --> X4
-                    X4 --> Y4
-                </div>
-
-                <!-- Diagramme Processus Paiement -->
-                <div class="mermaid diagram" id="paymentDiagram">
-                graph TD
-                    %% ============ PROCESSUS PAIEMENT ============
-                    A5([Sélection Paiement]):::start --> B5{"Type de Paiement?"}:::decision
-                    B5 -->|En Ligne| C5["Traitement: Carte, Mobile Money, Portefeuille"]:::process
-                    B5 -->|COD| D5["Validation: Montant à Payer à la Livraison"]:::process
-                    
-                    C5 --> E5{"Paiement Réussi?"}:::decision
-                    E5 -->|Oui| F5["Confirmation: Notification Client/Vendeur"]:::success
-                    E5 -->|Non| G5["Échec: Raison (Fonds, Fraude, Réseau)"]:::danger
-                    
-                    G5 --> H5{"Solutions?"}:::decision
-                    H5 -->|Nouvelle Tentative| I5["Re-soumission après Correction"]:::process
-                    H5 -->|Changement Méthode| J5["Option: COD ou Autre Moyen"]:::process
-                    H5 -->|Annulation| K5["Abandon de la Commande"]:::danger
-                    
-                    D5 --> L5["Livraison: Vérification Client"]:::process
-                    L5 --> M5{"Paiement COD Réussi?"}:::decision
-                    M5 -->|Oui| N5["Encaissement: Preuve, Sécurisation Fonds"]:::success
-                    M5 -->|Non| O5["Échec: Absence Fonds, Problème Réseau"]:::danger
-                    
-                    O5 --> P5{"Options?"}:::decision
-                    P5 -->|Seconde Tentative| Q5["Nouvel Essai après Délai"]:::process
-                    P5 -->|Replanification| R5["Nouvelle Livraison avec Paiement"]:::warning
-                    P5 -->|Annulation| S5["Retour Produit, Commande Annulée"]:::danger
-                    
-                    %% ============ POST-PAIEMENT ============
-                    F5 --> T5["Clôture: Virement Vendeur J+1"]:::process
-                    N5 --> T5
-                    T5 --> U5{"Litige ou Remboursement?"}:::decision
-                    U5 -->|Oui| V5["Traitement: Gel Fonds, Investigation"]:::warning
-                    U5 -->|Non| W5["Fin de Processus"]:::success
-                    
-                    V5 --> X5{"Décision?"}:::decision
-                    X5 -->|Remboursement| Y5["Remboursement Client, Pénality si Fraude"]:::process
-                    X5 -->|Rejet Litige| Z5["Déblocage Fonds Vendeur"]:::process
-                    
-                    %% ============ SECURITE PAIEMENT ============
-                    subgraph "Sécurité"
-                        AA5["Authentification: 2FA, Biométrie"]:::process
-                        BB5["Cryptage: TLS, Tokenisation"]:::process
-                        CC5["Détection Fraude: Comportement, IA"]:::process
-                    end
-                    
-                    subgraph "Régulation"
-                        DD5["Conformité: PCI-DSS, RGPD"]:::process
-                        EE5["Rapports: Fiscalité, Audit"]:::process
-                        FF5["Remboursements: Politiques, Délais"]:::process
-                    end
-                    
-                    %% ============ CONNECTIONS ============
-                    C5 -.-> AA5
-                    E5 -.-> CC5
-                    T5 --> EE5
-                    V5 --> FF5
-                </div>
-
-                <!-- Diagramme Processus Multi-Vendeurs -->
-                <div class="mermaid diagram" id="multiSellerDiagram">
-                graph TD
-                    %% ============ PROCESSUS MULTI-VENDEURS ============
-                    A6([Début: Commande Multi-Vendeurs]):::start --> B6["Division Commande: Sous-Commandes par Vendeur"]:::process
-                    B6 --> C6["Validation Parallèle: Tous les Vendeurs (SLA 2h)"]:::parallel
-                    
-                    C6 --> D6{"Statut Validation?"}:::decision
-                    D6 -->|Tous Acceptés| E6["Préparation Colis: Chaque Vendeur (24h/4h)"]:::process
-                    D6 -->|Refus Partiel| F6["Annulation Partielle: Notification Acheteur"]:::warning
-                    D6 -->|Tous Refusés| G6["Annulation Totale: Remboursement"]:::danger
-                    
-                    E6 --> H6["Regroupement Colis: Optimisation Logistique"]:::process
-                    H6 --> I6{"Options Livraison?"}:::decision
-                    I6 -->|Livraison Unique| J6["1 Livreur pour Tous Colis (Itinéraire Optimisé)"]:::process
-                    I6 -->|Livraisons Séparées| K6["Assignation Multiple: Livreurs Différents"]:::process
-                    
-                    J6 --> L6{"Livraison Multi-Vendeurs"}
-                    K6 --> M6{"Livraisons Indépendantes"}
-                    
-                    L6 --> N6["Scan QR Global: Validation Tous Colis"]:::process
-                    M6 --> O6["Scans QR Individuels: Par Sous-Commande"]:::process
-                    
-                    N6 --> P6{"Paiement COD?"}:::decision
-                    O6 --> Q6{"Paiements COD?"}:::decision
-                    
-                    P6 -->|Oui| R6["Paiement Unique: Répartition Automatique"]:::success
-                    P6 -->|Non| S6["Échec: Gestion Partielle"]:::warning
-                    Q6 -->|Tous Réussis| T6["Paiements Multiples: Traités Séparément"]:::success
-                    Q6 -->|Échec Partiel| U6["Gestion Cas par Cas"]:::warning
-                    
-                    %% ============ GESTION DES FONDS ============
-                    R6 --> V6["Répartition Fonds: Vendeurs J+1"]:::process
-                    T6 --> V6
-                    S6 --> W6["Annulation/Remboursement Partiel"]:::warning
-                    U6 --> W6
-                    
-                    %% ============ POST-LIVRAISON ============
-                    V6 --> X6{"Retours/Litiges?"}:::decision
-                    W6 --> X6
-                    
-                    X6 -->|Oui| Y6["Traitement par Vendeur Concerné"]:::warning
-                    X6 -->|Non| Z6([Fin: Commande Clôturée]):::success
-                    
-                    %% ============ NOTES ============
-                    subgraph "Caractéristiques Multi-Vendeurs"
-                        N1["- Paiement unique acheteur\n- Répartition automatique fonds\n- Suivi indépendant par sous-commande\n- Responsabilité par vendeur\n- Optimisation logistique croisée"]:::note
-                    end
-                    
-                    subgraph "Gestion des Conflits"
-                        N2["- Priorisation vendeurs premium\n- Compensation retards\n- Pénalités inacceptation\n- Bonus performance"]:::note
-                    end
-                </div>
-
-                <!-- Diagramme Processus Multi-Acheteurs -->
-                <div class="mermaid diagram" id="multiBuyerDiagram">
-                graph TD
-                    %% ============ PROCESSUS MULTI-ACHETEURS ============
-                    A7([Début: Commande Groupée]):::start --> B7["Identification: Groupe d'Acheteurs, Panier Commun"]:::process
-                    B7 --> C7["Validation: Approbation Tous Acheteurs"]:::process
-                    C7 --> D7{"Tous Approuvés?"}:::decision
-                    D7 -->|Oui| E7["Création Commande: Adresse Livraison Unique"]:::process
-                    D7 -->|Non| F7["Annulation: Notification Participants"]:::danger
-                    
-                    E7 --> G7["Validation Vendeur: Stock, Délais"]:::process
-                    G7 --> H7{"Acceptée?"}:::decision
-                    H7 -->|Oui| I7["Préparation Colis: Délai Standard"]:::process
-                    H7 -->|Non| J7["Annulation: Remboursement Collectif"]:::danger
-                    
-                    I7 --> K7["Assignation Livreur: Optimisation Spécifique"]:::process
-                    K7 --> L7{"Livraison Multi-Acheteurs"}
-                    
-                    L7 --> M7["Options Réception"]:::decision
-                    M7 -->|Présent Désigné| N7["Scan QR Principal: Validation Groupe"]:::success
-                    M7 -->|Absence Totale| O7["Procédure Absence Groupée"]:::warning
-                    
-                    N7 --> P7{"Paiement COD?"}:::decision
-                    P7 -->|Oui| Q7["Paiement Collectif: Répartition Auto"]:::process
-                    P7 -->|Non| R7["Échec: Gestion Collective"]:::warning
-                    
-                    Q7 --> S7["Répartition Fonds: Vendeur J+1"]:::process
-                    R7 --> T7["Résolution: Annulation/Remboursement"]:::warning
-                    
-                    %% ============ GESTION ABSENCE ============
-                    O7 --> U7{"Contact Secours Groupé?"}:::decision
-                    U7 -->|Oui| V7["Livraison Secours: Validation Secondaire"]:::process
-                    U7 -->|Non| W7["Replanification Collective"]:::warning
-                    
-                    V7 --> X7{"Paiement COD Secours?"}:::decision
-                    X7 -->|Oui| Y7["Paiement: Responsable Secours"]:::process
-                    X7 -->|Non| Z7["Échec: Retour Colis"]:::danger
-                    
-                    %% ============ POST-LIVRAISON ============
-                    S7 --> AA7{"Retours/Litiges?"}:::decision
-                    T7 --> AA7
-                    Y7 --> AA7
-                    
-                    AA7 -->|Oui| AB7["Traitement Collectif: Accord Groupe"]:::warning
-                    AA7 -->|Non| AC7([Fin: Commande Clôturée]):::success
-                    
-                    %% ============ NOTES ============
-                    subgraph "Caractéristiques Multi-Acheteurs"
-                        N3["- Validation groupée obligatoire\n- Responsabilité solidaire\n- Paiement collectif ou individuel\n- Gestion absence complexe\n- Communication centralisée"]:::note
-                    end
-                    
-                    subgraph "Fonctionnalités Spéciales"
-                        N4["- Chat groupe intégré\n- Calcul parts automatique\n- Historique partagé\n- Désignation responsable\n- Options flexibles paiement"]:::note
-                    end
-                </div>
-
-                <!-- Diagramme Commande Cadeau -->
-                <div class="mermaid diagram" id="giftDiagram">
-                graph TD
-                    %% ============ PROCESSUS CADEAU ============
-                    A8([Début: Sélection Option Cadeau]):::start --> B8["Configuration: Message, Emballage, Anonymat"]:::process
-                    B8 --> C8["Validation: Adresse Livraison Différente"]:::process
-                    C8 --> D8{"Paiement: Achat ou COD?"}:::decision
-                    D8 -->|Achat| E8["Paiement Immédiat par Donneur"]:::process
-                    D8 -->|COD| F8["Option: Paiement par Receveur"]:::warning
-                    
-                    E8 --> G8["Validation Commande Spéciale"]:::process
-                    F8 --> G8
-                    
-                    G8 --> H8{"Livraison Standard avec Particularités"}:::process
-                    H8 --> I8["Notification Donneur: Confirmation Envoi"]:::process
-                    H8 --> J8["Processus Livraison Sans Paiement"]:::process
-                    
-                    J8 --> K8{"Réception par Destinataire"}:::decision
-                    K8 -->|Accepté| L8["Notification Donneur, Message Remerciement"]:::success
-                    K8 -->|Refusé| M8["Options: Retour ou Re-livraison"]:::warning
-                    
-                    M8 --> N8{"Choix Donneur"}:::decision
-                    N8 -->|Retour| O8["Remboursement Partiel (Frais Retenus)"]:::danger
-                    N8 -->|Re-livraison| P8["Nouvelle Tentative avec Contact"]:::process
-                    
-                    %% ============ NOTES ============
-                    subgraph "Particularités Cadeau"
-                        N5["- Pas de prix visible\n- Emballage spécial\n- Message personnalisé\n- Option surprise\n- Double notification"]:::note
-                    end
-                    
-                    subgraph "Sécurité"
-                        N6["- Vérification identité receveur\n- Protection données donneur\n- Option anonymat\n- Preuve réception renforcée"]:::note
-                    end
-                </div>
-
-                <!-- Diagramme Commande Programmée -->
-                <div class="mermaid diagram" id="scheduledDiagram">
-                graph TD
-                    %% ============ PROCESSUS PROGRAMMÉE ============
-                    A9([Début: Sélection Date Future]):::start --> B9["Validation: Créneaux Disponibles, Période"]:::process
-                    B9 --> C9["Confirmation: Pré-paiement ou COD"]:::process
-                    C9 --> D9{"Type Programmation?"}:::decision
-                    D9 -->|Date Unique| E9["Planification Standard"]:::process
-                    D9 -->|Récurrente| F9["Configuration: Fréquence, Fin"]:::process
-                    
-                    E9 --> G9["Mise en Attente: Notification Rappel"]:::process
-                    F9 --> G9
-                    
-                    G9 --> H9{"À J-1: Confirmation"}:::decision
-                    H9 -->|Confirmée| I9["Lancement Préparation"]:::success
-                    H9 -->|Annulée| J9["Remboursement si Prépayé"]:::danger
-                    H9 -->|Modifiée| K9["Ajustement: Nouvelle Date"]:::warning
-                    
-                    I9 --> L9["Processus Standard avec Contrôles Supplémentaires"]:::process
-                    
-                    %% ============ NOTES ============
-                    subgraph "Fonctionnalités Spéciales"
-                        N7["- Rappels progressifs\n- Flexibilité modifications\n- Option cadeau différé\n- Calendrier partagé\n- Synchronisation agendas"]:::note
-                    end
-                    
-                    subgraph "Optimisation"
-                        N8["- Regroupement livraisons similaires\n- Priorisation selon urgence\n- Allocation ressources anticipée\n- Préparation en avance"]:::note
-                    end
-                </div>
-
-                <!-- Diagramme Processus Retours -->
-                <div class="mermaid diagram" id="returnDiagram">
-                graph TD
-                    %% ============ PROCESSUS RETOURS ============
-                    A10([Début: Demande Retour]):::start --> B10{"Type Retour?"}:::decision
-                    B10 -->|Immédiat (Refus Livraison)| C10["Scan QR Retour, Photo Preuve"]:::process
-                    B10 -->|Différé (<3 Jours)| D10["Saisie Motif, Upload Preuves"]:::process
-                    
-                    C10 --> E10["Validation Automatique"]:::process
-                    D10 --> F10{"Vérification Éligibilité"}:::decision
-                    F10 -->|Éligible| G10["Autorisation Retour: Étiquette Prépayée"]:::success
-                    F10 -->|Non Éligible| H10["Refus: Notification avec Explication"]:::danger
-                    
-                    G10 --> I10["Dépôt Colis: Livreur ou Point Relais"]:::process
-                    I10 --> J10{"Suivi Retour"}:::process
-                    J10 --> K10["Réception par Vendeur"]:::process
-                    K10 --> L10{"Inspection Produit"}:::decision
-                    L10 -->|Conforme| M10["Remboursement: Original ou Bon"]:::success
-                    L10 -->|Non Conforme| N10["Litige: Gel Fonds, Investigation"]:::warning
-                    
-                    N10 --> O10{"Décision Admin"}:::decision
-                    O10 -->|Faveur Acheteur| P10["Remboursement Partiel"]:::success
-                    O10 -->|Faveur Vendeur| Q10["Retour Produit à Acheteur"]:::danger
-                    
-                    %% ============ NOTES ============
-                    subgraph "Politique Retours"
-                        N9["- Délai: 3 jours ouvrables\n- Produits exclus: Périssables, Sous-vêtements\n- Précondition: Étiquettes, Emballage\n- Frais: Port à charge selon raison"]:::note
-                    end
-                    
-                    subgraph "Optimisation"
-                        N10["- Analyse motifs récurrents\n- Alertes produits problématiques\n- Feedback aux vendeurs\n- Automatisation décisions simples"]:::note
-                    end
-                </div>
-
-                <!-- Diagramme Processus Litiges -->
-                <div class="mermaid diagram" id="disputeDiagram">
-                graph TD
-                    %% ============ PROCESSUS LITIGES ============
-                    A11([Début: Ouverture Litige]):::start --> B11{"Type Litige?"}:::decision
-                    B11 -->|Non Conformité| C11["Vérification: Description vs Réception"]:::process
-                    B11 -->|Retard| D11["Analyse: Délai Promis vs Réel"]:::process
-                    B11 -->|Endommagé| E11["Examen: Preuves Livraison"]:::process
-                    B11 -->|Manquant| F11["Audit: Chaîne Logistique"]:::process
-                    
-                    C11 --> G11{"Écart Significatif?"}:::decision
-                    D11 --> H11{"Retard Injustifié?"}:::decision
-                    E11 --> I11{"Responsabilité?"}:::decision
-                    F11 --> J11{"Point de Perte?"}:::decision
-                    
-                    G11 -->|Oui| K11["Compensation: Remboursement/Échange"]:::success
-                    G11 -->|Non| L11["Clôture: Explication"]:::danger
-                    H11 -->|Oui| M11["Dédommagement: Bon ou Crédit"]:::success
-                    H11 -->|Non| N11["Clôture: Justification"]:::danger
-                    I11 -->|Vendeur| O11["Remboursement, Pénalité"]:::success
-                    I11 -->|Livreur| P11["Déduction Prime, Formation"]:::warning
-                    I11 -->|Client| Q11["Clôture, Avertissement"]:::danger
-                    J11 -->|Entrepôt| R11["Enquête Interne"]:::warning
-                    J11 -->|Transport| S11["Réclamation Transporteur"]:::process
-                    
-                    %% ============ NOTES ============
-                    subgraph "Résolution Litiges"
-                        N11["- Délai max: 7 jours\n- Preuves requises des deux parties\n- Médiation possible\n- Historique pris en compte\n- Graduation sanctions"]:::note
-                    end
-                    
-                    subgraph "Prévention"
-                        N12["- Photos obligatoires livraison\n- Checklists pré-expédition\n- Assurance optionnelle\n- Suivi température pour périssables\n- Emballage renforcé"]:::note
-                    end
-                </div>
-
-                <!-- Diagramme Processus Fraude -->
-                <div class="mermaid diagram" id="fraudDiagram">
-                graph TD
-                    %% ============ PROCESSUS FRAUDE ============
-                    A12([Détection Anomalie]):::start --> B12{"Type Suspecté?"}:::decision
-                    B12 -->|Fausse Identité| C12["Vérification KYC: Documents"]:::process
-                    B12 -->|Paiement Frauduleux| D12["Audit Transaction: IP, Comportement"]:::process
-                    B12 -->|Abus Retours| E12["Analyse Historique: Motifs, Fréquence"]:::process
-                    B12 -->|Colis Vide| F12["Investigation: Poids, Scans"]:::process
-                    
-                    C12 --> G12{"Documents Valides?"}:::decision
-                    D12 --> H12{"Risque Élevé?"}:::decision
-                    E12 --> I12{"Modus Operandi Clair?"}:::decision
-                    F12 --> J12{"Preuves de Manipulation?"}:::decision
-                    
-                    G12 -->|Non| K12["Bloquer Compte, Signalement"]:::danger
-                    H12 -->|Oui| L12["Annuler Transaction, Alerte Banque"]:::danger
-                    I12 -->|Oui| M12["Restreindre Compte, Remboursements Gelés"]:::warning
-                    J12 -->|Oui| N12["Poursuite Possible, Blacklist"]:::danger
-                    
-                    G12 -->|Oui| O12["Surveillance Renforcée"]:::warning
-                    H12 -->|Non| P12["Authentification Renforcée"]:::process
-                    I12 -->|Non| Q12["Avertissement, Limites"]:::warning
-                    J12 -->|Non| R12["Flaguer Compte"]:::warning
-                    
-                    %% ============ NOTES ============
-                    subgraph "Détection"
-                        N13["- Analyse comportementale\n- Reconnaissance de motifs\n- Scores de risque en temps réel\n- Appariement listes noires\n- Surveillance réseaux sociaux"]:::note
-                    end
-                    
-                    subgraph "Réponse"
-                        N14["- Escalade graduée\n- Gel des fonds\n- Collaboration transporteurs\n- Partage données sécurisé\n- Formation continue équipe"]:::note
-                    end
-                </div>
-
-                <!-- Diagramme Processus Urgences -->
-                <div class="mermaid diagram" id="emergencyDiagram">
-                graph TD
-                    %% ============ PROCESSUS URGENCES ============
-                    A13([Incident Critique]):::start --> B13{"Type Urgence?"}:::decision
-                    B13 -->|Accident Livreur| C13["Priorité: Santé Personne"]:::process
-                    B13 -->|Produit Dangereux| D13["Protocole: Isolement, Experts"]:::process
-                    B13 -->|Données Compromises| E13["Arrêt Système, Investigation"]:::process
-                    B13 -->|Catastrophe Naturelle| F13["Plan Continuité d'Activité"]:::process
-                    
-                    C13 --> G13["Coordination Secours"]:::process
-                    G13 --> H13{"Colis Affecté?"}:::decision
-                    H13 -->|Oui| I13["Réassignation Urgente"]:::warning
-                    H13 -->|Non| J13["Reprise Partielle Service"]:::process
-                    
-                    D13 --> K13["Analyse Risque: Produit, Clients"]:::process
-                    K13 --> L13["Rappel Produit si Nécessaire"]:::danger
-                    K13 --> M13["Communication Transparente"]:::process
-                    
-                    E13 --> N13["Audit Sécurité"]:::process
-                    N13 --> O13{"Brèche Confirmée?"}:::decision
-                    O13 -->|Oui| P13["Notification Clients, Reset Sécurité"]:::danger
-                    O13 -->|Non| Q13["Renforcement Mesures"]:::warning
-                    
-                    F13 --> R13["Activation PCA"]:::process
-                    R13 --> S13{"Durée Perturbation?"}:::decision
-                    S13 -->|Court Terme| T13["Report Commandes"]:::warning
-                    S13 -->|Long Terme| U13["Annulations, Remboursements"]:::danger
-                    
-                    %% ============ NOTES ============
-                    subgraph "Préparation"
-                        N15["- Plans détaillés par scénario\n- Contacts urgences à jour\n- Exercices réguliers\n- Stocks stratégiques\n- Backup systèmes critiques"]:::note
-                    end
-                    
-                    subgraph "Communication"
-                        N16["- Transparence contrôlée\n- Canaux dédiés\n- Messages pré-préparés\n- Hiérarchisation clients\n- Support psychologique"]:::note
-                    end
-                </div>
-
-                <!-- Diagramme Modèle de Données -->
-                <div class="mermaid diagram" id="dataDiagram">
-                graph LR
-                    %% ============ MODÈLE DE DONNÉES ============
-                    A14[Utilisateur] -->|1:N| B14[Adresse]
-                    A14 -->|1:N| C14[MéthodePaiement]
-                    A14 -->|1:N| D14[Commande]
-                    A14 -->|1:N| E14[Avis]
-                    
-                    D14 -->|1:N| F14[SousCommande]
-                    D14 -->|1:1| G14[Facture]
-                    D14 -->|1:1| H14[Livraison]
-                    
-                    F14 -->|1:N| I14[ArticleCommande]
-                    F14 -->|1:1| J14[Vendeur]
-                    
-                    J14 -->|1:N| K14[Produit]
-                    J14 -->|1:N| L14[Stock]
-                    
-                    H14 -->|1:1| M14[Livreur]
-                    H14 -->|1:N| N14[ÉvénementLivraison]
-                    
-                    K14 -->|1:N| O14[Catégorie]
-                    K14 -->|1:N| P14[Promotion]
-                    
-                    M14 -->|1:N| Q14[Véhicule]
-                    M14 -->|1:N| R14[Disponibilité]
-                    
-                    %% ============ RELATIONS SPÉCIALES ============
-                    D14 -.->|Multi-Vendeurs| F14
-                    D14 -.->|Multi-Acheteurs| S14[GroupeAchat]
-                    H14 -.->|Multi-Colis| T14[Colis]
-                    
-                    %% ============ ENTITÉS SPÉCIALES ============
-                    S14[GroupeAchat] -->|N:M| A14
-                    T14[Colis] -->|1:1| U14[QRCode]
-                    T14 -->|1:1| V14[PreuveLivraison]
-                    
-                    %% ============ STYLE ============
-                    classDef entity fill:#E1F5FE,stroke:#039BE5,color:#333
-                    classDef relation fill:#B3E5FC,stroke:#0288D1,color:#333
-                    
-                    class A14,B14,C14,D14,E14,F14,G14,H14,I14,J14,K14,L14,M14,N14,O14,P14,Q14,R14,S14,T14,U14,V14 entity
-                    class entity,relation relation
-                    
-                    %% ============ LÉGENDE ============
-                    subgraph "Légende Modèle"
-                        direction TB
-                        ent[Entité]:::entity
-                        rel[Relation]:::relation
-                    end
-                </div>
-            </div>
-
-            <div class="legend-container" id="legend" style="display: none;">
-                <h3 class="legend-title"><i class="fas fa-key"></i> Légende des Éléments du Diagramme</h3>
-                <div class="legend-items">
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #4CAF50;"></div>
-                        <span>Début/Fin</span>
+            <div class="architecture-layers">
+                <!-- Couche Présentation -->
+                <div class="layer">
+                    <div class="layer-title">🎨 Couche Présentation & Interface Utilisateur</div>
+                    <div class="layer-components">
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">📱</span>
+                                Application Mobile PWA
+                            </div>
+                            <div class="component-description">
+                                Progressive Web App optimisée pour mobile avec fonctionnalités offline, notifications push, et installation native.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">React 18</span>
+                                <span class="tech-badge">PWA</span>
+                                <span class="tech-badge">Service Worker</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">💻</span>
+                                Interface Web Desktop
+                            </div>
+                            <div class="component-description">
+                                Application web responsive avec interface riche, dashboard administrateur, et outils de gestion avancés.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Next.js 14</span>
+                                <span class="tech-badge">TypeScript</span>
+                                <span class="tech-badge">Tailwind CSS</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">🛒</span>
+                                Interface Marchands
+                            </div>
+                            <div class="component-description">
+                                Portail dédié aux vendeurs avec gestion des produits, analytics, et outils de marketing intégrés.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">React Admin</span>
+                                <span class="tech-badge">Charts.js</span>
+                                <span class="tech-badge">Material-UI</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">📊</span>
+                                Dashboard Analytics
+                            </div>
+                            <div class="component-description">
+                                Interface d'analyse en temps réel avec métriques business, rapports personnalisés, et visualisations interactives.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">D3.js</span>
+                                <span class="tech-badge">Grafana</span>
+                                <span class="tech-badge">WebSockets</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #2196F3;"></div>
-                        <span>Processus</span>
+                </div>
+
+                <!-- Couche API Gateway -->
+                <div class="layer">
+                    <div class="layer-title">🌐 Couche API Gateway & Sécurité</div>
+                    <div class="layer-components">
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">🚪</span>
+                                API Gateway Principal
+                            </div>
+                            <div class="component-description">
+                                Point d'entrée unique pour toutes les APIs avec routage intelligent, load balancing, et gestion des versions.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Kong</span>
+                                <span class="tech-badge">AWS API Gateway</span>
+                                <span class="tech-badge">Rate Limiting</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">🔐</span>
+                                Service d'Authentification
+                            </div>
+                            <div class="component-description">
+                                Gestion centralisée de l'authentification avec JWT, OAuth 2.0, et authentification multi-facteur.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Auth0</span>
+                                <span class="tech-badge">JWT</span>
+                                <span class="tech-badge">OAuth 2.0</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">🛡️</span>
+                                Firewall Applicatif
+                            </div>
+                            <div class="component-description">
+                                Protection contre les attaques web, filtrage des requêtes malveillantes, et détection d'anomalies.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">CloudFlare WAF</span>
+                                <span class="tech-badge">ModSecurity</span>
+                                <span class="tech-badge">DDoS Protection</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">📈</span>
+                                Monitoring API
+                            </div>
+                            <div class="component-description">
+                                Surveillance en temps réel des performances API, alerting automatique, et métriques détaillées.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Prometheus</span>
+                                <span class="tech-badge">Jaeger</span>
+                                <span class="tech-badge">New Relic</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #FFEB3B;"></div>
-                        <span>Décision</span>
+                </div>
+
+                <!-- Couche Microservices -->
+                <div class="layer">
+                    <div class="layer-title">⚙️ Couche Microservices Métier</div>
+                    <div class="layer-components">
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">👤</span>
+                                Service Utilisateurs
+                            </div>
+                            <div class="component-description">
+                                Gestion des profils utilisateurs, préférences, historique, et segmentation client avec ML.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">PostgreSQL</span>
+                                <span class="tech-badge">Redis</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">📦</span>
+                                Service Catalogue
+                            </div>
+                            <div class="component-description">
+                                Gestion des produits, catégories, inventaire, et recherche avancée avec Elasticsearch.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">MongoDB</span>
+                                <span class="tech-badge">Elasticsearch</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">🛒</span>
+                                Service Commandes
+                            </div>
+                            <div class="component-description">
+                                Gestion du cycle de vie des commandes, workflow d'approbation, et intégration avec les paiements.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Java Spring</span>
+                                <span class="tech-badge">PostgreSQL</span>
+                                <span class="tech-badge">Apache Kafka</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">💳</span>
+                                Service Paiements
+                            </div>
+                            <div class="component-description">
+                                Traitement sécurisé des paiements, intégration Mobile Money, crypto, et gestion des remboursements.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">Stripe</span>
+                                <span class="tech-badge">Blockchain</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">🚚</span>
+                                Service Logistique
+                            </div>
+                            <div class="component-description">
+                                Optimisation des livraisons, tracking en temps réel, gestion des transporteurs, et prédiction des délais.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">PostGIS</span>
+                                <span class="tech-badge">ML Routing</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">🤖</span>
+                                Service IA/ML
+                            </div>
+                            <div class="component-description">
+                                Recommandations personnalisées, détection de fraude, analyse prédictive, et chatbots intelligents.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">TensorFlow</span>
+                                <span class="tech-badge">MLflow</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #8BC34A;"></div>
-                        <span>Succès</span>
+                </div>
+
+                <!-- Couche Données -->
+                <div class="layer">
+                    <div class="layer-title">🗄️ Couche Données & Stockage</div>
+                    <div class="layer-components">
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">🐘</span>
+                                PostgreSQL Cluster
+                            </div>
+                            <div class="component-description">
+                                Base de données relationnelle principale avec réplication master-slave, backup automatique, et haute disponibilité.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">PostgreSQL 15</span>
+                                <span class="tech-badge">Patroni</span>
+                                <span class="tech-badge">pgBouncer</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">🍃</span>
+                                MongoDB Cluster
+                            </div>
+                            <div class="component-description">
+                                Base NoSQL pour les données produits, contenu, et analytics avec sharding automatique et réplication.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">MongoDB 7</span>
+                                <span class="tech-badge">Replica Set</span>
+                                <span class="tech-badge">Sharding</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">⚡</span>
+                                Redis Cache
+                            </div>
+                            <div class="component-description">
+                                Cache distribué pour les sessions, données fréquentes, et queues de messages avec persistance.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Redis 7</span>
+                                <span class="tech-badge">Redis Cluster</span>
+                                <span class="tech-badge">Redis Sentinel</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">🔍</span>
+                                Elasticsearch
+                            </div>
+                            <div class="component-description">
+                                Moteur de recherche avancé avec indexation en temps réel, analytics, et suggestions intelligentes.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Elasticsearch 8</span>
+                                <span class="tech-badge">Kibana</span>
+                                <span class="tech-badge">Logstash</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #FFC107;"></div>
-                        <span>Attention</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #F44336;"></div>
-                        <span>Échec</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #9C27B0;"></div>
-                        <span>Système</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #E3F2FD;"></div>
-                        <span>Note</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #607D8B;"></div>
-                        <span>Infrastructure</span>
+                </div>
+
+                <!-- Couche Infrastructure -->
+                <div class="layer">
+                    <div class="layer-title">☁️ Couche Infrastructure & DevOps</div>
+                    <div class="layer-components">
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">📦</span>
+                                Kubernetes Cluster
+                            </div>
+                            <div class="component-description">
+                                Orchestration des conteneurs avec auto-scaling, self-healing, et déploiement blue-green.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">EKS</span>
+                                <span class="tech-badge">Helm</span>
+                                <span class="tech-badge">Istio</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">🌐</span>
+                                CDN Global
+                            </div>
+                            <div class="component-description">
+                                Réseau de distribution de contenu avec edge locations en Afrique pour des performances optimales.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">CloudFront</span>
+                                <span class="tech-badge">CloudFlare</span>
+                                <span class="tech-badge">Edge Computing</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">📊</span>
+                                Monitoring Stack
+                            </div>
+                            <div class="component-description">
+                                Surveillance complète avec métriques, logs, traces, et alerting intelligent multi-canal.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">Prometheus</span>
+                                <span class="tech-badge">Grafana</span>
+                                <span class="tech-badge">ELK Stack</span>
+                            </div>
+                        </div>
+                        <div class="component">
+                            <div class="component-title">
+                                <span class="component-icon">🔄</span>
+                                CI/CD Pipeline
+                            </div>
+                            <div class="component-description">
+                                Pipeline automatisé avec tests, sécurité, déploiement, et rollback automatique en cas d'erreur.
+                            </div>
+                            <div class="component-tech">
+                                <span class="tech-badge">GitLab CI</span>
+                                <span class="tech-badge">ArgoCD</span>
+                                <span class="tech-badge">SonarQube</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Panneau d'Informations Contextuelles -->
-        <div class="info-panel" id="infoPanel">
-            <div class="info-header">
-                <h3 class="info-title" id="infoTitle">Titre de l'Élément</h3>
-                <button class="close-btn" id="closeInfoPanel">&times;</button>
+        <div class="data-flow">
+            <h3 class="diagram-title">🔄 Flux de Données Principal</h3>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">
+                Parcours d'une requête utilisateur à travers l'architecture complète
+            </p>
+            
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <div class="flow-step-number">1</div>
+                    <div class="flow-step-title">Requête Client</div>
+                    <div class="flow-step-desc">Mobile/Web → CDN → Load Balancer</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-number">2</div>
+                    <div class="flow-step-title">API Gateway</div>
+                    <div class="flow-step-desc">Authentification, Rate Limiting, Routage</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-number">3</div>
+                    <div class="flow-step-title">Microservice</div>
+                    <div class="flow-step-desc">Logique Métier, Validation, Traitement</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-number">4</div>
+                    <div class="flow-step-title">Base de Données</div>
+                    <div class="flow-step-desc">Lecture/Écriture, Cache, Indexation</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-number">5</div>
+                    <div class="flow-step-title">Réponse</div>
+                    <div class="flow-step-desc">Sérialisation, Cache, Retour Client</div>
+                </div>
             </div>
-            <div class="info-content" id="infoContent">
-                <!-- Le contenu sera injecté dynamiquement -->
+        </div>
+
+        <div class="security-layer">
+            <h3>Couche de Sécurité Transversale</h3>
+            <div class="security-features">
+                <div class="security-feature">
+                    <h4><span class="icon">🔒</span>Chiffrement End-to-End</h4>
+                    <p>TLS 1.3 pour le transport, AES-256 pour les données au repos, chiffrement des communications inter-services.</p>
+                </div>
+                <div class="security-feature">
+                    <h4><span class="icon">🛡️</span>Protection DDoS</h4>
+                    <p>Mitigation automatique des attaques, rate limiting adaptatif, et filtrage intelligent du trafic.</p>
+                </div>
+                <div class="security-feature">
+                    <h4><span class="icon">👁️</span>Monitoring Sécurité</h4>
+                    <p>SIEM avec corrélation d'événements, détection d'anomalies par IA, et réponse automatisée aux incidents.</p>
+                </div>
+                <div class="security-feature">
+                    <h4><span class="icon">🔐</span>Gestion des Identités</h4>
+                    <p>IAM centralisé, principe du moindre privilège, rotation automatique des secrets, et audit complet.</p>
+                </div>
             </div>
         </div>
 
-        <!-- Sections d'Explications Détaillées -->
-        <div class="explanations">
-            <div class="section">
-                <h2><i class="fas fa-info-circle"></i> Vue Globale</h2>
-                <ul>
-                    <li>Processus complet de la commande à la livraison avec tous les scénarios</li>
-                    <li>Intègre tous les acteurs (acheteur, vendeur, livreur, admin)</li>
-                    <li>Couvre les cas normaux et exceptionnels avec procédures détaillées</li>
-                    <li>Systèmes parallèles de monitoring, analyse et optimisation</li>
-                    <li>Conforme aux réglementations RGPD, PCI-DSS et standards sectoriels</li>
-                    <li>Optimisé pour performance, sécurité et expérience utilisateur</li>
-                    <li>Infrastructure technique robuste et scalable</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-user-tag"></i> Processus Acheteur</h2>
-                <ul>
-                    <li><strong>Navigation et sélection:</strong>
-                        <ul>
-                            <li>Recherche avancée avec filtres intelligents</li>
-                            <li>Système de recommandation personnalisé</li>
-                            <li>Comparaison de produits détaillée</li>
-                        </ul>
-                    </li>
-                    <li><strong>Gestion panier:</strong>
-                        <ul>
-                            <li>Options quantité et spécifications</li>
-                            <li>Vérification en temps réel du stock</li>
-                            <li>Alertes restrictions produits</li>
-                        </ul>
-                    </li>
-                    <li><strong>Passage commande:</strong>
-                        <ul>
-                            <li>Multiples adresses de livraison</li>
-                            <li>Sélection créneau horaire précis</li>
-                            <li>Options cadeau et notes spéciales</li>
-                        </ul>
-                    </li>
-                    <li><strong>Suivi et réception:</strong>
-                        <ul>
-                            <li>Notifications temps réel à chaque étape</li>
-                            <li>Procédures absence et contacts secours</li>
-                            <li>Système de preuve de livraison sécurisé</li>
-                        </ul>
-                    </li>
-                    <li><strong>Post-livraison:</strong>
-                        <ul>
-                            <li>Retours simplifiés avec suivi</li>
-                            <li>Litiges avec preuves numériques</li>
-                            <li>Feedback et programme de fidélité</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-store"></i> Processus Vendeur</h2>
-                <ul>
-                    <li><strong>Validation commande:</strong>
-                        <ul>
-                            <li>SLA strict de 2h maximum</li>
-                            <li>Analyse anti-fraude intégrée</li>
-                            <li>Gestion des substitutions et ruptures</li>
-                        </ul>
-                    </li>
-                    <li><strong>Préparation colis:</strong>
-                        <ul>
-                            <li>Délais différenciés (24h/4h)</li>
-                            <li>Checklists de conformité complets</li>
-                            <li>Génération automatique QR unique</li>
-                        </ul>
-                    </li>
-                    <li><strong>Gestion problèmes:</strong>
-                        <ul>
-                            <li>Procédures pour produits endommagés</li>
-                            <li>Approvisionnement urgent priorisé</li>
-                            <li>Communication transparente client</li>
-                        </ul>
-                    </li>
-                    <li><strong>Coordination livraison:</strong>
-                        <ul>
-                            <li>Interface dédiée avec livreurs</li>
-                            <li>Suivi en temps réel des tournées</li>
-                            <li>Alertes retards et incidents</li>
-                        </ul>
-                    </li>
-                    <li><strong>Post-livraison:</strong>
-                        <ul>
-                            <li>Traitement automatisé des retours</li>
-                            <li>Analyse des litiges avec preuves</li>
-                            <li>Paiement sécurisé J+1</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-truck"></i> Processus Livreur</h2>
-                <ul>
-                    <li><strong>Acceptation mission:</strong>
-                        <ul>
-                            <li>Notification push instantanée</li>
-                            <li>Délai de réponse de 15min</li>
-                            <li>Réassignation automatique si refus</li>
-                        </ul>
-                    </li>
-                    <li><strong>Préparation tournée:</strong>
-                        <ul>
-                            <li>Optimisation intelligente d'itinéraire</li>
-                            <li>Regroupement multi-colis</li>
-                            <li>Vérification documents et colis</li>
-                        </ul>
-                    </li>
-                    <li><strong>Procédures livraison:</strong>
-                        <ul>
-                            <li>Scan QR comme preuve de réception</li>
-                            <li>Options paiement COD flexibles</li>
-                            <li>Gestion professionnelle des absences</li>
-                        </ul>
-                    </li>
-                    <li><strong>Gestion incidents:</strong>
-                        <ul>
-                            <li>Adresses introuvables avec géoloc</li>
-                            <li>Paiements échoués avec alternatives</li>
-                            <li>Urgences (accidents, problèmes colis)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Clôture mission:</strong>
-                        <ul>
-                            <li>Dépôt sécurisé des fonds COD</li>
-                            <li>Feedback détaillé sur la livraison</li>
-                            <li>Analyse performance et primes</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-user-shield"></i> Processus Administrateur</h2>
-                <ul>
-                    <li><strong>Modération plateforme:</strong>
-                        <ul>
-                            <li>Vérification KYC vendeurs/livreurs</li>
-                            <li>Surveillance comportement utilisateurs</li>
-                            <li>Gestion contenu inapproprié</li>
-                        </ul>
-                    </li>
-                    <li><strong>Résolution litiges:</strong>
-                        <ul>
-                            <li>Arbitrage équitable avec preuves</li>
-                            <li>Gel et déblocage fonds</li>
-                            <li>Application sanctions proportionnées</li>
-                        </ul>
-                    </li>
-                    <li><strong>Détection fraude:</strong>
-                        <ul>
-                            <li>Analyse comportementale avancée</li>
-                            <li>Enquêtes approfondies</li>
-                            <li>Collaboration avec autorités</li>
-                        </ul>
-                    </li>
-                    <li><strong>Optimisation système:</strong>
-                        <ul>
-                            <li>Analyse données et tendances</li>
-                            <li>Tests A/B continus</li>
-                            <li>Maintenance proactive</li>
-                        </ul>
-                    </li>
-                    <li><strong>Gestion urgences:</strong>
-                        <ul>
-                            <li>Protocoles incidents critiques</li>
-                            <li>Plan continuité d'activité</li>
-                            <li>Communication de crise</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-money-bill-wave"></i> Processus Paiement</h2>
-                <ul>
-                    <li><strong>Options paiement:</strong>
-                        <ul>
-                            <li>En ligne sécurisé (carte, mobile money)</li>
-                            <li>À la livraison (COD) avec multiples méthodes</li>
-                            <li>Portefeuille électronique intégré</li>
-                        </ul>
-                    </li>
-                    <li><strong>Sécurité transactions:</strong>
-                        <ul>
-                            <li>Authentification forte (2FA, biométrie)</li>
-                            <li>Cryptage de bout en bout</li>
-                            <li>Détection fraude en temps réel</li>
-                        </ul>
-                    </li>
-                    <li><strong>Gestion échecs:</strong>
-                        <ul>
-                            <li>Nouvelles tentatives automatisées</li>
-                            <li>Changement flexible de méthode</li>
-                            <li>Messages d'erreur explicatifs</li>
-                        </ul>
-                    </li>
-                    <li><strong>Règlement vendeurs:</strong>
-                        <ul>
-                            <li>Virement J+1 avec détail</li>
-                            <li>Retenues pour litiges/résolution</li>
-                            <li>Historique complet téléchargeable</li>
-                        </ul>
-                    </li>
-                    <li><strong>Conformité:</strong>
-                        <ul>
-                            <li>Normes PCI-DSS strictes</li>
-                            <li>Rapports fiscaux automatiques</li>
-                            <li>Audits réguliers</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-users"></i> Processus Multi-Vendeurs</h2>
-                <ul>
-                    <li><strong>Création commande:</strong>
-                        <ul>
-                            <li>Division automatique par vendeur</li>
-                            <li>Calcul frais de livraison intégré</li>
-                            <li>Paiement unique simplifié</li>
-                        </ul>
-                    </li>
-                    <li><strong>Validation:</strong>
-                        <ul>
-                            <li>Parallèle avec timeout de 2h</li>
-                            <li>Gestion des réponses partielles</li>
-                            <li>Notification unifiée à l'acheteur</li>
-                        </ul>
-                    </li>
-                    <li><strong>Livraison:</strong>
-                        <ul>
-                            <li>Regroupement intelligent des colis</li>
-                            <li>Options: livraison unique ou séparée</li>
-                            <li>Suivi indépendant par sous-commande</li>
-                        </ul>
-                    </li>
-                    <li><strong>Paiement:</strong>
-                        <ul>
-                            <li>Répartition automatique des fonds</li>
-                            <li>Gestion des échecs partiels</li>
-                            <li>Justificatifs détaillés</li>
-                        </ul>
-                    </li>
-                    <li><strong>Post-livraison:</strong>
-                        <ul>
-                            <li>Retours gérés individuellement</li>
-                            <li>Feedback par vendeur</li>
-                            <li>Statistiques de performance</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-shopping-basket"></i> Processus Multi-Acheteurs</h2>
-                <ul>
-                    <li><strong>Initiation:</strong>
-                        <ul>
-                            <li>Création groupe avec invitations</li>
-                            <li>Chat intégré pour coordination</li>
-                            <li>Calcul automatique des parts</li>
-                        </ul>
-                    </li>
-                    <li><strong>Validation:</strong>
-                        <ul>
-                            <li>Approbation requise de tous</li>
-                            <li>Délai configurable</li>
-                            <li>Notifications rappel</li>
-                        </ul>
-                    </li>
-                    <li><strong>Livraison:</strong>
-                        <ul>
-                            <li>Désignation responsable réception</li>
-                            <li>Procédures absence groupée</li>
-                            <li>Système de preuve partagée</li>
-                        </ul>
-                    </li>
-                    <li><strong>Paiement:</strong>
-                        <ul>
-                            <li>Options collectives ou individuelles</li>
-                            <li>Répartition automatique des coûts</li>
-                            <li>Justificatifs personnalisés</li>
-                        </ul>
-                    </li>
-                    <li><strong>Gestion conflits:</strong>
-                        <ul>
-                            <li>Résolution collective des litiges</li>
-                            <li>Historique partagé</li>
-                            <li>Blocage membres problématiques</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-gift"></i> Processus Commande Cadeau</h2>
-                <ul>
-                    <li><strong>Configuration:</strong>
-                        <ul>
-                            <li>Message personnalisé</li>
-                            <li>Emballage cadeau optionnel</li>
-                            <li>Option anonymat</li>
-                        </ul>
-                    </li>
-                    <li><strong>Livraison:</strong>
-                        <ul>
-                            <li>Pas d'affichage des prix</li>
-                            <li>Vérification identité receveur</li>
-                            <li>Procédure sans paiement</li>
-                        </ul>
-                    </li>
-                    <li><strong>Notification:</strong>
-                        <ul>
-                            <li>Confirmation au donneur</li>
-                            <li>Remerciement au receveur</li>
-                            <li>Option surprise</li>
-                        </ul>
-                    </li>
-                    <li><strong>Retours:</strong>
-                        <ul>
-                            <li>Coordination avec donneur</li>
-                            <li>Remboursement à l'acheteur</li>
-                            <li>Frais spécifiques</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-calendar-alt"></i> Processus Commande Programmée</h2>
-                <ul>
-                    <li><strong>Planification:</strong>
-                        <ul>
-                            <li>Sélection date/heure future</li>
-                            <li>Options récurrentes (quotidienne, hebdo)</li>
-                            <li>Calendrier visuel intégré</li>
-                        </ul>
-                    </li>
-                    <li><strong>Confirmation:</strong>
-                        <ul>
-                            <li>Rappels progressifs (J-7, J-3, J-1)</li>
-                            <li>Flexibilité modifications</li>
-                            <li>Option cadeau différé</li>
-                        </ul>
-                    </li>
-                    <li><strong>Exécution:</strong>
-                        <ul>
-                            <li>Priorisation dans la logistique</li>
-                            <li>Vérification stock réservé</li>
-                            <li>Notification d'expédition</li>
-                        </ul>
-                    </li>
-                    <li><strong>Annulation:</strong>
-                        <ul>
-                            <li>Politique flexible</li>
-                            <li>Remboursement proportionnel</li>
-                            <li>Historique des programmations</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-undo"></i> Processus Retours</h2>
-                <ul>
-                    <li><strong>Types retours:</strong>
-                        <ul>
-                            <li>Immédiat (refus à la livraison)</li>
-                            <li>Différé (sous 3 jours)</li>
-                            <li>Échange standard ou spécial</li>
-                        </ul>
-                    </li>
-                    <li><strong>Éligibilité:</strong>
-                        <ul>
-                            <li>Produits non périssables</li>
-                            <li>Emballage d'origine</li>
-                            <li>Justificatif d'achat</li>
-                        </ul>
-                    </li>
-                    <li><strong>Procédure:</strong>
-                        <ul>
-                            <li>Génération étiquette prépayée</li>
-                            <li>Points de dépôt multiples</li>
-                            <li>Suivi en temps réel</li>
-                        </ul>
-                    </li>
-                    <li><strong>Remboursement:</strong>
-                        <ul>
-                            <li>Méthode originale ou bon</li>
-                            <li>Délais selon méthode</li>
-                            <li>Déduction frais si applicable</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-gavel"></i> Processus Litiges</h2>
-                <ul>
-                    <li><strong>Types litiges:</strong>
-                        <ul>
-                            <li>Non-conformité produit</li>
-                            <li>Retard de livraison</li>
-                            <li>Produit endommagé</li>
-                            <li>Manquants dans colis</li>
-                        </ul>
-                    </li>
-                    <li><strong>Dépôt réclamation:</strong>
-                        <ul>
-                            <li>Preuves obligatoires (photos, vidéos)</li>
-                            <li>Formulaires détaillés</li>
-                            <li>Historique commande lié</li>
-                        </ul>
-                    </li>
-                    <li><strong>Résolution:</strong>
-                        <ul>
-                            <li>Enquête sous 7 jours</li>
-                            <li>Médiation possible</li>
-                            <li>Décision motivée</li>
-                        </ul>
-                    </li>
-                    <li><strong>Compensation:</strong>
-                        <ul>
-                            <li>Remboursement total/partiel</li>
-                            <li>Bon d'achat compensatoire</li>
-                            <li>Échange prioritaire</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-user-secret"></i> Processus Fraude</h2>
-                <ul>
-                    <li><strong>Types fraude:</strong>
-                        <ul>
-                            <li>Fausse identité</li>
-                            <li>Paiement frauduleux</li>
-                            <li>Abus retours</li>
-                            <li>Colis vide réclamé</li>
-                        </ul>
-                    </li>
-                    <li><strong>Détection:</strong>
-                        <ul>
-                            <li>Analyse comportementale</li>
-                            <li>Appariement listes noires</li>
-                            <li>Surveillance motifs</li>
-                        </ul>
-                    </li>
-                    <li><strong>Réponse:</strong>
-                        <ul>
-                            <li>Gel des comptes</li>
-                            <li>Signalement autorités</li>
-                            <li>Blacklist collaborative</li>
-                        </ul>
-                    </li>
-                    <li><strong>Prévention:</strong>
-                        <ul>
-                            <li>Authentification forte</li>
-                            <li>Limites transactions</li>
-                            <li>Surveillance continue</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-exclamation"></i> Processus Urgences</h2>
-                <ul>
-                    <li><strong>Types urgences:</strong>
-                        <ul>
-                            <li>Accident livreur</li>
-                            <li>Produit dangereux</li>
-                            <li>Fuites données</li>
-                            <li>Catastrophes naturelles</li>
-                        </ul>
-                    </li>
-                    <li><strong>Protocoles:</strong>
-                        <ul>
-                            <li>Priorisation santé/sécurité</li>
-                            <li>Isolation risques</li>
-                            <li>Plan continuité activité</li>
-                        </ul>
-                    </li>
-                    <li><strong>Communication:</strong>
-                        <ul>
-                            <li>Messages pré-préparés</li>
-                            <li>Canaux dédiés</li>
-                            <li>Transparence contrôlée</li>
-                        </ul>
-                    </li>
-                    <li><strong>Reprise:</strong>
-                        <ul>
-                            <li>Évaluation dommages</li>
-                            <li>Priorisation commandes</li>
-                            <li>Support clients affectés</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-database"></i> Modèle de Données</h2>
-                <ul>
-                    <li><strong>Entités principales:</strong>
-                        <ul>
-                            <li>Utilisateur avec rôles multiples</li>
-                            <li>Commande et sous-commandes</li>
-                            <li>Produits avec variations</li>
-                            <li>Livraison avec suivi événements</li>
-                        </ul>
-                    </li>
-                    <li><strong>Relations complexes:</strong>
-                        <ul>
-                            <li>Multi-vendeurs avec répartition</li>
-                            <li>Multi-acheteurs avec groupes</li>
-                            <li>Historique complet des actions</li>
-                        </ul>
-                    </li>
-                    <li><strong>Extensions spéciales:</strong>
-                        <ul>
-                            <li>Gestion des cadeaux</li>
-                            <li>Programmations récurrentes</li>
-                            <li>Retours avec inspection</li>
-                        </ul>
-                    </li>
-                    <li><strong>Performance:</strong>
-                        <ul>
-                            <li>Indexation stratégique</li>
-                            <li>Partitionnement données</li>
-                            <li>Cache distribué</li>
-                        </ul>
-                    </li>
-                </ul>
+        <div class="performance-metrics">
+            <h3 class="diagram-title">📊 Métriques de Performance Cibles</h3>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">99.9%</div>
+                    <div class="metric-label">Disponibilité SLA</div>
+                    <div class="metric-description">Uptime garanti avec redondance multi-région</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">&lt;2s</div>
+                    <div class="metric-label">Temps de Chargement</div>
+                    <div class="metric-description">Page complète sur connexion 3G</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">&lt;100ms</div>
+                    <div class="metric-label">Latence API</div>
+                    <div class="metric-description">Réponse moyenne des microservices</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">10K+</div>
+                    <div class="metric-label">Requêtes/sec</div>
+                    <div class="metric-description">Capacité de traitement concurrent</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">95+</div>
+                    <div class="metric-label">Score Lighthouse</div>
+                    <div class="metric-description">Performance, accessibilité, SEO</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">&lt;30s</div>
+                    <div class="metric-label">Temps de Déploiement</div>
+                    <div class="metric-description">Mise en production sans interruption</div>
+                </div>
             </div>
         </div>
+
+        <div class="deployment-pipeline">
+            <h3 class="diagram-title">🚀 Pipeline de Déploiement Automatisé</h3>
+            <div class="pipeline-stages">
+                <div class="pipeline-stage">
+                    <div class="stage-icon">💻</div>
+                    <div class="stage-title">Développement</div>
+                    <div class="stage-description">Code, Tests unitaires, Linting</div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">🔍</div>
+                    <div class="stage-title">Intégration</div>
+                    <div class="stage-description">Build, Tests d'intégration, Sécurité</div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">🧪</div>
+                    <div class="stage-title">Staging</div>
+                    <div class="stage-description">Tests E2E, Performance, Validation</div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">🌍</div>
+                    <div class="stage-title">Production</div>
+                    <div class="stage-description">Déploiement Blue-Green, Monitoring</div>
+                </div>
+                <div class="pipeline-stage">
+                    <div class="stage-icon">📊</div>
+                    <div class="stage-title">Monitoring</div>
+                    <div class="stage-description">Métriques, Alertes, Feedback</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 50px 0;">
+            <a href="index.html" class="back-button">← Retour à l'Accueil</a>
+            <a href="documentation.html" class="back-button">📚 Documentation Complète</a>
+        </div>
+
+        <footer class="footer">
+            <p><strong>© 2025 LuxeShop Guinée - Architecture Système</strong></p>
+            <p style="margin-top: 15px; opacity: 0.8;">
+                Diagramme d'architecture détaillé - Version 2.1.0<br>
+                Dernière mise à jour: 27 Janvier 2025
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">
+                Architecture conçue pour la scalabilité, la sécurité, et la performance optimale en Afrique
+            </p>
+        </footer>
     </div>
-
-    <footer>
-        <p>E-Commerce Intelligent - Diagrammes Complets Exhaustifs &copy; 2025 | Tous droits réservés</p>
-    </footer>
-
-    <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script>
-        // Configuration et Initialisation
-        document.addEventListener('DOMContentLoaded', function() {
-            // Variables globales
-            let currentZoom = 1;
-            const minZoom = 0.5;
-            const maxZoom = 2;
-            const zoomStep = 0.1;
-            let activeNode = null;
-            let currentDiagram = 'global';
-            let isFullscreen = false;
-            
-            // Initialisation de Mermaid
-            mermaid.initialize({
-                startOnLoad: true,
-                theme: 'default',
-                flowchart: {
-                    useMaxWidth: false,
-                    htmlLabels: true,
-                    curve: 'basis'
-                },
-                securityLevel: 'loose'
-            });
-            
-            // Masquer le loader une fois le diagramme chargé
-            setTimeout(() => {
-                document.getElementById('loading').style.display = 'none';
-                initInteractivity();
-            }, 1500);
-            
-            // Gestion du thème sombre/clair
-            const themeToggle = document.getElementById('themeToggle');
-            themeToggle.addEventListener('click', toggleTheme);
-            
-            // Vérifier la préférence système
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.body.setAttribute('data-theme', 'dark');
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            }
-            
-            // Zoom et Contrôles
-            document.getElementById('zoomIn').addEventListener('click', () => {
-                if (currentZoom < maxZoom) {
-                    currentZoom += zoomStep;
-                    updateZoom();
-                }
-            });
-            
-            document.getElementById('zoomOut').addEventListener('click', () => {
-                if (currentZoom > minZoom) {
-                    currentZoom -= zoomStep;
-                    updateZoom();
-                }
-            });
-            
-            document.getElementById('resetZoom').addEventListener('click', () => {
-                currentZoom = 1;
-                updateZoom();
-            });
-            
-            // Plein écran
-            document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
-            
-            // Export
-            document.getElementById('exportBtn').addEventListener('click', exportDiagram);
-            
-            // Légende
-            document.getElementById('toggleLegend').addEventListener('click', () => {
-                const legend = document.getElementById('legend');
-                legend.style.display = legend.style.display === 'none' ? 'block' : 'none';
-            });
-            
-            // Panneau d'info
-            document.getElementById('closeInfoPanel').addEventListener('click', () => {
-                document.getElementById('infoPanel').classList.remove('visible');
-                if (activeNode) {
-                    activeNode.classList.remove('highlighted');
-                    activeNode = null;
-                }
-            });
-            
-            // Navigation entre diagrammes
-            document.getElementById('globalBtn').addEventListener('click', () => switchDiagram('global'));
-            
-            // Sous-menus
-            const submenuButtons = document.querySelectorAll('.has-submenu');
-            submenuButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    if (!e.target.classList.contains('nav-btn')) {
-                        const submenu = this.querySelector('.submenu');
-                        submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-                        this.classList.toggle('active');
-                    }
-                });
-            });
-            
-            // Diagrammes par acteurs
-            document.getElementById('buyerBtn').addEventListener('click', () => switchDiagram('buyer'));
-            document.getElementById('sellerBtn').addEventListener('click', () => switchDiagram('seller'));
-            document.getElementById('deliveryBtn').addEventListener('click', () => switchDiagram('delivery'));
-            document.getElementById('adminBtn').addEventListener('click', () => switchDiagram('admin'));
-            
-            // Processus spéciaux
-            document.getElementById('paymentBtn').addEventListener('click', () => switchDiagram('payment'));
-            document.getElementById('multiSellerBtn').addEventListener('click', () => switchDiagram('multiSeller'));
-            document.getElementById('multiBuyerBtn').addEventListener('click', () => switchDiagram('multiBuyer'));
-            document.getElementById('giftBtn').addEventListener('click', () => switchDiagram('gift'));
-            document.getElementById('scheduledBtn').addEventListener('click', () => switchDiagram('scheduled'));
-            
-            // Cas exceptionnels
-            document.getElementById('returnBtn').addEventListener('click', () => switchDiagram('return'));
-            document.getElementById('disputeBtn').addEventListener('click', () => switchDiagram('dispute'));
-            document.getElementById('fraudBtn').addEventListener('click', () => switchDiagram('fraud'));
-            document.getElementById('emergencyBtn').addEventListener('click', () => switchDiagram('emergency'));
-            
-            // Modèle de données
-            document.getElementById('dataBtn').addEventListener('click', () => switchDiagram('data'));
-            
-            // Fonctions
-            function toggleTheme() {
-                const body = document.body;
-                if (body.getAttribute('data-theme') === 'dark') {
-                    body.removeAttribute('data-theme');
-                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                } else {
-                    body.setAttribute('data-theme', 'dark');
-                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                }
-                
-                // Re-render les diagrammes après changement de thème
-                renderCurrentDiagram();
-            }
-            
-            function updateZoom() {
-                const diagrams = document.querySelectorAll('.diagram');
-                diagrams.forEach(diagram => {
-                    if (diagram.style.display === 'block') {
-                        diagram.style.transform = `scale(${currentZoom})`;
-                    }
-                });
-            }
-            
-            function toggleFullscreen() {
-                const container = document.querySelector('.diagram-container');
-                if (!isFullscreen) {
-                    container.requestFullscreen().then(() => {
-                        isFullscreen = true;
-                        document.getElementById('fullscreenBtn').innerHTML = '<i class="fas fa-compress"></i>';
-                    });
-                } else {
-                    document.exitFullscreen().then(() => {
-                        isFullscreen = false;
-                        document.getElementById('fullscreenBtn').innerHTML = '<i class="fas fa-expand-arrows-alt"></i>';
-                    });
-                }
-            }
-            
-            function exportDiagram() {
-                const diagram = document.querySelector(`#${currentDiagram}Diagram`);
-                html2canvas(diagram, {
-                    scale: 2,
-                    logging: false,
-                    useCORS: true
-                }).then(canvas => {
-                    const link = document.createElement('a');
-                    link.download = `diagramme_${currentDiagram}.png`;
-                    link.href = canvas.toDataURL('image/png');
-                    link.click();
-                });
-            }
-            
-            function switchDiagram(diagramType) {
-                // Mettre à jour l'état des boutons
-                document.querySelectorAll('.nav-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                // Activer le bon bouton parent si sous-menu
-                if (diagramType !== 'global') {
-                    let parentBtn = null;
-                    switch(diagramType) {
-                        case 'buyer':
-                        case 'seller':
-                        case 'delivery':
-                        case 'admin':
-                            parentBtn = document.getElementById('actorsBtn');
-                            break;
-                        case 'payment':
-                        case 'multiSeller':
-                        case 'multiBuyer':
-                        case 'gift':
-                        case 'scheduled':
-                            parentBtn = document.getElementById('processesBtn');
-                            break;
-                        case 'return':
-                        case 'dispute':
-                        case 'fraud':
-                        case 'emergency':
-                            parentBtn = document.getElementById('exceptionBtn');
-                            break;
-                    }
-                    if (parentBtn) parentBtn.classList.add('active');
-                } else {
-                    document.getElementById('globalBtn').classList.add('active');
-                }
-                
-                // Masquer tous les diagrammes
-                document.querySelectorAll('.diagram').forEach(diagram => {
-                    diagram.style.display = 'none';
-                });
-                
-                // Afficher le diagramme sélectionné
-                document.getElementById(`${diagramType}Diagram`).style.display = 'block';
-                currentDiagram = diagramType;
-                
-                // Réappliquer le zoom
-                updateZoom();
-                
-                // Réinitialiser l'interactivité
-                initInteractivity();
-            }
-            
-            function renderCurrentDiagram() {
-                // Cette fonction pourrait être utilisée pour re-render le diagramme si nécessaire
-                // Actuellement, Mermaid gère bien le re-rendu avec le changement de thème
-            }
-            
-            function initInteractivity() {
-                // Tooltips personnalisés
-                const nodes = document.querySelectorAll('.node');
-                
-                nodes.forEach(node => {
-                    // Récupérer l'ID pour faire correspondre avec le contenu
-                    const nodeId = node.id;
-                    const title = node.querySelector('title') ? node.querySelector('title').textContent : '';
-                    
-                    // Créer un tooltip personnalisé
-                    node.addEventListener('mouseenter', (e) => {
-                        if (title) {
-                            const tooltip = document.createElement('div');
-                            tooltip.className = 'mermaidTooltip';
-                            tooltip.textContent = title;
-                            document.body.appendChild(tooltip);
-                            
-                            const updatePosition = (e) => {
-                                tooltip.style.left = `${e.pageX + 15}px`;
-                                tooltip.style.top = `${e.pageY + 15}px`;
-                                tooltip.classList.add('visible');
-                            };
-                            
-                            updatePosition(e);
-                            node.addEventListener('mousemove', updatePosition);
-                            
-                            node.addEventListener('mouseleave', () => {
-                                tooltip.classList.remove('visible');
-                                setTimeout(() => {
-                                    document.body.removeChild(tooltip);
-                                }, 300);
-                                node.removeEventListener('mousemove', updatePosition);
-                            }, { once: true });
-                        }
-                    });
-                    
-                    // Gestion du clic pour le panneau d'info détaillé
-                    node.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        
-                        // Retirer la mise en évidence précédente
-                        if (activeNode) {
-                            activeNode.classList.remove('highlighted');
-                        }
-                        
-                        // Mettre en évidence le nœud actif
-                        node.classList.add('highlighted');
-                        activeNode = node;
-                        
-                        // Trouver le contenu correspondant dans les clics Mermaid
-                        const clickContent = getClickContent(nodeId, currentDiagram);
-                        
-                        // Mettre à jour le panneau d'info
-                        if (clickContent) {
-                            const infoPanel = document.getElementById('infoPanel');
-                            const infoTitle = document.getElementById('infoTitle');
-                            const infoContent = document.getElementById('infoContent');
-                            
-                            // Extraire le titre (première ligne)
-                            const lines = clickContent.split('\n\n');
-                            infoTitle.textContent = lines[0];
-                            
-                            // Formater le contenu
-                            let contentHtml = '';
-                            for (let i = 1; i < lines.length; i++) {
-                                const paragraphs = lines[i].split('\n');
-                                paragraphs.forEach(p => {
-                                    if (p.startsWith('- ')) {
-                                        if (!contentHtml.includes('<ul>')) contentHtml += '<ul>';
-                                        contentHtml += `<li>${p.substring(2)}</li>`;
-                                    } else {
-                                        if (contentHtml.includes('<ul>')) contentHtml += '</ul>';
-                                        contentHtml += `<p>${p}</p>`;
-                                    }
-                                });
-                            }
-                            if (contentHtml.includes('<ul>')) contentHtml += '</ul>';
-                            
-                            infoContent.innerHTML = contentHtml;
-                            infoPanel.classList.add('visible');
-                        }
-                    });
-                });
-                
-                // Fermer le panneau en cliquant à l'extérieur
-                document.addEventListener('click', (e) => {
-                    const infoPanel = document.getElementById('infoPanel');
-                    if (!infoPanel.contains(e.target) && !e.target.closest('.node')) {
-                        infoPanel.classList.remove('visible');
-                        if (activeNode) {
-                            activeNode.classList.remove('highlighted');
-                            activeNode = null;
-                        }
-                    }
-                });
-            }
-            
-            function getClickContent(nodeId, diagramType) {
-                // Contenu pour chaque diagramme et chaque nœud
-                const clickContents = {
-                    'global': {
-                        'A': "Début du Processus: Transition du Panier vers le Checkout\n\n- Conversion du panier en commande\n- Vérification des informations client\n- Calcul des frais de livraison\n- Sélection des options de paiement\n\nDonnées:\n- ID Panier\n- ID Utilisateur\n- Date/Heure\n- Adresses\n- Méthode Livraison\n\nValidation:\n- Stock disponible\n- Restrictions produits\n- Compatibilité adresse",
-                        'B': "Création de Commande\n\nTypes:\n- Standard: 1 acheteur, 1 vendeur, paiement à la livraison (COD)\n- Multi-vendeurs: Commande divisée en sous-commandes\n- Multi-adresses: Livraison à plusieurs endroits\n- Cadeau: Livraison à un tiers avec message\n- Secours: Personne alternative pour réception\n- Programmée: Livraison à date future\n\nOptions:\n- Notes de livraison\n- Restrictions produits (périssables, volumineux)\n- Gestion du stock en temps réel\n- Options de paiement (COD, acompte)\n\nDonnées:\n- ID Commande\n- Statut\n- Montant Total\n- Liste Produits\n- Dates Limites",
-                        'C': "Validation par le Vendeur\n\nScénarios:\n- Acceptée entière: Commande confirmée\n- Refusée: Rupture stock, zone non couverte, suspicion de fraude\n- Partielle: Certains articles disponibles\n- Substitution: Proposition d'alternative\n\nSLA: 2h maximum pour réponse\n\nConséquences:\n- Annulation totale ou partielle\n- Notification immédiate à l'acheteur\n- Proposition de solutions alternatives\n\nDétection Fraude:\n- Historique client\n- Comportement inhabituel\n- Adresse IP suspecte\n- Paiement risqué",
-                        'D': "Préparation du Colis\n\nDélais:\n- Standard: 24h maximum\n- Périssables: 4h maximum\n\nProcessus:\n- Vérification de la conformité\n- Emballage sécurisé\n- Étiquetage avec QR code\n- Gestion des spécificités (fragile, température)\n\nContrôles:\n- Poids et dimensions\n- Correspondance avec la commande\n- Documents requis (facture, notice)\n\nSystème:\n- Génération QR unique\n- Impression étiquette\n- Mise à jour statut\n- Notification livreur",
-                        'K': "Attribution Livreur\n\nOptimisation:\n- Itinéraire le plus efficace\n- Regroupement des livraisons proches\n- Priorité aux périssables\n\nGestion des Livreurs:\n- Acceptation/refus de la mission\n- Indisponibilité (remplacement immédiat)\n- Assignation en fonction des compétences\n\nSystème QR:\n- QR global pour la commande\n- QR par vendeur pour les sous-commandes\n- Validité limitée dans le temps\n\nAlgorithmes:\n- Calcul d'itinéraire\n- Regroupement géographique\n- Priorisation urgences\n- Gestion contraintes (véhicule)",
-                        'L': "Scénarios de Livraison\n\nCas Standards:\n- Client présent\n- Paiement COD réussi\n- Adresse correcte\n\nCas Exceptionnels:\n- Client absent\n- Adresse introuvable\n- Paiement échoué\n- QR invalide\n- Incident livreur\n\nProcédures:\n- Tentatives de contact\n- Utilisation du contact de secours\n- Replanification\n- Annulation partielle si nécessaire\n\nPreuves:\n- Photos\n- Géolocalisation\n- Horodatage\n- Signature électronique",
-                        'U': "Post-Livraison\n\nRetours:\n- Immédiats (refus à la livraison)\n- Différés (sous 3 jours)\n- Motifs valables (non conforme, endommagé)\n\nLitiges:\n- Enregistrement des preuves\n- Gel des fonds si nécessaire\n- Arbitrage par l'admin\n\nFeedback:\n- Avis client\n- Notation du vendeur/livreur\n- Analyse des performances\n\nStatistiques:\n- Taux de réussite\n- Temps moyen\n- Raisons échecs\n- Satisfaction client",
-                        'Y': "Monitoring Temps Réel\n\nFonctionnalités:\n- Suivi position livreurs\n- Estimation temps livraison\n- Alertes retards\n- Notifications push\n\nTechnologies:\n- WebSockets\n- Service Workers\n- Geolocation API\n- Push Notifications\n\nDashboard:\n- Commandes en cours\n- Incidents\n- Performances\n- KPI clés",
-                        'Z': "Gestion Incidents\n\nTypes:\n- Retards accumulation\n- Refus répétés\n- Échecs techniques\n- Problèmes paiement\n\nProcessus:\n- Catégorisation\n- Priorisation\n- Escalade\n- Résolution\n\nOutils:\n- Système de tickets\n- ChatOps\n- Automatisation\n- Post-mortems"
-                    },
-                    'buyer': {
-                        'E1': "Passage de Commande\n\nOptions:\n- Adresse de livraison principale et secondaire\n- Sélection du créneau horaire\n- Méthode de paiement (COD ou en ligne)\n- Notes spéciales pour le livreur\n- Options cadeau (emballage, message)\n- Contact de secours pour réception\n\nVérifications:\n- Validité de l'adresse\n- Disponibilité du créneau\n- Compatibilité des produits (périssables, fragile)",
-                        'G1': "Validation Commande\n\nScénarios:\n- Acceptée: Commande confirmée, préparation en cours\n- Refusée: Rupture de stock ou problème identifié\n- Partielle: Certains articles disponibles\n- Substitution: Produit similaire proposé\n\nDélai: Réponse sous 2h maximum\n\nActions possibles:\n- Accepter la situation\n- Demander l'annulation\n- Choisir des alternatives",
-                        'N1': "Réception Colis\n\nProcessus:\n- Présentation du QR code de réception\n- Vérification du colis avant paiement (COD)\n- Paiement si applicable (espèces, mobile money, carte)\n- Signature électronique ou photo comme preuve\n\nBonnes pratiques:\n- Vérifier l'état du colis avant acceptation\n- Conserver le reçu de transaction\n- Signaler immédiatement tout problème",
-                        'R1': "Retour/Litige\n\nMotifs valables:\n- Produit non conforme à la description\n- Produit endommagé pendant le transport\n- Erreur dans la commande (mauvais article)\n- Problème de qualité\n\nProcessus:\n- Ouverture de réclamation sous 3 jours\n- Fourniture de preuves (photos, vidéos)\n- Envoi éventuel du produit retour\n- Remboursement ou échange après validation"
-                    },
-                    'seller': {
-                        'B2': "Validation Commande\n\nVérifications:\n- Disponibilité du stock en temps réel\n- Couverture de la zone de livraison\n- Analyse anti-fraude (commandes suspectes)\n- Compatibilité des produits (restrictions)\n\nDélai: 2h maximum pour répondre\n\nOptions:\n- Accepter la commande entièrement\n- Refuser avec motif (rupture, zone)\n- Accepter partiellement (articles disponibles)\n- Proposer des substitutions équivalentes",
-                        'G2': "Préparation Commande\n\nProcessus:\n- Sélection des articles dans l'inventaire\n- Vérification de la conformité (date, qualité)\n- Emballage sécurisé selon le type de produit\n- Étiquetage avec QR code unique\n- Pesée et dimensions pour le transport\n\nDélais:\n- Standard: 24 heures maximum\n- Périssables: 4 heures maximum\n\nContrôles:\n- Correspondance exacte avec la commande\n- Documents inclus (facture, notice)\n- Spécificités (fragile, température)",
-                        'J2': "Gestion des Problèmes\n\nTypes de problèmes:\n- Rupture de stock inattendue\n- Produit endommagé pendant la préparation\n- Indisponibilité (fermeture exceptionnelle)\n\nProcédures:\n- Pour rupture: approvisionnement urgent possible\n- Pour endommagé: préparation d'un nouveau colis\n- Pour indisponibilité: report avec accord client\n\nCommunication:\n- Notification immédiate à l'acheteur\n- Proposition de solutions alternatives\n- Pénalités possibles pour retards répétés",
-                        'T2': "Post-Livraison\n\nGestion des retours:\n- Vérification de l'éligibilité du retour\n- Inspection du produit retourné\n- Validation ou refus du retour (avec justification)\n- Initiation du remboursement ou échange\n\nLitiges:\n- Examen des preuves (photos, vidéos)\n- Arbitrage avec l'équipe de support\n- Gel des fonds si nécessaire\n- Résolution sous 48 heures\n\nFeedback:\n- Analyse des retours pour amélioration\n- Réponse aux avis clients\n- Adaptation de l'offre selon les retours"
-                    },
-                    'delivery': {
-                        'D3': "Préparation Livraison\n\nÉtapes:\n- Vérification de l'itinéraire optimisé\n- Chargement sécurisé des colis\n- Vérification des documents (bons de livraison)\n- Préparation du terminal de paiement mobile\n- Revue des notes spéciales (fragile, instructions)\n\nOptimisation:\n- Regroupement des livraisons proches\n- Priorité aux périssables\n- Adaptation en temps réel (trafic, météo)\n\nContrôles:\n- Correspondance colis/commandes\n- Intégrité des emballages\n- Présence des QR codes",
-                        'I3': "Livraison au Client\n\nProcessus:\n- Vérification de l'identité (QR code client)\n- Présentation du colis pour inspection\n- Paiement COD si applicable (multiple options)\n- Scan du QR code de livraison\n- Capture de preuve (signature électronique/photo)\n\nBonnes Pratiques:\n- Communication claire et professionnelle\n- Respect des protocoles sanitaires si applicables\n- Vérification de la satisfaction client\n- Remise des documents (reçu, facture)\n\nSécurité:\n- Ne jamais laisser le colis sans preuve de réception\n- Vérifier les billets pour éviter les faux\n- Signaler tout comportement suspect",
-                        'J3': "Gestion Absence Client\n\nProcédure:\n- Premier essai: Appel téléphonique immédiat\n- Attente sur place (5-10 minutes maximum)\n- Tentative de localisation (interphone, voisins)\n\nOptions:\n- Livraison au contact de secours si disponible\n- Replanification pour un autre créneau\n- Dépôt en point relais si applicable\n\nCas particuliers:\n- Cadeau: vérifier instructions spéciales\n- Entreprise: contacter la réception\n- Résidence sécurisée: suivre le protocole\n\nDocumentation:\n- Enregistrement des tentatives de contact\n- Photos comme preuve de présence\n- Notification immédiate au système",
-                        'S3': "Problèmes d'Adresse\n\nCauses fréquentes:\n- Adresse incomplète ou imprécise\n- Erreur dans la saisie du client\n- Nouvelle construction non répertoriée\n- Restrictions d'accès (zone sécurisée)\n\nSolutions:\n- Contact immédiat avec le client\n- Utilisation de coordonnées GPS alternatives\n- Assistance de l'équipe support\n- Consultation des notes de livraison\n\nEn cas d'échec:\n- Retour au point de distribution\n- Génération de frais si erreur client\n- Notification pour correction future\n\nImportance:\n- Impact direct sur les délais de livraison\n- Expérience client à préserver\n- Optimisation des tournées affectée"
-                    },
-                    'admin': {
-                        'B4': "Détection Anomalie\n\nSources:\n- Alertes automatiques du système\n- Signalements utilisateurs\n- Analyse comportementale\n- Tendances statistiques\n\nTypes:\n- Problèmes livraison récurrents\n- Litiges paiement suspects\n- Retours abusifs\n- Activité frauduleuse\n\nPriorisation:\n- Impact sur l'utilisateur\n- Risque financier\n- Potentiel de récidive\n- Gravité présumée",
-                        'C4': "Audit Livraison\n\nDonnées analysées:\n- Géolocalisation livreur\n- Horodatages scans QR\n- Photos de preuve\n- Historique du livreur\n- Conditions météo\n\nIndicateurs:\n- Écarts itinéraire\n- Délais anormaux\n- Incohérences preuves\n- Comportement inhabituel\n\nOutils:\n- Cartographie des trajets\n- Comparaison avec standards\n- Détection motifs suspects",
-                        'F4': "Enquête Fraude\n\nMéthodes:\n- Analyse historique commandes\n- Appariement listes noires\n- Vérification documents\n- Surveillance réseaux sociaux\n- Collaboration transporteurs\n\nIndices:\n- Adresses factices\n- Paiements suspects\n- Comportement erratique\n- Tentatives de contournement\n\nTechnologies:\n- Reconnaissance d'images\n- Analyse sémantique\n- Détection similarités"
-                    },
-                    'payment': {
-                        'C5': "Paiement en Ligne\n\nProcessus:\n- Redirection vers plateforme sécurisée\n- Saisie des informations de paiement\n- Authentification (2FA si applicable)\n- Cryptage des données sensibles\n- Validation par la banque/processeur\n\nAvantages:\n- Sécurisé et traçable\n- Réduction des risques COD\n- Confirmation instantanée\n\nSécurité:\n- Conformité PCI-DSS\n- Détection des fraudes en temps réel\n- Limites de transaction\n\nÉchecs courants:\n- Fonds insuffisants\n- Carte expirée/bloquée\n- Problèmes réseau\n- Suspicion de fraude",
-                        'D5': "Paiement à la Livraison (COD)\n\nProcessus:\n- Validation du montant à payer\n- Préparation des moyens d'encaissement\n- Information claire au client\n- Gestion de la monnaie si nécessaire\n\nOptions:\n- Espèces (montant exact recommandé)\n- Mobile Money (lien de paiement instantané)\n- TPE mobile (cartes bancaires)\n\nRisques:\n- Absence de fonds chez le client\n- Faux billets\n- Problèmes de réseau pour paiement mobile\n- Litiges sur le montant\n\nSécurité:\n- Vérification des billets\n- Reçu obligatoire\n- Preuve de transaction électronique",
-                        'M5': "Gestion Échec Paiement COD\n\nScénarios:\n- Client refuse de payer\n- Fonds insuffisants\n- Problème technique (réseau mobile, TPE)\n- Litige sur la commande\n\nProcédures:\n- Communication calme et professionnelle\n- Proposition de solutions alternatives\n- Contact avec le support si nécessaire\n- Enregistrement des détails de l'incident\n\nOptions:\n- Seconde tentative après délai\n- Replanification avec prépaiement\n- Annulation et retour du produit\n\nDocumentation:\n- Photos/preuves de la tentative\n- Signature client reconnaissant l'échec\n- Rapport d'incident détaillé",
-                        'V5': "Gestion des Litiges Paiement\n\nTypes de litiges:\n- Non réception de la commande\n- Produit non conforme\n- Double débit\n- Fraude suspectée\n\nProcessus:\n- Gel des fonds pendant l'investigation\n- Collecte des preuves (photos, vidéos, logs)\n- Audits des transactions\n- Arbitrage par l'équipe spécialisée\n\nDélais:\n- Résolution sous 48-72 heures\n- Communication régulière avec les parties\n- Possibilité de médiation externe\n\nRésolution:\n- Remboursement total ou partiel\n- Bon d'achat en compensation\n- Clôture du litige si infondé\n- Signalement aux autorités si fraude avérée"
-                    },
-                    'multiSeller': {
-                        'B6': "Division Commande\n\nProcessus:\n- Analyse des produits par vendeur\n- Création des sous-commandes indépendantes\n- Calcul des frais de livraison par vendeur\n- Attribution de références uniques\n\nCaractéristiques:\n- Chaque sous-commande a son propre cycle de vie\n- Notification simultanée à tous les vendeurs\n- Gestion centralisée pour l'acheteur\n- Paiement unique avec répartition auto",
-                        'C6': "Validation Parallèle\n\nMécanisme:\n- Chaque vendeur valide indépendamment\n- Délai maximum de 2h pour réponse\n- Notification immédiate des changements\n\nScénarios:\n- Tous acceptent: processus normal\n- Refus partiel: options pour l'acheteur\n- Tous refusent: annulation totale\n\nGestion:\n- Suivi en temps réel des validations\n- Alerte pour retard de réponse\n- Proposition automatique d'alternatives",
-                        'H6': "Regroupement Colis\n\nStratégies:\n- Optimisation par localisation géographique\n- Regroupement par créneau horaire\n- Priorité aux produits périssables\n- Gestion des contraintes (volume, poids)\n\nAvantages:\n- Réduction des coûts logistiques\n- Expérience client unifiée\n- Traçabilité centralisée\n\nCas spéciaux:\n- Produits incompatibles (température)\n- Urgences différentes\n- Restrictions spécifiques",
-                        'N6': "Livraison Multi-Vendeurs\n\nProcessus:\n- Un seul livreur pour tous les colis\n- Itinéraire optimisé pour efficacité\n- Scan QR global pour validation\n- Paiement unique avec répartition\n\nAvantages:\n- Simplicité pour l'acheteur\n- Réduction des frais de livraison\n- Expérience unifiée\n\nContrôles:\n- Vérification de tous les colis\n- Validation individuelle des sous-commandes\n- Gestion centralisée des incidents"
-                    },
-                    'multiBuyer': {
-                        'B7': "Commande Groupée\n\nInitiation:\n- Un acheteur principal crée le panier\n- Invitation des participants\n- Validation des contributions\n\nFonctionnalités:\n- Chat intégré pour discussion\n- Calcul automatique des parts\n- Options de paiement flexibles\n\nValidation:\n- Approbation requise de tous\n- Délai d'acceptation configurable\n- Notification des retardataires",
-                        'E7': "Livraison Unique\n\nOrganisation:\n- Adresse de livraison commune\n- Responsable désigné pour réception\n- Contact de secours groupé\n\nOptions:\n- Livraison à domicile\n- Point relais partagé\n- Entreprise/collectivité\n\nSécurité:\n- QR code principal + secondaires\n- Validation multi-niveaux\n- Preuve de réception partagée",
-                        'K7': "Assignation Spéciale\n\nCritères:\n- Véhicule adapté au volume\n- Expérience avec groupes\n- Disponibilité étendue\n\nOptimisation:\n- Priorité haute pour ce type\n- Itinéraire précis avec buffer\n- Communication renforcée\n\nContrôle:\n- Briefing spécifique\n- Protocole d'urgence\n- Feedback obligatoire",
-                        'O7': "Absence Groupée\n\nProcédure:\n- Tentative de contact étendue\n- Activation du réseau de secours\n- Options flexibles de replanification\n\nSolutions:\n- Livraison à un membre disponible\n- Dépôt sécurisé avec accès partagé\n- Retour partiel ou total\n\nDocumentation:\n- Preuves multiples requises\n- Traçabilité complète\n- Analyse post-événement"
-                    },
-                    'gift': {
-                        'B8': "Configuration Cadeau\n\nOptions:\n- Message personnalisé (texte/audio)\n- Emballage premium (thèmes disponibles)\n- Anonymat total ou partiel\n- Date de livraison programmée\n\nRestrictions:\n- Certains produits exclus (périssables)\n- Limite caractères message\n- Suppression des documents prix\n\nValidation:\n- Aperçu avant confirmation\n- Modification possible avant expédition",
-                        'D8': "Options Paiement\n\nChoix:\n- Paiement immédiat par donneur\n- Paiement à la livraison par receveur\n\nParticularités:\n- Pour COD: notification claire au receveur\n- Montant masqué dans les communications\n- Reçu détaillé seulement au donneur\n\nSécurité:\n- Vérification identité receveur\n- Limites montants pour COD\n- Option pré-authorisation"
-                    },
-                    'scheduled': {
-                        'B9': "Validation Créneau\n\nContrôles:\n- Disponibilité livreurs\n- Capacité traitement vendeur\n- Compatibilité produits (périssabilité)\n- Périodes bloquées (fêtes, weekends)\n\nFlexibilité:\n- Plage horaire élargie\n- Rappel avant livraison\n- Option 'livrer dès que possible'\n\nOptimisation:\n- Regroupement géographique\n- Priorisation créneaux complets\n- Adaptation capacité dynamique",
-                        'D9': "Types Programmation\n\nOptions:\n- Date unique: Livraison ponctuelle\n- Récurrente: Paramétrage complet\n\nRécurrente:\n- Quotidienne/Hebdomadaire/Mensuelle\n- Jours spécifiques\n- Fin après X occurrences ou date\n\nGestion:\n- Pause temporaire possible\n- Modification séquence\n- Historique des occurrences"
-                    },
-                    'return': {
-                        'B10': "Types Retour\n\nImmédiat:\n- Refus à la livraison\n- Scan QR spécial\n- Aucun frais si motif valable\n\nDifféré:\n- Sous 3 jours ouvrés\n- Demande via interface\n- Pré-approbation requise\n\nÉchange:\n- Produit différent\n- Taille/couleur alternative\n- Priorité traitement",
-                        'F10': "Vérification Éligibilité\n\nCritères:\n- Produit éligible (non exclu)\n- Délai respecté\n- Emballage d'origine\n- Preuves fournies\n\nExclusions:\n- Périssables\n- Sous-vêtements\n- Produits personnalisés\n- Logiciels scellés\n\nAutomatisation:\n- 80% des cas traités auto\n- 20% vérification manuelle\n- Apprentissage continu"
-                    },
-                    'dispute': {
-                        'B11': "Types Litige\n\nNon-conformité:\n- Différence avec description\n- Fonctionnalité manquante\n- Qualité insuffisante\n\nRetard:\n- Délai non respecté\n- Créneau manqué\n- Communication insuffisante\n\nEndommagé:\n- Cassé pendant transport\n- Mauvaise manipulation\n- Emballage inadapté\n\nManquant:\n- Article absent\n- Accessoires non fournis\n- Quantité incorrecte",
-                        'G11': "Évaluation Non-Conformité\n\nMéthodologie:\n- Comparaison description/réalité\n- Consultation fiches produit\n- Tests si nécessaire\n\nSeuils:\n- Écart mineur: compensation partielle\n- Écart majeur: remboursement total\n- Fraude: sanctions supplémentaires\n\nDocumentation:\n- Photos comparatives\n- Vidéos démonstration\n- Témoignages experts"
-                    },
-                    'fraud': {
-                        'B12': "Types Fraude\n\nFausse identité:\n- Documents falsifiés\n- Vol identité\n- Compte pris en otage\n\nPaiement frauduleux:\n- Carte volée\n- Mobile money hacké\n- Chargeback abusif\n\nAbus retours:\n- Produit différent retourné\n- Fausses réclamations\n- Rotation articles\n\nColis vide:\n- Simulation livraison\n- Complicité livreur\n- Réclamation mensongère",
-                        'C12': "Vérification Identité\n\nProcessus:\n- Analyse documents (CNI, passeport)\n- Comparaison photo/vidéo\n- Vérification cohérence données\n\nTechnologies:\n- Reconnaissance faciale\n- Détection falsification\n- Croisement bases données\n\nIndicateurs:\n- Incohérences temporelles\n- Inversions chiffres\n- Qualité image suspecte"
-                    },
-                    'emergency': {
-                        'B13': "Types Urgence\n\nAccident livreur:\n- Route\n- Maladie\n- Agression\n\nProduit dangereux:\n- Fuite liquide\n- Produit interdit\n- Réaction chimique\n\nDonnées compromises:\n- Fuite informations\n- Cyberattaque\n- Erreur système\n\nCatastrophe naturelle:\n- Inondation\n- Grève\n- Pandémie",
-                        'C13': "Gestion Accident\n\nPriorités:\n- Santé personne\n- Sécurité publique\n- Protection données\n\nProcédures:\n- Alerte secours\n- Sécurisation zone\n- Information hiérarchie\n\nSuivi:\n- Déclaration accident\n- Enquête interne\n- Support psychologique"
-                    },
-                    'data': {
-                        'A14': "Entité Utilisateur\n\nAttributs:\n- ID unique\n- Rôle (acheteur/vendeur/livreur/admin)\n- Informations authentification\n- Préférences\n- Historique\n\nRelations:\n- 1:N Adresses\n- 1:N MéthodesPaiement\n- 1:N Commandes\n- 1:N Avis\n\nSécurité:\n- Chiffrement données sensibles\n- Masquage informations\n- Contrôle accès granulaire",
-                        'D14': "Entité Commande\n\nAttributs:\n- ID unique\n- Statut\n- Dates clés\n- Montant total\n- Méthode paiement\n\nRelations:\n- 1:N SousCommandes\n- 1:1 Facture\n- 1:1 Livraison\n\nExtensions:\n- Multi-vendeurs\n- Multi-acheteurs\n- Options spéciales"
-                    }
-                };
-                
-                return clickContents[diagramType] && clickContents[diagramType][nodeId];
-            }
-        });
-    </script>
 </body>
 </html>
