@@ -3,474 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LuxeShop Guinée - Plateforme E-commerce Innovante</title>
+    <title>Mon Projet GitHub</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            color: #2c3e50;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            margin-top: 40px;
-            margin-bottom: 40px;
+            max-width: 800px;
+            margin: auto;
+            color: #333;
         }
-
-        .header {
-            text-align: center;
-            padding: 40px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .header h1 {
-            font-size: 3.5em;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-
-        .header .subtitle {
-            font-size: 1.3em;
-            font-weight: 300;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
-        .intro-section {
-            background: #f8f9fa;
-            padding: 40px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            border-left: 5px solid #667eea;
-        }
-
-        .intro-section h2 {
+        h1 {
             color: #2c3e50;
-            font-size: 2.2em;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
         }
-
-        .intro-section h2::before {
-            content: '🚀';
-            margin-right: 15px;
-            font-size: 1.2em;
-        }
-
-        .intro-text {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 25px;
-            text-align: justify;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border-top: 4px solid #667eea;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .feature-card h3 {
-            color: #2c3e50;
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .feature-card .icon {
-            font-size: 2em;
-            margin-right: 15px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.7;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 50px;
-            border-radius: 15px;
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .cta-section p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            border-radius: 50px;
+        a {
+            color: #3498db;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            min-width: 200px;
-            text-align: center;
         }
-
-        .btn-primary {
-            background: white;
-            color: #667eea;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        a:hover {
+            text-decoration: underline;
         }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            background: #f8f9fa;
+        .container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
         }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
+        .diagram-link {
+            display: inline-block;
+            background-color: #3498db;
             color: white;
-            border: 2px solid white;
-            backdrop-filter: blur(10px);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
         }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #667eea;
-            transform: translateY(-3px);
-        }
-
-        .stats-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-number {
-            font-size: 3em;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 1.1em;
-            font-weight: 500;
-        }
-
-        .about-section {
-            background: #f8f9fa;
-            padding: 40px;
-            border-radius: 15px;
-            margin: 40px 0;
-        }
-
-        .about-section h2 {
-            color: #2c3e50;
-            font-size: 2.2em;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .about-card {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-card h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 40px;
-            border-radius: 15px;
-            margin-top: 40px;
-        }
-
-        footer p {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-
-        .tech-stack {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .tech-badge {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            backdrop-filter: blur(10px);
-        }
-
-        @media (max-width: 768px) {
-            .main-container {
-                margin: 20px;
-                padding: 15px;
-            }
-            
-            .header h1 {
-                font-size: 2.5em;
-            }
-            
-            .btn-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
+        .diagram-link:hover {
+            background-color: #2980b9;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <header class="header">
-            <h1>LuxeShop Guinée</h1>
-            <p class="subtitle">Révolutionner le Commerce Électronique en Afrique de l'Ouest</p>
-            <div class="tech-stack">
-                <span class="tech-badge">E-commerce</span>
-                <span class="tech-badge">Fintech</span>
-                <span class="tech-badge">Mobile-First</span>
-                <span class="tech-badge">IA</span>
-            </div>
-        </header>
-
-        <section class="intro-section">
-            <h2>Vision du Projet</h2>
-            <p class="intro-text">
-                LuxeShop Guinée représente une révolution dans l'écosystème du commerce électronique africain. Notre plateforme innovante vise à transformer la façon dont les Guinéens achètent, vendent et interagissent avec le commerce numérique. En combinant les dernières technologies avec une compréhension profonde des besoins locaux, nous créons un pont entre la tradition commerciale africaine et l'innovation numérique mondiale.
-            </p>
-            <p class="intro-text">
-                Notre mission transcende la simple création d'une boutique en ligne. Nous construisons un écosystème complet qui autonomise les entrepreneurs locaux, facilite l'accès aux produits de qualité, et stimule l'économie numérique guinéenne. Chaque fonctionnalité a été pensée pour répondre aux défis spécifiques du marché africain tout en offrant une expérience utilisateur de classe mondiale.
-            </p>
-        </section>
-
-        <div class="stats-section">
-            <div class="stat-card">
-                <div class="stat-number">50K+</div>
-                <div class="stat-label">Utilisateurs Ciblés</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">1000+</div>
-                <div class="stat-label">Marchands Partenaires</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Support Client</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">99.9%</div>
-                <div class="stat-label">Disponibilité</div>
-            </div>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3><span class="icon">🛒</span>Marketplace Intelligent</h3>
-                <p>
-                    Notre marketplace utilise l'intelligence artificielle pour personnaliser l'expérience d'achat. Algorithmes de recommandation avancés, recherche sémantique, et interface adaptive qui s'ajuste aux préférences culturelles et linguistiques locales. Intégration de systèmes de notation et d'avis clients pour garantir la qualité et la confiance.
-                </p>
-            </div>
-
-            <div class="feature-card">
-                <h3><span class="icon">💳</span>Paiements Innovants</h3>
-                <p>
-                    Système de paiement hybride intégrant Mobile Money, cartes bancaires, crypto-monnaies, et solutions de crédit. Support pour Orange Money, MTN Mobile Money, et autres opérateurs locaux. Technologie blockchain pour la sécurité et la traçabilité des transactions. Options de paiement échelonné et micro-crédit pour démocratiser l'accès.
-                </p>
-            </div>
-
-            <div class="feature-card">
-                <h3><span class="icon">🚚</span>Logistique Optimisée</h3>
-                <p>
-                    Réseau de livraison intelligent avec tracking en temps réel, optimisation des routes par IA, et partenariats avec des transporteurs locaux. Système de points de collecte communautaires, livraison par drone dans les zones difficiles d'accès, et options de livraison express. Gestion automatisée des stocks et prédiction de la demande.
-                </p>
-            </div>
-
-            <div class="feature-card">
-                <h3><span class="icon">🌍</span>Impact Social</h3>
-                <p>
-                    Plateforme d'autonomisation économique favorisant l'entrepreneuriat local. Programme de formation numérique pour les commerçants, incubateur de startups e-commerce, et initiatives de développement durable. Support multilingue (Français, Soussou, Peul, Malinké) et adaptation culturelle des interfaces.
-                </p>
-            </div>
-
-            <div class="feature-card">
-                <h3><span class="icon">📱</span>Expérience Mobile</h3>
-                <p>
-                    Application mobile native optimisée pour les réseaux à faible bande passante. Interface progressive web app (PWA) fonctionnant hors ligne, synchronisation intelligente des données, et design adaptatif pour tous types d'appareils. Intégration avec les assistants vocaux et support des langues locales.
-                </p>
-            </div>
-
-            <div class="feature-card">
-                <h3><span class="icon">🔒</span>Sécurité Avancée</h3>
-                <p>
-                    Architecture de sécurité multicouche avec chiffrement end-to-end, authentification biométrique, et protection contre la fraude par IA. Conformité aux standards internationaux (PCI DSS, GDPR adapté), audit de sécurité régulier, et système de détection d'anomalies en temps réel.
-                </p>
-            </div>
-        </div>
-
-        <section class="about-section">
-            <h2>Architecture Technique & Innovation</h2>
-            <div class="about-content">
-                <div class="about-card">
-                    <h3>🏗️ Infrastructure Cloud</h3>
-                    <p>Architecture microservices déployée sur AWS/Azure avec auto-scaling, CDN global pour la performance, et redondance multi-régionale. Conteneurisation Docker et orchestration Kubernetes pour la scalabilité.</p>
-                </div>
-                <div class="about-card">
-                    <h3>🤖 Intelligence Artificielle</h3>
-                    <p>Moteurs de recommandation ML, chatbots multilingues, analyse prédictive des tendances, détection de fraude automatisée, et optimisation dynamique des prix basée sur l'offre et la demande.</p>
-                </div>
-                <div class="about-card">
-                    <h3>📊 Analytics & Big Data</h3>
-                    <p>Plateforme d'analyse en temps réel, tableaux de bord interactifs pour les marchands, insights comportementaux clients, et rapports de performance automatisés avec visualisations avancées.</p>
-                </div>
-                <div class="about-card">
-                    <h3>🔗 Intégrations Tierces</h3>
-                    <p>APIs ouvertes pour l'écosystème partenaire, intégration ERP/CRM, connexions bancaires sécurisées, et marketplace syndication pour étendre la portée commerciale.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <h2>Explorez Notre Écosystème</h2>
-            <p>Découvrez en détail notre architecture, notre documentation technique, et notre vision stratégique à travers nos ressources complètes.</p>
-            <div class="btn-group">
-                <a href="diagramme.html" class="btn btn-primary">🔍 Architecture Système</a>
-                <a href="documentation.html" class="btn btn-secondary">📚 Documentation Complète</a>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2025 LuxeShop Guinée - Pionnier du E-commerce Africain</p>
-            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.7;">
-                Construit avec passion pour transformer l'économie numérique guinéenne
-            </p>
-        </footer>
+    <h1>Mon Projet</h1>
+    
+    <p>Bienvenue sur la page d'accueil de mon projet hébergé sur GitHub.</p>
+    
+    <div class="container">
+        <h2>Diagramme du Projet</h2>
+        <p>Vous pouvez visualiser le diagramme du projet en cliquant sur le lien ci-dessous :</p>
+        <a href="diagramme.html" class="diagram-link">Voir le Diagramme</a>
     </div>
+    <div class="container">
+        <h2>Présentation et documentation</h2>
+        <p>Vous pouvez visualiser la documentation du projet en cliquant sur le lien ci-dessous :</p>
+        <a href="documentation.html">Voir la présentation </a>
+    </div>
+    
+    <div class="container">
+        <h2>À propos</h2>
+        <p>Ce projet est un e-commerce pour la Guinée.</p>
+    </div>
+    
+    <footer>
+        <p>© 2025 Luxeshop. Tous droits réservés.</p>
+    </footer>
 </body>
 </html>

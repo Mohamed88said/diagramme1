@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation Technique - LuxeShop Guinée</title>
+    <title>LUXESHOP - Documentation Complète</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e67e22;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --gray: #95a5a6;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,1061 +29,2664 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
-            color: #2c3e50;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
         }
 
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-
-        .header {
-            text-align: center;
-            padding: 50px 0;
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="tech" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="40" r="1" fill="rgba(255,255,255,0.05)"/><rect x="20" y="20" width="10" height="10" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23tech)"/></svg>');
-            opacity: 0.4;
-        }
-
-        .header h1 {
-            font-size: 3.2em;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-
-        .header .subtitle {
-            font-size: 1.4em;
-            font-weight: 300;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
-        .nav-menu {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-menu ul {
-            list-style: none;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+            min-height: 100vh;
         }
 
-        .nav-menu a {
-            color: #667eea;
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-header h2 {
+            color: var(--white);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-header h2 i {
+            color: var(--secondary);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            color: var(--light);
+            padding: 12px 20px;
             text-decoration: none;
-            font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            border-left: 4px solid transparent;
         }
 
-        .nav-menu a:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .sidebar-menu a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 30px;
         }
 
         .section {
-            background: white;
-            margin: 30px 0;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid #667eea;
-            position: relative;
-        }
-
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(180deg, #667eea, #764ba2);
-            border-radius: 0 0 0 15px;
-        }
-
-        .section h2 {
-            color: #2c3e50;
-            font-size: 2.5em;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            border-bottom: 3px solid #ecf0f1;
-            padding-bottom: 15px;
-        }
-
-        .section h2 .icon {
-            font-size: 1.2em;
-            margin-right: 15px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section h3 {
-            color: #34495e;
-            font-size: 1.8em;
-            margin: 30px 0 15px 0;
-            padding-left: 20px;
-            border-left: 3px solid #667eea;
-            background: #f8f9fa;
-            padding: 15px 20px;
+            background: var(--white);
             border-radius: 8px;
-        }
-
-        .section h4 {
-            color: #667eea;
-            font-size: 1.4em;
-            margin: 20px 0 10px 0;
-            font-weight: 600;
-        }
-
-        .section p {
-            color: #555;
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            text-align: justify;
-            line-height: 1.8;
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-
-        .tech-card {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #e9ecef;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tech-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .tech-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .tech-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            background: white;
-        }
-
-        .tech-card h4 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .tech-card .tech-icon {
-            font-size: 1.5em;
-            margin-right: 10px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .feature-list li {
-            padding: 12px 0;
-            padding-left: 30px;
-            position: relative;
-            color: #555;
-            font-size: 1.05em;
-            border-bottom: 1px solid #f1f2f6;
-        }
-
-        .feature-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #27ae60;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        .code-block {
-            background: #2c3e50;
-            color: #ecf0f1;
-            padding: 25px;
-            border-radius: 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95em;
-            margin: 20px 0;
-            overflow-x: auto;
-            position: relative;
-            border-left: 4px solid #667eea;
-        }
-
-        .code-block::before {
-            content: 'CODE';
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            font-size: 0.7em;
-            color: #95a5a6;
-            font-weight: bold;
-        }
-
-        .architecture-diagram {
-            background: #f8f9fa;
             padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            margin: 30px 0;
-            border: 2px dashed #667eea;
-        }
-
-        .architecture-diagram h4 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 1.3em;
-        }
-
-        .diagram-flow {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .diagram-box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            min-width: 150px;
-            text-align: center;
-            border: 2px solid #667eea;
-            position: relative;
-        }
-
-        .diagram-box::after {
-            content: '→';
-            position: absolute;
-            right: -25px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5em;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .diagram-box:last-child::after {
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
             display: none;
         }
 
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
         }
 
-        .metric-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .metric-number {
-            font-size: 2.5em;
-            font-weight: 700;
+        .section-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .section-header h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-header h2 i {
+            color: var(--secondary);
+        }
+
+        .subsection {
+            margin: 25px 0;
+        }
+
+        .subsection h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subsection h3 i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .content-box {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .content-box h4 {
+            color: var(--dark);
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .metric-label {
-            font-size: 1em;
-            opacity: 0.9;
+        ul, ol {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: monospace;
+            line-height: 1.5;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--light);
+        }
+
+        th {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        tr:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 500;
         }
 
-        .timeline {
-            position: relative;
-            margin: 40px 0;
-            padding-left: 30px;
+        .status-pending {
+            background: #ffeaa7;
+            color: #d35400;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 30px;
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-left: 30px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -45px;
-            top: 25px;
-            width: 15px;
-            height: 15px;
-            background: #667eea;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px #667eea;
-        }
-
-        .timeline-date {
-            color: #667eea;
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 10px;
-        }
-
-        .api-endpoint {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-left: 4px solid #27ae60;
-            font-family: 'Courier New', monospace;
-        }
-
-        .api-method {
+        .status-approved {
+            background: #d1f7c4;
             color: #27ae60;
-            font-weight: bold;
-            margin-right: 10px;
         }
 
-        .security-badge {
+        .status-rejected {
+            background: #ffeef0;
+            color: #e74c3c;
+        }
+
+        .btn {
             display: inline-block;
-            background: #e74c3c;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            font-weight: bold;
-            margin: 5px;
-        }
-
-        .performance-chart {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 12px;
-            margin: 25px 0;
-            text-align: center;
-        }
-
-        .chart-bar {
-            display: inline-block;
-            width: 40px;
-            background: linear-gradient(180deg, #667eea, #764ba2);
-            margin: 0 5px;
-            border-radius: 4px 4px 0 0;
-            position: relative;
-        }
-
-        .chart-bar::after {
-            content: attr(data-value);
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8em;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-
-        .back-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
+            padding: 10px 20px;
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
             text-decoration: none;
-            font-weight: 600;
-            margin: 30px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            transition: var(--transition);
         }
 
-        .back-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        .btn:hover {
+            background: #d35400;
         }
 
-        .footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 40px;
-            border-radius: 15px;
-            margin-top: 50px;
-        }
-
-        @media (max-width: 768px) {
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
             .container {
-                margin: 10px;
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
                 padding: 15px;
             }
             
-            .header h1 {
-                font-size: 2.2em;
+            .main-content {
+                margin-left: 0;
             }
             
-            .nav-menu ul {
-                flex-direction: column;
-                align-items: center;
+            .sidebar-menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
             }
             
-            .tech-grid {
-                grid-template-columns: 1fr;
+            .sidebar-menu li {
+                flex: 1 0 auto;
+                margin-bottom: 0;
             }
             
-            .diagram-flow {
-                flex-direction: column;
+            .sidebar-menu a {
+                border-left: none;
+                border-bottom: 4px solid transparent;
+                text-align: center;
+                padding: 10px;
             }
             
-            .diagram-box::after {
-                content: '↓';
-                right: 50%;
-                top: 100%;
-                transform: translateX(50%);
+            .sidebar-menu a:hover, .sidebar-menu a.active {
+                border-left: none;
+                border-bottom: 4px solid var(--secondary);
+            }
+            
+            .sidebar-menu a i {
+                display: block;
+                margin: 0 auto 5px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-content {
+                padding: 15px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .sidebar-menu a span {
+                display: none;
+            }
+            
+            .sidebar-menu a i {
+                margin: 0;
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <h1>📚 Documentation Technique</h1>
-            <p class="subtitle">Guide Complet de la Plateforme LuxeShop Guinée</p>
-        </header>
-
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="#overview">Vue d'ensemble</a></li>
-                <li><a href="#architecture">Architecture</a></li>
-                <li><a href="#technologies">Technologies</a></li>
-                <li><a href="#features">Fonctionnalités</a></li>
-                <li><a href="#api">API & Intégrations</a></li>
-                <li><a href="#security">Sécurité</a></li>
-                <li><a href="#performance">Performance</a></li>
-                <li><a href="#deployment">Déploiement</a></li>
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-gem"></i> LUXESHOP</h2>
+                <p>Documentation Complète</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#vision" class="active"><i class="fas fa-binoculars"></i> <span>Vision & Objectifs</span></a></li>
+                <li><a href="#cible"><i class="fas fa-users"></i> <span>Cible & Cas d'Usage</span></a></li>
+                <li><a href="#valeur"><i class="fas fa-star"></i> <span>Valeur Ajoutée</span></a></li>
+                <li><a href="#roles"><i class="fas fa-user-tag"></i> <span>Rôles Utilisateurs</span></a></li>
+                <li><a href="#fonctionnalites"><i class="fas fa-list"></i> <span>Fonctionnalités</span></a></li>
+                <li><a href="#ux"><i class="fas fa-paint-brush"></i> <span>Expérience Utilisateur</span></a></li>
+                <li><a href="#technique"><i class="fas fa-server"></i> <span>Architecture Technique</span></a></li>
+                <li><a href="#donnees"><i class="fas fa-database"></i> <span>Schéma de Données</span></a></li>
+                <li><a href="#api"><i class="fas fa-code"></i> <span>API Endpoints</span></a></li>
+                <li><a href="#paiements"><i class="fas fa-credit-card"></i> <span>Paiements & Wallet</span></a></li>
+                <li><a href="#livraison"><i class="fas fa-truck"></i> <span>Livraison & Logistique</span></a></li>
+                <li><a href="#retours"><i class="fas fa-undo"></i> <span>Retours & Remboursements</span></a></li>
+                <li><a href="#securite"><i class="fas fa-shield-alt"></i> <span>Sécurité & Conformité</span></a></li>
+                <li><a href="#monitoring"><i class="fas fa-chart-line"></i> <span>Monitoring & Maintenance</span></a></li>
+                <li><a href="#roadmap"><i class="fas fa-map-marked"></i> <span>Roadmap & Lancement</span></a></li>
+                <li><a href="#marketing"><i class="fas fa-bullhorn"></i> <span>Marketing & Acquisition</span></a></li>
+                <li><a href="#cicd"><i class="fas fa-cogs"></i> <span>CI/CD & Tests</span></a></li>
+                <li><a href="#equipe"><i class="fas fa-users-cog"></i> <span>Organisation & Équipe</span></a></li>
+                <li><a href="#checklist"><i class="fas fa-tasks"></i> <span>Checklist de Lancement</span></a></li>
+                <li><a href="#annexes"><i class="fas fa-file-alt"></i> <span>Annexes</span></a></li>
             </ul>
         </nav>
 
-        <section id="overview" class="section">
-            <h2><span class="icon">🎯</span>Vue d'Ensemble du Projet</h2>
-            
-            <p>
-                LuxeShop Guinée est une plateforme e-commerce révolutionnaire conçue spécifiquement pour le marché africain, avec un focus particulier sur la Guinée. Notre solution combine les meilleures pratiques du commerce électronique mondial avec une compréhension approfondie des défis et opportunités uniques du marché guinéen.
-            </p>
-
-            <h3>🎯 Objectifs Stratégiques</h3>
-            <ul class="feature-list">
-                <li>Démocratiser l'accès au commerce électronique pour tous les Guinéens</li>
-                <li>Créer un écosystème numérique inclusif et accessible</li>
-                <li>Stimuler l'entrepreneuriat local et l'économie numérique</li>
-                <li>Offrir une expérience utilisateur de classe mondiale adaptée au contexte local</li>
-                <li>Établir des standards de sécurité et de confiance dans le e-commerce africain</li>
-            </ul>
-
-            <h3>🌍 Impact Socio-Économique</h3>
-            <p>
-                Notre plateforme vise à transformer l'économie guinéenne en créant des opportunités d'emploi, en facilitant l'accès aux marchés pour les PME locales, et en introduisant des innovations technologiques qui profitent à toute la société. Nous estimons pouvoir impacter positivement plus de 100,000 vies dans les 5 premières années.
-            </p>
-
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-number">50K+</div>
-                    <div class="metric-label">Utilisateurs Actifs Ciblés</div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Vision & Objectifs Section -->
+            <section id="vision" class="section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-binoculars"></i> Vision & Objectifs</h2>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-number">1000+</div>
-                    <div class="metric-label">Marchands Partenaires</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">$10M+</div>
-                    <div class="metric-label">Volume Transactions Annuel</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">15+</div>
-                    <div class="metric-label">Emplois Directs Créés</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="architecture" class="section">
-            <h2><span class="icon">🏗️</span>Architecture Système</h2>
-            
-            <h3>🔧 Architecture Microservices</h3>
-            <p>
-                Notre architecture est basée sur des microservices découplés, permettant une scalabilité horizontale, une maintenance facilitée, et une résilience élevée. Chaque service est responsable d'un domaine métier spécifique et communique via des APIs REST sécurisées.
-            </p>
-
-            <div class="architecture-diagram">
-                <h4>Flux Architecture Principale</h4>
-                <div class="diagram-flow">
-                    <div class="diagram-box">
-                        <strong>Frontend</strong><br>
-                        React/Next.js<br>
-                        PWA Mobile
-                    </div>
-                    <div class="diagram-box">
-                        <strong>API Gateway</strong><br>
-                        Kong/AWS API Gateway<br>
-                        Rate Limiting
-                    </div>
-                    <div class="diagram-box">
-                        <strong>Microservices</strong><br>
-                        Node.js/Python<br>
-                        Docker Containers
-                    </div>
-                    <div class="diagram-box">
-                        <strong>Databases</strong><br>
-                        PostgreSQL/MongoDB<br>
-                        Redis Cache
+                <div class="subsection">
+                    <h3><i class="fas fa-eye"></i> Vision</h3>
+                    <p>LUXESHOP vise à devenir la marketplace universelle qui permet à toute personne ou entreprise (vendeur, prestataire, particulier) d'offrir un produit ou service, d'accroître sa visibilité et de monétiser ses compétences.</p>
+                    <div class="content-box">
+                        <h4>Détails de la Vision</h4>
+                        <p>Notre vision est de créer un écosystème économique inclusif où chaque individu, quel que soit son niveau d'éducation ou ses ressources initiales, peut participer à l'économie numérique. Nous voulons briser les barrières qui empêchent les talents locaux de se connecter avec des clients potentiels.</p>
+                        <p>À long terme, LUXESHOP ambitionne de devenir la plateforme de référence en Afrique de l'Ouest pour tous types de transactions commerciales, en combinant les fonctionnalités d'un marché physique avec la commodité du numérique.</p>
                     </div>
                 </div>
-            </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-bullseye"></i> Objectifs Initiaux</h3>
+                    <ul>
+                        <li><strong>Lancement opérationnel à Conakry (Guinée)</strong> : Démarrer avec une couverture complète de la capitale avant d'étendre progressivement à d'autres villes.</li>
+                        <li><strong>Système sécurisé</strong> : Implémenter un système d'escrow (séquestre) pour protéger les transactions et un processus KYC (Know Your Customer) pour vérifier l'identité des vendeurs.</li>
+                        <li><strong>Accessibilité financière</strong> : Intégrer les modes de paiement locaux (Mobile Money) et internationaux (cartes bancaires) pour maximiser l'inclusion financière.</li>
+                        <li><strong>Réduction du chômage</strong> : Créer des opportunités économiques en valorisant les micro-services et talents locaux souvent informels.</li>
+                        <li><strong>Offre diversifiée</strong> : Permettre la vente de produits physiques, numériques et de services avec réservation en présentiel.</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-chart-line"></i> Valeur à Long Terme</h3>
+                    <p>Plateforme unifiée où tout se vend et s'achète — produits, services, enseignement, restauration, déplacements, etc. Nous visons à créer un écosystème économique complet qui répond à tous les besoins des consommateurs tout en offrant des opportunités de revenus aux vendeurs et prestataires.</p>
+                    <div class="content-box">
+                        <h4>Expansion Future</h4>
+                        <p>Après consolidation en Guinée, l'objectif est d'étendre progressivement LUXESHOP à d'autres pays d'Afrique de l'Ouest, en adaptant la plateforme aux spécificités locales de chaque marché (modes de paiement, langues, réglementations).</p>
+                    </div>
+                </div>
+            </section>
 
-            <h3>☁️ Infrastructure Cloud</h3>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🌐</span>Cloud Provider</h4>
-                    <p>AWS (Amazon Web Services) comme provider principal avec multi-région pour la redondance. Utilisation d'Azure comme backup et pour certains services spécialisés.</p>
+            <!-- Cible & Cas d'Usage Section -->
+            <section id="cible" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> Cible & Cas d'Usage</h2>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">📦</span>Conteneurisation</h4>
-                    <p>Docker pour la conteneurisation des applications, Kubernetes (EKS) pour l'orchestration, avec auto-scaling basé sur la charge et les métriques.</p>
+                <div class="subsection">
+                    <h3><i class="fas fa-user-friends"></i> Personas Utilisateurs</h3>
+                    <ul>
+                        <li><strong>Acheteurs / consommateurs</strong> : Personnes cherchant à acheter des produits ou services de manière pratique et sécurisée.</li>
+                        <li><strong>Vendeurs (professionnels & particuliers)</strong> : Individus ou entreprises souhaitant vendre des produits physiques ou numériques.</li>
+                        <li><strong>Prestataires de services</strong> : Professionnels offrant des services (ménage, plomberie, cours, nounous, coaching).</li>
+                        <li><strong>Entreprises locales</strong> : Restaurants, boutiques cherchant à étendre leur clientèle via le canal digital.</li>
+                        <li><strong>Livreurs internes</strong> : Employés de LUXESHOP chargés de la logistique de livraison.</li>
+                        <li><strong>Admins & équipes internes</strong> : Personnel chargé du support, de la logistique, de la finance et du marketing.</li>
+                    </ul>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🔄</span>CI/CD Pipeline</h4>
-                    <p>GitLab CI/CD avec déploiement automatisé, tests unitaires et d'intégration, analyse de code statique, et déploiement blue-green pour zéro downtime.</p>
+                <div class="subsection">
+                    <h3><i class="fas fa-scroll"></i> Cas d'Usage Clés</h3>
+                    <ul>
+                        <li><strong>Acheter un produit</strong> : Navigation dans le catalogue, sélection, ajout au panier, paiement sécurisé et suivi de livraison.</li>
+                        <li><strong>Réserver un service</strong> : Recherche de prestataires, consultation des disponibilités, réservation de créneaux et paiement.</li>
+                        <li><strong>Trouver/acheter une formation en ligne</strong> : Parcours de contenus éducatifs, achat et accès aux matériaux pédagogiques.</li>
+                        <li><strong>Commander à manger</strong> : Consultation des restaurants, commande de plats avec option de livraison ou retrait.</li>
+                        <li><strong>Proposer un service local</strong> : Inscription en tant que prestataire, configuration de son profil et gestion des demandes.</li>
+                    </ul>
+                    <div class="content-box">
+                        <h4>Scénarios Détaillés</h4>
+                        <p><strong>Scénario 1 - Achat d'un produit</strong> : Marie cherche un cadeau d'anniversaire. Elle navigue dans la catégorie "Accessoires", filtre par prix et note des vendeurs, trouve un article qui lui plaît, consulte les avis, l'ajoute à son panier, paie via Mobile Money et suit la livraison en temps réel.</p>
+                        <p><strong>Scénario 2 - Réservation d'un service</strong> : Ahmed a besoin d'un plombier. Il recherche "plomberie" dans les services, consulte les profils et disponibilités des prestataires proches, choisit celui avec les meilleures notes, réserve un créneau pour le lendemain et paie via son wallet LUXESHOP.</p>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">📊</span>Monitoring</h4>
-                    <p>Prometheus + Grafana pour les métriques, ELK Stack pour les logs, Jaeger pour le tracing distribué, et alerting intelligent via PagerDuty.</p>
+                <div class="subsection">
+                    <h3><i class="fas fa-globe-africa"></i> Contexte Local (Guinée)</h3>
+                    <p>En Guinée, le commerce informel représente une part importante de l'économie. LUXESHOP vise à digitaliser ce secteur en offrant aux micro-entrepreneurs les outils pour développer leur activité tout en garantissant une expérience sécurisée aux consommateurs.</p>
+                    <p>Les défis spécifiques incluent : faible bancarisation mais forte pénétration du Mobile Money, infrastructures de livraison à développer, diversité linguistique (français, langues locales), et besoin d'éducation au commerce numérique.</p>
                 </div>
-            </div>
+            </section>
 
-            <h3>🗄️ Architecture de Données</h3>
-            <p>
-                Approche polyglotte avec différentes bases de données optimisées pour chaque cas d'usage. PostgreSQL pour les données transactionnelles, MongoDB pour les données produits et catalogues, Redis pour le cache et les sessions, Elasticsearch pour la recherche avancée.
-            </p>
+            <!-- Valeur Ajoutée Section -->
+            <section id="valeur" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-star"></i> Valeur Ajoutée & Positionnement</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-gem"></i> Points Forts Différenciateurs</h3>
+                    <ul>
+                        <li><strong>Tout-en-un</strong> : Combinaison unique de produits physiques, services et contenus numériques sur une seule plateforme.</li>
+                        <li><strong>Inclusif</strong> : Ouverture aux particuliers et professionnels avec des processus d'inscription adaptés à chaque profil.</li>
+                        <li><strong>Livraison interne</strong> : Service de livraison propriétaire pour garantir qualité et fiabilité (sauf pour les restaurants qui livrent eux-mêmes).</li>
+                        <li><strong>Support multilingue</strong> : Interface en français, anglais et support pour les langues locales (sous-titrage progressif).</li>
+                        <li><strong>Outils de visibilité</strong> : Système de classement, abonnements premium et options de sponsorisation pour maximiser la visibilité des vendeurs.</li>
+                        <li><strong>Modèle social</strong> : Mise en avant des compétences locales et contribution au développement économique communautaire.</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-chart-bar"></i> Avantages Concurrentiels</h3>
+                    <div class="content-box">
+                        <h4>Face aux Marketplaces Existantes</h4>
+                        <p>Contrairement aux plateformes spécialisées (seulement produits, seulement services, seulement nourriture), LUXESHOP offre une expérience unifiée. Un utilisateur peut commander son déjeuner, réserver un cours de yoga et acheter un livre en une seule transaction.</p>
+                        <p>Le système d'escrow intégré protège à la fois acheteurs et vendeurs, ce qui est rare sur les plateformes locales actuelles.</p>
+                    </div>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-hand-holding-heart"></i> Impact Social</h3>
+                    <p>LUXESHOP ne se positionne pas seulement comme une marketplace mais comme un catalyseur de développement économique local. En formalisant le secteur informel, en créant des opportunités pour les jeunes et les femmes, et en facilitant l'accès au marché pour les artisans locaux, la plateforme contribue directement aux objectifs de développement durable.</p>
+                </div>
+            </section>
 
-            <div class="code-block">
-# Architecture de données distribuée
-Primary DB: PostgreSQL (Transactions, Users, Orders)
-Document Store: MongoDB (Products, Reviews, Content)
-Cache Layer: Redis (Sessions, Cart, Frequent Queries)
-Search Engine: Elasticsearch (Product Search, Analytics)
-Time Series: InfluxDB (Metrics, IoT Data)
-Message Queue: Apache Kafka (Event Streaming)
-            </div>
-        </section>
+            <!-- Rôles Utilisateurs Section -->
+            <section id="roles" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-user-tag"></i> Rôles Utilisateurs & Permissions</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-user"></i> Client / Acheteur</h3>
+                    <ul>
+                        <li><strong>Inscription obligatoire</strong> : Email ou téléphone + mot de passe avec validation OTP.</li>
+                        <li><strong>Profil complet</strong> : Informations personnelles, préférences, adresses de livraison.</li>
+                        <li><strong>Historique des commandes</strong> : Accès à toutes les transactions passées avec statut détaillé.</li>
+                        <li><strong>Wallet intégré</strong> : Solde, historique des transactions, dépôts et retraits.</li>
+                        <li><strong>Wishlist</strong> : Liste de souhaits pour sauvegarder des produits pour plus tard.</li>
+                        <li><strong>Système d'avis</strong> : Possibilité de noter et commenter les achats et services.</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-store"></i> Vendeur (produits)</h3>
+                    <ul>
+                        <li><strong>Demande d'inscription</strong> : Formulaire détaillé avec informations professionnelles.</li>
+                        <li><strong>KYC obligatoire</strong> : Processus de vérification d'identité (pièce d'identité, selfie de vérification).</li>
+                        <li><strong>Validation manuelle</strong> : Approbation par l'équipe LUXESHOP avant activation du compte.</li>
+                        <li><strong>Mini-boutique personnalisée</strong> : Logo, bannière, description, politiques de vente.</li>
+                        <li><strong>Gestion des produits</strong> : Ajout, modification, suppression des produits avec variations (tailles, couleurs).</li>
+                        <li><strong>Dashboard de vente</strong> : Statistiques, ventes, commandes en attente, revenus.</li>
+                        <li><strong>Gestion des stocks</strong> : Suivi en temps réel des inventaires avec alertes de faible stock.</li>
+                        <li><strong>Outils marketing</strong> : Création de coupons, promotions flash, soldes.</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-concierge-bell"></i> Prestataire de services</h3>
+                    <ul>
+                        <li><strong>Profil détaillé</strong> : Portfolio, compétences, certifications, tarifs, zone d'intervention.</li>
+                        <li><strong>Calendrier de disponibilités</strong> : Système de gestion des créneaux horaires.</li>
+                        <li><strong>Géolocalisation</strong> : Positionnement sur la carte pour être trouvé par les clients proches.</li>
+                        <li><strong>Système de réservation</strong> : Acceptation/refus des demandes, confirmation des rendez-vous.</li>
+                        <li><strong>Option "urgent"</strong> : Possibilité d'indiquer des disponibilités pour services urgents (sous 24h).</li>
+                        <li><strong>Gestion des déplacements</strong> : Calcul des frais de déplacement selon la zone.</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-truck"></i> Livreur (interne)</h3>
+                    <ul>
+                        <li><strong>Dashboard de livraison</strong> : Courses assignées, historique, performances.</li>
+                        <li><strong>Application mobile dédiée</strong> : Interface optimisée pour la gestion des livraisons en mobilité.</li>
+                        <li><strong>Géolocalisation en temps réel</strong> : Suivi de position pour une gestion optimale des tournées.</li>
+                        <li><strong>Système de rémunération</strong> : Calcul automatique des gains basé sur les livraisons effectuées.</li>
+                        <li><strong>Notes et évaluations</strong> : Feedback des clients sur la qualité du service de livraison.</li>
+                        <li><strong>Statuts de livraison</strong> : Marquer les colis comme "en route", "livré", "problème", etc.</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-user-shield"></i> Admin (multi-niveaux)</h3>
+                    <ul>
+                        <li><strong>Super-admin</strong> : Accès complet à tous les aspects de la plateforme, gestion des rôles.</li>
+                        <li><strong>Admin opérationnel</strong> : Gestion des commandes, litiges, remboursements, support avancé.</li>
+                        <li><strong>Modérateur</strong> : Validation des annonces, modération du contenu, signalements.</li>
+                        <li><strong>Comptable/Finance</strong> : Accès aux transactions financières, rapports, virements aux vendeurs.</li>
+                        <li><strong>Support client</strong> : Gestion des tickets, chat en direct, résolution des problèmes.</li>
+                        <li><strong>Gestionnaire de communauté</strong> : Animation de la plateforme, programmes de fidélisation.</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-utensils"></i> Restaurant (cas spécial)</h3>
+                    <ul>
+                        <li><strong>Profil adapté</strong> : Menu digital, photos des plats, horaires d'ouverture, délais de préparation.</li>
+                        <li><strong>Option de livraison</strong> : Choix entre livraison par LUXESHOP ou livraison propre.</li>
+                        <li><strong>Gestion des commandes</strong> : Interface simplifiée pour accepter/refuser les commandes.</li>
+                        <li><strong>Statistiques de performance</strong> : Temps de préparation, taux d'annulation, notes clients.</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-key"></i> Système de Permissions (RBAC)</h3>
+                    <p>Implémentation d'un système Role-Based Access Control (RBAC) dans Django avec :</p>
+                    <ul>
+                        <li>Groupes prédéfinis avec permissions spécifiques</li>
+                        <li>Possibilité de créer des groupes personnalisés</li>
+                        <li>Journalisation détaillée des actions sensibles</li>
+                        <li>Vérification à deux facteurs pour les accès administrateur</li>
+                        <li>Expiration automatique des sessions après inactivité</li>
+                    </ul>
+                    <div class="code-block">
+# Exemple de configuration des permissions Django
+class User(AbstractUser):
+    groups = models.ManyToManyField(
+        Group,
+        verbose_name=_('groups'),
+        blank=True,
+        help_text=_('The groups this user belongs to.'),
+        related_name="luxeshop_user_set",
+        related_query_name="user",
+    )
+    user_permissions = models.ManyToManyField(
+        Permission,
+        verbose_name=_('user permissions'),
+        blank=True,
+        help_text=_('Specific permissions for this user.'),
+        related_name="luxeshop_user_set",
+        related_query_name="user",
+    )
+                    </div>
+                </div>
+            </section>
 
-        <section id="technologies" class="section">
-            <h2><span class="icon">⚡</span>Stack Technologique</h2>
-            
-            <h3>🎨 Frontend & Interface Utilisateur</h3>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h4><span class="tech-icon">⚛️</span>React Ecosystem</h4>
-                    <p>React 18 avec hooks avancés, Next.js 14 pour le SSR/SSG, TypeScript pour la sécurité de type, Tailwind CSS pour le styling, et Framer Motion pour les animations.</p>
+            <!-- Fonctionnalités Section -->
+            <section id="fonctionnalites" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-list"></i> Fonctionnalités — Liste Complète</h2>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">📱</span>Mobile-First PWA</h4>
-                    <p>Progressive Web App avec service workers, cache intelligent, fonctionnalité offline, notifications push, et installation native sur mobile.</p>
+                <div class="subsection">
+                    <h3><i class="fas fa-check-circle"></i> Fonctionnalités Essentielles (MVP)</h3>
+                    <div class="content-box">
+                        <h4>Inscription & Authentification</h4>
+                        <ul>
+                            <li>Inscription par email ou téléphone avec validation OTP</li>
+                            <li>Connexion sécurisée avec gestion des sessions</li>
+                            <li>Récupération de mot de passe par email/SMS</li>
+                            <li>Profils multiples avec transition fluide entre les rôles</li>
+                            <li>Authentification à deux facteurs optionnelle</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>KYC et Vérification</h4>
+                        <ul>
+                            <li>Processus de vérification d'identité pour vendeurs et prestataires</li>
+                            <li>Upload de documents (CNI, passport, justificatif de domicile)</li>
+                            <li>Selfie de vérification avec comparaison facial</li>
+                            <li>Validation manuelle par l'équipe LUXESHOP</li>
+                            <li>Statut de vérification visible sur le profil</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Gestion des Produits et Services</h4>
+                        <ul>
+                            <li>Création de fiches produits avec images, descriptions, variations</li>
+                            <li>Catégories et sous-catégories avec système de tags</li>
+                            <li>Gestion des stocks en temps réel avec alertes</li>
+                            <li>Création de services avec plages horaires et zones d'intervention</li>
+                            <li>Calendrier de disponibilités pour les prestataires</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Recherche et Découverte</h4>
+                        <ul>
+                            <li>Recherche full-text avec suggestions en temps réel</li>
+                            <li>Système de filtres avancés (prix, localisation, note, etc.)</li>
+                            <li>Algorithmes de recommandation basés sur l'historique</li>
+                            <li>Affichage cartographique des prestataires proches</li>
+                            <li>Collections et éditorialisation de contenu</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Paniers et Commandes</h4>
+                        <ul>
+                            <li>Deux paniers distincts : produits et services</li>
+                            <li>Sauvegarde des paniers entre les sessions</li>
+                            <li>Processus de checkout adapté à chaque type de panier</li>
+                            <li>Récapitulatif de commande avec frais détaillés</li>
+                            <li>Confirmation par email/SMS après commande</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Paiements et Wallet</h4>
+                        <ul>
+                            <li>Intégration CinetPay (Mobile Money, cartes bancaires)</li>
+                            <li>Wallet interne avec historique des transactions</li>
+                            <li>Système d'escrow pour sécuriser les transactions</li>
+                            <li>Multi-devises avec conversion automatique</li>
+                            <li>Processus de retrait pour vendeurs et prestataires</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Livraison et Suivi</h4>
+                        <ul>
+                            <li>Gestion des adresses de livraison multiples</li>
+                            <li>Calcul automatique des frais de port selon la zone</li>
+                            <li>Suivi en temps réel avec notifications d'étape</li>
+                            <li>Interface livreur optimisée mobile</li>
+                            <li>Preuve de livraison avec signature ou photo</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Communication et Support</h4>
+                        <ul>
+                            <li>Messagerie interne entre acheteurs et vendeurs</li>
+                            <li>Système de tickets pour le support client</li>
+                            <li>Chat en direct pour les urgences</li>
+                            <li>Notifications push, email et SMS personnalisables</li>
+                            <li>Centre d'aide avec FAQ et tutoriels</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Évaluation et Notation</h4>
+                        <ul>
+                            <li>Système de notation à 5 étoiles avec commentaires</li>
+                            <li>Modération des avis pour prévenir les abus</li>
+                            <li>Réponses des vendeurs aux commentaires</li>
+                            <li>Calcul de la note moyenne et affichage sur les profils</li>
+                            <li>Badges de confiance pour les vendeurs bien notés</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Gestion Administrative</h4>
+                        <ul>
+                            <li>Dashboard administrateur avec indicateurs clés</li>
+                            <li>Outils de modération de contenu</li>
+                            <li>Gestion des litiges et résolution des conflits</li>
+                            <li>Reporting financier et analytique</li>
+                            <li>Export de données pour analyse externe</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🎯</span>State Management</h4>
-                    <p>Redux Toolkit pour l'état global, React Query pour la gestion des données serveur, Zustand pour l'état local léger, et Context API pour les thèmes.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-rocket"></i> Fonctionnalités Avancées (Phase 2)</h3>
+                    <ul>
+                        <li><strong>Abonnements Premium</strong> : Formules payantes pour les vendeurs avec avantages (visibilité accrue, commissions réduites)</li>
+                        <li><strong>Packs produits</strong> : Création de bundles à prix avantageux</li>
+                        <li><strong>Produits sponsorisés</strong> : Système de mise en avant payante</li>
+                        <li><strong>Statistiques avancées</strong> : Analytics détaillés pour les vendeurs</li>
+                        <li><strong>Notifications multi-canaux</strong> : Push, email, SMS, WhatsApp</li>
+                        <li><strong>Système d'alerte anti-fraude</strong> : Détection des comportements suspects</li>
+                        <li><strong>Intégration ERP</strong> : Connexion avec des systèmes de gestion externes</li>
+                        <li><strong>API publique</strong> : Documentation et accès développeurs</li>
+                        <li><strong>Outils marketing</strong> : Campagnes email, codes promo, programmes de parrainage</li>
+                        <li><strong>Support multi-langue complet</strong> : Interface traduite avec gestion de contenu multilingue</li>
+                    </ul>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🧪</span>Testing Frontend</h4>
-                    <p>Jest + React Testing Library pour les tests unitaires, Cypress pour les tests E2E, Storybook pour les composants, et Chromatic pour les tests visuels.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-futbol"></i> Fonctionnalités Futures (Scalabilité)</h3>
+                    <ul>
+                        <li><strong>Applications natives</strong> : Développement d'apps iOS et Android</li>
+                        <li><strong>Marketplace internationale</strong> : Expansion multi-pays avec gestion des douanes et taxes</li>
+                        <li><strong>Marketplace B2B</strong> : Espace dédié aux transactions entre professionnels</li>
+                        <li><strong>Architecture microservices</strong> : Refactoring pour une meilleure scalabilité</li>
+                        <li><strong>Recommandations IA</strong> : Moteur de suggestions intelligent</li>
+                        <li><strong>Paiement fractionné</strong> : Options de paiement en plusieurs fois (BNPL)</li>
+                        <li><strong>Gestion de stock avancée</strong> : Entrepôts, inventaire multi-emplacements</li>
+                        <li><strong>Livraison drone</strong> : Expérimentation de modes de livraison innovants</li>
+                        <li><strong>Marketplace virtuelle</strong> : Expérience d'achat en réalité augmentée</li>
+                    </ul>
                 </div>
-            </div>
+            </section>
 
-            <h3>🔧 Backend & Services</h3>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🟢</span>Node.js Ecosystem</h4>
-                    <p>Node.js 20 LTS, Express.js avec middleware personnalisés, Fastify pour les services haute performance, et Socket.io pour les communications temps réel.</p>
+            <!-- Expérience Utilisateur Section -->
+            <section id="ux" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-paint-brush"></i> Expérience Utilisateur / UX</h2>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🐍</span>Python Services</h4>
-                    <p>Python 3.11 avec FastAPI pour les APIs ML, Django pour l'admin, Celery pour les tâches asynchrones, et Pandas pour l'analyse de données.</p>
+                <div class="subsection">
+                    <h3><i class="fas fa-home"></i> Page d'Accueil et Navigation</h3>
+                    <p>La page d'accueil de LUXESHOP est conçue comme un hub central avec plusieurs zones stratégiques :</p>
+                    <ul>
+                        <li><strong>Zone 1 - Recherche</strong> : Barre de recherche centrale avec suggestions en temps réel</li>
+                        <li><strong>Zone 2 - Catégories</strong> : Icônes des principales catégories pour navigation rapide</li>
+                        <li><strong>Zone 3 - Contenu éditorial</strong> : Bannières promotionnelles, collections curatées</li>
+                        <li><strong>Zone 4 - Recommandations personnalisées</strong> : Produits et services basés sur l'historique</li>
+                        <li><strong>Zone 5 - Tendance du moment</strong> : Articles populaires, nouveautés</li>
+                        <li><strong>Zone 6 - Confiance</strong> : Avis clients, nombre de transactions, garanties</li>
+                    </ul>
+                    <div class="content-box">
+                        <h4>Personalisation Progressive</h4>
+                        <p>Lors de la première visite, l'utilisateur est invité à sélectionner ses centres d'intérêt. Au fur et à mesure de ses interactions, l'interface s'adapte pour présenter un contenu de plus en plus pertinent.</p>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🔐</span>Authentication & Security</h4>
-                    <p>JWT avec refresh tokens, OAuth 2.0, Auth0 pour l'authentification sociale, bcrypt pour le hashing, et rate limiting avancé.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-shopping-cart"></i> Gestion des 2 Paniers Distincts</h3>
+                    <p>LUXESHOP gère deux types de paniers indépendants pour éviter toute confusion entre produits physiques et services :</p>
+                    
+                    <div class="content-box">
+                        <h4>Panier Produits</h4>
+                        <ul>
+                            <li>Ajout classique avec sélection des variations (taille, couleur)</li>
+                            <li>Calcul automatique des frais de livraison selon l'adresse</li>
+                            <li>Estimation du délai de livraison</li>
+                            <li>Options de cadeau (emballage cadeau, message personnalisé)</li>
+                            <li>Suggestions de produits complémentaires</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Panier Services</h4>
+                        <ul>
+                            <li>Sélection de créneaux horaires avec visualisation calendaire</li>
+                            <li>Option "urgent" (sous 24h) avec majoration de prix</li>
+                            <li>Précision du lieu de prestation (adresse ou en ligne)</li>
+                            <li>Détails spécifiques à communiquer au prestataire</li>
+                            <li>Confirmation de disponibilité en temps réel</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Checkout Adapté</h4>
+                        <p>Le processus de checkout est adapté à chaque type de panier :</p>
+                        <ul>
+                            <li><strong>Produits</strong> : Processus standard avec choix d'adresse, mode de livraison, puis paiement</li>
+                            <li><strong>Services</strong> : Processus simplifié avec confirmation du créneau, détails de la prestation, puis paiement</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">💳</span>Payment Processing</h4>
-                    <p>Stripe pour les cartes internationales, intégration Mobile Money (Orange, MTN), crypto-payments avec Web3, et système de wallet interne.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-file-alt"></i> Pages Clés et Parcours Utilisateur</h3>
+                    
+                    <div class="content-box">
+                        <h4>Page Produit</h4>
+                        <ul>
+                            <li>Galerie d'images avec zoom et visionneuse 360° si disponible</li>
+                            <li>Description détaillée avec caractéristiques techniques</li>
+                            <li>Section avis et questions/réponses</li>
+                            <li>Produits similaires et complémentaires</li>
+                            <li>Indicateur de popularité (nombre de ventes récentes)</li>
+                            <li>Badges de confiance (livraison rapide, excellent service)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Page Service</h4>
+                        <ul>
+                            <li>Portfolio du prestataire avec exemples de travaux</li>
+                            <li>Calendrier des disponibilités avec sélection de créneau</li>
+                            <li>Carte de localisation avec zone d'intervention</li>
+                            <li>Tarifs détaillés (déplacement, main d'œuvre, matériel)</li>
+                            <li>Avis clients avec photos des réalisations</li>
+                            <li>Certifications et qualifications du prestataire</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Page Vendeur</h4>
+                        <ul>
+                            <li>Présentation de la boutique avec logo et bannière</li>
+                            <li>Politiques de vente (retours, livraison, etc.)</li>
+                            <li>Statistiques de performance (taux de réponse, délai d'expédition)</li>
+                            <li>Produits et services proposés avec filtres</li>
+                            <li>Section "À propos" avec histoire du vendeur</li>
+                            <li>Options de contact et heures de réponse</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-map-marked-alt"></i> Intégration Cartographique</h3>
+                    <p>Pour les services nécessitant une intervention physique, LUXESHOP intègre une cartographie complète :</p>
+                    <ul>
+                        <li>Affichage des prestataires disponibles sur une carte</li>
+                        <li>Filtrage par distance, note minimale, disponibilité</li>
+                        <li>Calcul automatique des frais de déplacement</li>
+                        <li>Géocodage des adresses pour une précision maximale</li>
+                        <li>Estimation du temps de trajet pour le prestataire</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-universal-access"></i> Accessibilité et Inclusion</h3>
+                    <p>LUXESHOP suit les guidelines WCAG 2.1 niveau AA pour garantir l'accessibilité :</p>
+                    <ul>
+                        <li>Contrastes de couleurs suffisants pour les malvoyants</li>
+                        <li>Navigation au clavier complète</li>
+                        <li>Support des lecteurs d'écran</li>
+                        <li>Textes alternatives pour toutes les images</li>
+                        <li>Tailles de police adaptables</li>
+                        <li>Interface simplifiée pour les seniors</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-mobile-alt"></i> Expérience Mobile</h3>
+                    <p>Approche mobile-first avec :</p>
+                    <ul>
+                        <li>Design responsive adapté à toutes tailles d'écran</li>
+                        <li>Applications mobiles natives (planifiées phase 2)</li>
+                        <li>Installation en tant que PWA (Progressive Web App)</li>
+                        <li>Performances optimisées pour connexions lentes</li>
+                        <li>Interface tactile avec gestes spécifiques (swipe, tap)</li>
+                    </ul>
+                </div>
+            </section>
 
-            <h3>🤖 Intelligence Artificielle & Machine Learning</h3>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🧠</span>Recommandation Engine</h4>
-                    <p>TensorFlow/PyTorch pour les modèles ML, algorithmes collaboratifs et basés sur le contenu, A/B testing pour l'optimisation, et MLflow pour le versioning.</p>
+            <!-- Architecture Technique Section -->
+            <section id="technique" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-server"></i> Architecture Technique & Stack Recommandée</h2>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">💬</span>NLP & Chatbots</h4>
-                    <p>OpenAI GPT-4 pour les chatbots intelligents, spaCy pour le traitement des langues locales, sentiment analysis, et traduction automatique.</p>
+                <div class="subsection">
+                    <h3><i class="fas fa-layer-group"></i> Stack Technique Complète</h3>
+                    
+                    <div class="content-box">
+                        <h4>Backend</h4>
+                        <ul>
+                            <li><strong>Framework</strong> : Django 4.x avec Django REST Framework pour les API</li>
+                            <li><strong>Langage</strong> : Python 3.10+</li>
+                            <li><strong>Base de données</strong> : PostgreSQL 14+ avec extensions PostGIS pour la géolocalisation</li>
+                            <li><strong>Cache</strong> : Redis 6+ pour sessions, cache et tâches asynchrones</li>
+                            <li><strong>File d'attente</strong> : Celery avec Redis/RabbitMQ comme broker</li>
+                            <li><strong>Recherche</strong> : Elasticsearch 8+ pour la recherche full-text</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Frontend</h4>
+                        <ul>
+                            <li><strong>Templating</strong> : Django Templates avec extensions</li>
+                            <li><strong>Styling</strong> : CSS3 avec Sass préprocesseur</li>
+                            <li><strong>JavaScript</strong> : Vanilla JS avec Alpine.js pour l'interactivité</li>
+                            <li><strong>Bundling</strong> : Webpack pour l'optimisation des assets</li>
+                            <li><strong>Cartographie</strong> : Mapbox GL JS pour les cartes interactives</li>
+                            <li><strong>Charts</strong> : Chart.js pour les visualisations de données</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Infrastructure et DevOps</h4>
+                        <ul>
+                            <li><strong>Hébergement</strong> : DigitalOcean Droplets ou AWS EC2</li>
+                            <li><strong>Base de données</strong> : DigitalOcean Managed PostgreSQL ou AWS RDS</li>
+                            <li><strong>Stockage</strong> : DigitalOcean Spaces ou AWS S3 pour les médias</li>
+                            <li><strong>CDN</strong> : Cloudflare pour la distribution de contenu</li>
+                            <li><strong>DNS</strong> : Cloudflare avec DNSSEC</li>
+                            <li><strong>SSL</strong> : Certificats Let's Encrypt automatiquement renouvelés</li>
+                            <li><strong>Monitoring</strong> : Prometheus + Grafana pour les métriques</li>
+                            <li><strong>Logs</strong> : ELK Stack (Elasticsearch, Logstash, Kibana)</li>
+                            <li><strong>CI/CD</strong> : GitHub Actions pour l'intégration continue</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Services Externes et Intégrations</h4>
+                        <ul>
+                            <li><strong>Paiements</strong> : CinetPay (principal), Stripe (backup international)</li>
+                            <li><strong>SMS</strong> : Twilio ou service local avec API</li>
+                            <li><strong>Email</strong> : SendGrid ou Mailgun</li>
+                            <li><strong>Push Notifications</strong> : OneSignal ou Firebase Cloud Messaging</li>
+                            <li><strong>Analytics</strong> : Google Analytics + Matomo pour respecter la vie privée</li>
+                            <li><strong>Erreurs</strong> : Sentry pour le tracking des bugs</li>
+                            <li><strong>Taux de change</strong> : API exchangeratesapi.io</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🔍</span>Computer Vision</h4>
-                    <p>OpenCV pour l'analyse d'images produits, reconnaissance de marques, détection de contrefaçons, et optimisation automatique des images.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-sitemap"></i> Architecture Logicielle Détaillée</h3>
+                    
+                    <div class="content-box">
+                        <h4>Structure de l'Application Django</h4>
+                        <pre>
+luxeshop/
+├── apps/
+│   ├── accounts/          # Authentification, profils utilisateurs
+│   ├── catalog/           # Produits, services, catégories
+│   ├── cart/              # Paniers et checkout
+│   ├── orders/            # Commandes et livraisons
+│   ├── payments/          # Paiements, wallet, escrow
+│   ├── reviews/           # Avis et notations
+│   ├── messaging/         # Messagerie interne
+│   ├── vendors/           # Dashboard vendeurs
+│   └── dashboard/         # Interface administrateur
+├── config/                # Configuration du projet
+├── static/                # Fichiers statiques
+├── templates/             # Templates HTML
+└── utils/                 # Utilities et helpers
+                        </pre>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Flow des Données</h4>
+                        <ol>
+                            <li>Le client envoie une requête au load balancer</li>
+                            <li>Le load balancer distribue la charge entre les instances Django</li>
+                            <li>Django sert les pages ou expose les API endpoints</li>
+                            <li>Pour les données, connexion à PostgreSQL via connection pooler</li>
+                            <li>Cache Redis pour les données fréquemment accédées</li>
+                            <li>Elasticsearch pour les recherches complexes</li>
+                            <li>Tâches asynchrones gérées par Celery workers</li>
+                            <li>Stockage des médias sur S3-compatible avec CDN</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Sécurité de l'Architecture</h4>
+                        <ul>
+                            <li>Isolation des services dans des réseaux privés</li>
+                            <li>Firewall configuré pour n'autoriser que les ports nécessaires</li>
+                            <li>Chiffrement SSL/TLS partout (données en transit)</li>
+                            <li>Secrets managés via HashiCorp Vault ou solutions cloud</li>
+                            <li>Sauvegardes automatiques et chiffrées</li>
+                            <li>Monitoring des intrusions et patterns suspects</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">📈</span>Predictive Analytics</h4>
-                    <p>Prédiction de la demande, optimisation des stocks, détection de fraude, analyse des tendances, et personnalisation dynamique des prix.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-tachometer-alt"></i> Performance et Scalabilité</h3>
+                    
+                    <div class="content-box">
+                        <h4>Optimisations Prévisionnelles</h4>
+                        <ul>
+                            <li>Cache HTTP via Cloudflare pour les pages statiques</li>
+                            <li>Cache de fragments Django pour les parties dynamiques</li>
+                            <li>Compression Gzip/Brotli pour les assets</li>
+                            <li>Optimisation des images (WebP, responsive sizes)</li>
+                            <li>Base de données optimisée avec index appropriés</li>
+                            <li>Requêtes SQL optimisées et minimisées</li>
+                            <li>Pagination pour les listes longues</li>
+                            <li>Lazy loading des images et contenus</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Stratégie de Scalabilité</h4>
+                        <ul>
+                            <li>Démarrage avec une architecture monolithique modulaire</li>
+                            <li>Préparation pour une transition vers les microservices</li>
+                            <li>Horizontal scaling des instances Django et Celery</li>
+                            <li>Réplication de base de données en lecture</li>
+                            <li>Cache Redis cluster pour haute disponibilité</li>
+                            <li>Load testing régulier pour identifier les bottlenecks</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="features" class="section">
-            <h2><span class="icon">🚀</span>Fonctionnalités Avancées</h2>
-            
-            <h3>🛒 Expérience d'Achat Révolutionnaire</h3>
-            <ul class="feature-list">
-                <li>Recherche intelligente avec auto-complétion et suggestions contextuelles</li>
-                <li>Filtres avancés par prix, marque, localisation, et préférences culturelles</li>
-                <li>Recommandations personnalisées basées sur l'IA et l'historique d'achat</li>
-                <li>Comparateur de prix en temps réel avec alertes de baisse</li>
-                <li>Réalité augmentée pour visualiser les produits (vêtements, meubles)</li>
-                <li>Social shopping avec partage et avis d'amis</li>
-                <li>Wishlist intelligente avec notifications de disponibilité</li>
-                <li>Checkout en une étape avec sauvegarde automatique du panier</li>
-            </ul>
+            <!-- Schéma de Données Section -->
+            <section id="donnees" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-database"></i> Schéma de Données (Modèles Clés)</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-table"></i> Modèles Django Principaux</h3>
+                    
+                    <div class="content-box">
+                        <h4>Modèle User Étendu</h4>
+                        <div class="code-block">
+class User(AbstractUser):
+    # Données de base
+    email = models.EmailField(unique=True)
+    phone = models.CharField(max_length=20, blank=True)
+    avatar = models.ImageField(upload_to='avatars/', blank=True)
+    
+    # Rôle et permissions
+    ROLE_CHOICES = [
+        ('customer', 'Client'),
+        ('vendor', 'Vendeur'),
+        ('service_provider', 'Prestataire'),
+        ('delivery', 'Livreur'),
+        ('admin', 'Administrateur'),
+    ]
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='customer')
+    
+    # Vérification et statut
+    is_verified = models.BooleanField(default=False)
+    kyc_status = models.CharField(max_length=20, choices=[
+        ('none', 'Non soumis'),
+        ('pending', 'En attente'),
+        ('approved', 'Approuvé'),
+        ('rejected', 'Rejeté')
+    ], default='none')
+    
+    # Préférences
+    language = models.CharField(max_length=10, default='fr')
+    currency = models.CharField(max_length=3, default='GNF')
+    notification_preferences = models.JSONField(default=dict)
+    
+    # Métadonnées
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['email']),
+            models.Index(fields=['phone']),
+            models.Index(fields=['role']),
+        ]
+                        </div>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Modèle Profil Vendeur</h4>
+                        <div class="code-block">
+class VendorProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='vendor_profile')
+    
+    # Informations boutique
+    store_name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
+    description = models.TextField(blank=True)
+    logo = models.ImageField(upload_to='vendors/logos/')
+    banner = models.ImageField(upload_to='vendors/banners/')
+    
+    # Contact et localisation
+    address = models.TextField()
+    location = models.PointField(geography=True, blank=True, null=True)
+    service_areas = models.MultiPolygonField(geography=True, blank=True, null=True)
+    
+    # Statistiques et performance
+    rating = models.FloatField(default=0)
+    total_sales = models.IntegerField(default=0)
+    is_premium = models.BooleanField(default=False)
+    premium_until = models.DateTimeField(blank=True, null=True)
+    
+    # Politiques
+    return_policy = models.TextField(blank=True)
+    delivery_policy = models.TextField(blank=True)
+    
+    # Statut
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['slug']),
+            models.Index(fields=['rating']),
+            models.Index(fields=['is_active']),
+        ]
+                        </div>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Modèle Produit</h4>
+                        <div class="code-block">
+class Product(models.Model):
+    vendor = models.ForeignKey(VendorProfile, on_delete=models.CASCADE, related_name='products')
+    
+    # Informations de base
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=12, decimal_places=2)
+    currency = models.CharField(max_length=3, default='GNF')
+    
+    # Stock et variations
+    sku = models.CharField(max_length=100, unique=True)
+    stock = models.IntegerField(default=0)
+    is_digital = models.BooleanField(default=False)
+    digital_file = models.FileField(upload_to='digital_products/', blank=True, null=True)
+    
+    # Catégorisation
+    categories = models.ManyToManyField('Category', related_name='products')
+    tags = models.ManyToManyField('Tag', related_name='products', blank=True)
+    
+    # Produits périssables
+    is_perishable = models.BooleanField(default=False)
+    expiry_date = models.DateField(blank=True, null=True)
+    
+    # Métadonnées
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['slug']),
+            models.Index(fields=['price']),
+            models.Index(fields=['is_active']),
+            models.Index(fields=['vendor', 'is_active']),
+        ]
+                        </div>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Modèle Service</h4>
+                        <div class="code-block">
+class Service(models.Model):
+    provider = models.ForeignKey(VendorProfile, on_delete=models.CASCADE, related_name='services')
+    
+    # Informations de base
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200)
+    description = models.TextField()
+    
+    # Tarification
+    pricing_model = models.CharField(max_length=20, choices=[
+        ('fixed', 'Prix fixe'),
+        ('hourly', 'À l\'heure'),
+        ('daily', 'À la journée'),
+        ('custom', 'Sur devis')
+    ], default='fixed')
+    price = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True)
+    currency = models.CharField(max_length=3, default='GNF')
+    
+    # Localisation
+    SERVICE_LOCATION_CHOICES = [
+        ('provider', 'Chez le prestataire'),
+        ('customer', 'Chez le client'),
+        ('online', 'En ligne'),
+    ]
+    service_location = models.CharField(max_length=20, choices=SERVICE_LOCATION_CHOICES)
+    location = models.PointField(geography=True, blank=True, null=True)
+    service_radius = models.IntegerField(blank=True, null=True)  # en km
+    
+    # Disponibilités
+    availability = models.JSONField(default=dict)  # Stockage des créneaux disponibles
+    
+    # Métadonnées
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['slug']),
+            models.Index(fields=['service_location']),
+            models.Index(fields=['provider', 'is_active']),
+        ]
+                        </div>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Modèle Commande</h4>
+                        <div class="code-block">
+class Order(models.Model):
+    ORDER_STATUS_CHOICES = [
+        ('pending', 'En attente'),
+        ('confirmed', 'Confirmée'),
+        ('processing', 'En traitement'),
+        ('shipped', 'Expédiée'),
+        ('out_for_delivery', 'En livraison'),
+        ('delivered', 'Livrée'),
+        ('cancelled', 'Annulée'),
+        ('refunded', 'Remboursée'),
+    ]
+    
+    # Références
+    order_number = models.CharField(max_length=20, unique=True)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+    
+    # Livraison
+    shipping_address = models.JSONField()  # Stockage de l'adresse au moment de la commande
+    delivery_method = models.CharField(max_length=50, blank=True)
+    tracking_number = models.CharField(max_length=100, blank=True)
+    
+    # Paiement
+    total_amount = models.DecimalField(max_digits=12, decimal_places=2)
+    currency = models.CharField(max_length=3, default='GNF')
+    payment_status = models.CharField(max_length=20, choices=[
+        ('pending', 'En attente'),
+        ('paid', 'Payé'),
+        ('failed', 'Échoué'),
+        ('refunded', 'Remboursé'),
+    ], default='pending')
+    
+    # Statut
+    status = models.CharField(max_length=20, choices=ORDER_STATUS_CHOICES, default='pending')
+    escrow_status = models.CharField(max_length=20, choices=[
+        ('held', 'Fonds retenus'),
+        ('released', 'Fonds libérés'),
+        ('refunded', 'Fonds remboursés'),
+    ], blank=True)
+    
+    # Métadonnées
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['order_number']),
+            models.Index(fields=['customer', 'status']),
+            models.Index(fields=['created_at']),
+        ]
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-arrows-alt-h"></i> Relations entre Modèles</h3>
+                    
+                    <div class="content-box">
+                        <h4>Schéma Relationnel</h4>
+                        <p>Les principales relations dans la base de données :</p>
+                        <ul>
+                            <li><strong>User → VendorProfile</strong> : OneToOne (un utilisateur peut avoir un profil vendeur)</li>
+                            <li><strong>VendorProfile → Product</strong> : OneToMany (un vendeur peut avoir plusieurs produits)</li>
+                            <li><strong>VendorProfile → Service</strong> : OneToMany (un prestataire peut avoir plusieurs services)</li>
+                            <li><strong>Product → Category</strong> : ManyToMany (un produit peut appartenir à plusieurs catégories)</li>
+                            <li><strong>Order → OrderItem</strong> : OneToMany (une commande contient plusieurs articles)</li>
+                            <li><strong>User → Review</strong> : OneToMany (un utilisateur peut écrire plusieurs avis)</li>
+                            <li><strong>Product → Review</strong> : OneToMany (un produit peut avoir plusieurs avis)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Optimisation des Requêtes</h4>
+                        <p>Pour garantir les performances, nous utilisons :</p>
+                        <ul>
+                            <li><code>select_related()</code> pour les relations ForeignKey et OneToOne</li>
+                            <li><code>prefetch_related()</code> pour les relations ManyToMany et reverse ForeignKey</li>
+                            <li>Indexation appropriée des champs fréquemment interrogés</li>
+                            <li>Denormalisation stratégique pour éviter les jointures coûteuses</li>
+                            <li>Matérialized Views pour les rapports complexes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-sync-alt"></i> Stratégie de Migration des Données</h3>
+                    
+                    <div class="content-box">
+                        <h4>Approche Progressive</h4>
+                        <p>Pour garantir une transition sans accroc :</p>
+                        <ol>
+                            <li>Création des scripts de migration avec Django Migrations</li>
+                            <li>Tests exhaustifs sur une base de données de staging</li>
+                            <li>Execution pendant une période de faible trafic</li>
+                            <li>Backup complet avant et après la migration</li>
+                            <li>Plan de rollback en cas de problème</li>
+                            <li>Monitoring post-migration pour détecter les anomalies</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Gestion des Données Sensibles</h4>
+                        <ul>
+                            <li>Chiffrement des données personnelles au repos</li>
+                            <li>Anonymisation des données pour les environnements de test</li>
+                            <li>Pseudo-anonymisation pour l'analytics</li>
+                            <li>Audit régulier des accès aux données sensibles</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-            <h3>💰 Système de Paiement Hybride</h3>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h4><span class="tech-icon">📱</span>Mobile Money</h4>
-                    <p>Intégration native avec Orange Money, MTN Mobile Money, Moov Money. API directe avec les opérateurs, réconciliation automatique, et support des micro-paiements.</p>
+            <!-- API Endpoints Section -->
+            <section id="api" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-code"></i> API — Endpoints Principaux</h2>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">💳</span>Cartes Bancaires</h4>
-                    <p>Support Visa, Mastercard, cartes locales. Tokenisation sécurisée, 3D Secure, paiements récurrents, et gestion des remboursements automatisés.</p>
+                <div class="subsection">
+                    <h3><i class="fas fa-network-wired"></i> Architecture API REST</h3>
+                    
+                    <div class="content-box">
+                        <h4>Principes de Conception</h4>
+                        <ul>
+                            <li>RESTful conventions avec endpoints resource-oriented</li>
+                            <li>Versioning d'API via l'URL (<code>/api/v1/</code>)</li>
+                            <li>Format JSON pour toutes les requêtes et réponses</li>
+                            <li>Pagination standardisée pour les collections</li>
+                            <li>Filtrage, tri et recherche via query parameters</li>
+                            <li>Codes HTTP appropriés pour chaque réponse</li>
+                            <li>Documentation complète avec OpenAPI/Swagger</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Sécurité API</h4>
+                        <ul>
+                            <li>Authentification via JWT (JSON Web Tokens)</li>
+                            <li>Refresh tokens pour maintenir les sessions</li>
+                            <li>Rate limiting pour prévenir les abus</li>
+                            <li>CORS configuré pour les domaines autorisés</li>
+                            <li>Validation stricte des données d'entrée</li>
+                            <li>HTTPS obligatoire pour toutes les communications</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">₿</span>Crypto-monnaies</h4>
-                    <p>Bitcoin, Ethereum, stablecoins. Wallet intégré, conversion automatique, faibles frais de transaction, et conformité réglementaire.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-list-alt"></i> Endpoints Détaillés</h3>
+                    
+                    <div class="content-box">
+                        <h4>Authentication Endpoints</h4>
+                        <table>
+                            <tr>
+                                <th>Endpoint</th>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                                <th>Paramètres</th>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/auth/register/</code></td>
+                                <td>POST</td>
+                                <td>Inscription d'un nouvel utilisateur</td>
+                                <td>email, password, phone, role, preferences</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/auth/login/</code></td>
+                                <td>POST</td>
+                                <td>Connexion et obtention du token JWT</td>
+                                <td>email/phone, password</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/auth/logout/</code></td>
+                                <td>POST</td>
+                                <td>Déconnexion et invalidation du token</td>
+                                <td>Authorization header avec JWT</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/auth/password/reset/</code></td>
+                                <td>POST</td>
+                                <td>Demande de réinitialisation de mot de passe</td>
+                                <td>email</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/auth/verify/</code></td>
+                                <td>POST</td>
+                                <td>Vérification d'email ou téléphone par OTP</td>
+                                <td>email/phone, otp_code</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Products Endpoints</h4>
+                        <table>
+                            <tr>
+                                <th>Endpoint</th>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                                <th>Paramètres</th>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/products/</code></td>
+                                <td>GET</td>
+                                <td>Liste des produits avec filtres</td>
+                                <td>category, price_min, price_max, search, ordering, page</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/products/</code></td>
+                                <td>POST</td>
+                                <td>Création d'un nouveau produit (vendeur)</td>
+                                <td>title, description, price, category, images, etc.</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/products/{id}/</code></td>
+                                <td>GET</td>
+                                <td>Détails d'un produit spécifique</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/products/{id}/</code></td>
+                                <td>PUT/PATCH</td>
+                                <td>Mise à jour d'un produit (vendeur)</td>
+                                <td>champs à mettre à jour</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/products/{id}/reviews/</code></td>
+                                <td>GET</td>
+                                <td>Avis sur un produit</td>
+                                <td>page, ordering</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Services Endpoints</h4>
+                        <table>
+                            <tr>
+                                <th>Endpoint</th>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                                <th>Paramètres</th>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/services/</code></td>
+                                <td>GET</td>
+                                <td>Liste des services avec filtres</td>
+                                <td>category, location, price_min, price_max, search</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/services/</code></td>
+                                <td>POST</td>
+                                <td>Création d'un nouveau service (prestataire)</td>
+                                <td>title, description, pricing_model, price, location, etc.</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/services/{id}/</code></td>
+                                <td>GET</td>
+                                <td>Détails d'un service spécifique</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/services/{id}/availability/</code></td>
+                                <td>GET</td>
+                                <td>Disponibilités d'un service</td>
+                                <td>start_date, end_date</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/services/{id}/book/</code></td>
+                                <td>POST</td>
+                                <td>Réservation d'un service</td>
+                                <td>datetime, duration, notes, address</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Cart & Checkout Endpoints</h4>
+                        <table>
+                            <tr>
+                                <th>Endpoint</th>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                                <th>Paramètres</th>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/cart/</code></td>
+                                <td>GET</td>
+                                <td>Contenu du panier actuel</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/cart/items/</code></td>
+                                <td>POST</td>
+                                <td>Ajout d'un article au panier</td>
+                                <td>product_id, quantity ou service_id, datetime</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/cart/items/{id}/</code></td>
+                                <td>DELETE</td>
+                                <td>Suppression d'un article du panier</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/checkout/</code></td>
+                                <td>POST</td>
+                                <td>Passer à la caisse</td>
+                                <td>shipping_address, payment_method</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/checkout/confirm/</code></td>
+                                <td>POST</td>
+                                <td>Confirmation de commande</td>
+                                <td>order_id, payment_data</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Orders & Payments Endpoints</h4>
+                        <table>
+                            <tr>
+                                <th>Endpoint</th>
+                                <th>Méthode</th>
+                                <th>Description</th>
+                                <th>Paramètres</th>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/orders/</code></td>
+                                <td>GET</td>
+                                <td>Historique des commandes</td>
+                                <td>status, page, ordering</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/orders/{id}/</code></td>
+                                <td>GET</td>
+                                <td>Détails d'une commande</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/orders/{id}/cancel/</code></td>
+                                <td>POST</td>
+                                <td>Annulation d'une commande</td>
+                                <td>reason</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/payments/methods/</code></td>
+                                <td>GET</td>
+                                <td>Méthodes de paiement disponibles</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td><code>/api/v1/payments/init/</code></td>
+                                <td>POST</td>
+                                <td>Initialisation d'un paiement</td>
+                                <td>order_id, method, wallet_use</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🏦</span>Solutions de Crédit</h4>
-                    <p>Micro-crédit instantané, paiement en plusieurs fois, scoring de crédit basé sur l'IA, et partenariats avec institutions financières locales.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-plug"></i> Webhooks et Intégrations Externes</h3>
+                    
+                    <div class="content-box">
+                        <h4>Webhooks Sortants</h4>
+                        <p>LUXESHOP envoie des webhooks pour notifier les systèmes externes :</p>
+                        <ul>
+                            <li><code>order.created</code> : Nouvelle commande créée</li>
+                            <li><code>order.updated</code> : Statut de commande modifié</li>
+                            <li><code>payment.completed</code> : Paiement confirmé</li>
+                            <li><code>product.low_stock</code> : Stock faible pour un produit</li>
+                            <li><code>user.registered</code> : Nouvel utilisateur inscrit</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Webhooks Entrants</h4>
+                        <p>Endpoints pour recevoir des notifications des services externes :</p>
+                        <ul>
+                            <li><code>/api/v1/webhooks/cinetpay/</code> : Notification de paiement de CinetPay</li>
+                            <li><code>/api/v1/webhooks/sms/</code> : Statut de livraison des SMS</li>
+                            <li><code>/api/v1/webhooks/shipping/</code> : Mise à jour du suivi de colis</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Intégration CinetPay</h4>
+                        <p>Processus détaillé d'intégration du paiement :</p>
+                        <ol>
+                            <li>Client initie le paiement sur LUXESHOP</li>
+                            <li>LUXESHOP appelle l'API CinetPay pour créer une transaction</li>
+                            <li>Redirection du client vers la page de paiement CinetPay</li>
+                            <li>After payment, CinetPay redirige vers notre page de confirmation</li>
+                            <li>CinetPay envoie un webhook pour confirmer le statut du paiement</li>
+                            <li>LUXESHOP met à jour le statut de la commande en conséquence</li>
+                        </ol>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <h3>🚚 Logistique & Livraison Intelligente</h3>
-            <p>
-                Notre système de logistique révolutionnaire combine technologie de pointe et connaissance du terrain local pour offrir des solutions de livraison adaptées à chaque région de la Guinée.
-            </p>
+            <!-- Paiements & Wallet Section -->
+            <section id="paiements" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-credit-card"></i> Paiements, Wallet, Escrow & Commissions</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-money-check"></i> Intégration des Paiements</h3>
+                    
+                    <div class="content-box">
+                        <h4>CinetPay - Solution Principale</h4>
+                        <p>CinetPay est la passerelle de paiement principale pour LUXESHOP, offrant :</p>
+                        <ul>
+                            <li>Support des Mobile Money (Orange Money, MTN Mobile Money, etc.)</li>
+                            <li>Paiement par carte bancaire (Visa, Mastercard)</li>
+                            <li>API robuste avec documentation complète</li>
+                            <li>Dashboard de gestion des transactions</li>
+                            <li>Support technique local en français</li>
+                            <li>Tarifs compétitifs adaptés au marché africain</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Stripe/PayPal - Solutions de Rechange Internationales</h4>
+                        <p>Pour les paiements internationaux et comme solution de secours :</p>
+                        <ul>
+                            <li>Stripe pour les cartes internationales et paiements répétés</li>
+                            <li>PayPal pour les utilisateurs ayant déjà un compte</li>
+                            <li>Conversion automatique des devises</li>
+                            <li>Processus de remboursement simplifié</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Processus de Paiement</h4>
+                        <ol>
+                            <li>Le client sélectionne son mode de paiement préféré</li>
+                            <li>Redirection vers la page de paiement sécurisée du processeur</li>
+                            <li>Authentification et confirmation du paiement</li>
+                            <li>Retour automatique vers LUXESHOP après paiement</li>
+                            <li>Réception du webhook de confirmation</li>
+                            <li>Mise à jour du statut de la commande et notification</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-wallet"></i> Wallet Interne</h3>
+                    
+                    <div class="content-box">
+                        <h4>Fonctionnalités du Wallet</h4>
+                        <ul>
+                            <li><strong>Dépôts</strong> : Alimentation du wallet via CinetPay ou virement</li>
+                            <li><strong>Achats</strong> : Paiement partiel ou total des commandes</li>
+                            <li><strong>Transferts</strong> : Envoi d'argent à d'autres utilisateurs</li>
+                            <li><strong>Retraits</strong> : Récupération des fonds vers un compte bancaire ou Mobile Money</li>
+                            <li><strong>Historique</strong> : Consultation de toutes les transactions</li>
+                            <li><strong>Sécurité</strong> : Code PIN pour valider les transactions sensibles</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Avantages du Wallet</h4>
+                        <ul>
+                            <li>Réduction de la friction lors des achats répétés</li>
+                            <li>Processus de paiement accéléré en 1 clic</li>
+                            <li>Solution de repli en cas de problème avec les processeurs</li>
+                            <li>Programmes de fidélisation et cashback</li>
+                            <li>Gestion simplifiée des remboursements</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-lock"></i> Système Escrow</h3>
+                    
+                    <div class="content-box">
+                        <h4>Fonctionnement de l'Escrow</h4>
+                        <p>Le système escrow (séquestre) protège à la fois acheteurs et vendeurs :</p>
+                        <ol>
+                            <li>À la confirmation de paiement, les fonds sont placés en escrow</li>
+                            <li>Le vendeur est notifié et prépare la commande</li>
+                            <li>Une fois la commande livrée et acceptée, les fonds sont libérés</li>
+                            <li>En cas de litige, l'équipe LUXESHOP arbitre et décide du sort des fonds</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Règles de Libération des Fonds</h4>
+                        <ul>
+                            <li><strong>Produits physiques</strong> : Libération automatique 48h après livraison confirmée</li>
+                            <li><strong>Services</strong> : Libération après confirmation du client et du prestataire</li>
+                            <li><strong>Produits numériques</strong> : Libération après téléchargement ou 72h</li>
+                            <li><strong>Litiges</strong> : Gel des fonds jusqu'à résolution du problème</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-percentage"></i> Commissions et Business Model</h3>
+                    
+                    <div class="content-box">
+                        <h4>Structure des Commissions</h4>
+                        <table>
+                            <tr>
+                                <th>Type de vendeur</th>
+                                <th>Commission</th>
+                                <th>Frais fixes</th>
+                            </tr>
+                            <tr>
+                                <td>Vendeur Standard</td>
+                                <td>5% du montant de la vente</td>
+                                <td>Aucun</td>
+                            </tr>
+                            <tr>
+                                <td>Premium Basic (10 USD/mois)</td>
+                                <td>3% du montant de la vente</td>
+                                <td>Frais d'abonnement mensuels</td>
+                            </tr>
+                            <tr>
+                                <td>Premium Pro (20 USD/mois)</td>
+                                <td>2% du montant de la vente</td>
+                                <td>Frais d'abonnement mensuels</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Autres Sources de Revenus</h4>
+                        <ul>
+                            <li><strong>Placements sponsorisés</strong> : Mise en avant payante des produits et services</li>
+                            <li><strong>Publicité</strong> : Espaces publicitaires dans l'application et les emails</li>
+                            <li><strong>Services value-added</strong> : Assurance livraison, emballage cadeau, etc.</li>
+                            <li><strong>Formation</strong> : Cours sur la vente en ligne pour les vendeurs</li>
+                            <li><strong>Data insights</strong> : Rapports analytiques premium pour les vendeurs</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-exchange-alt"></i> Gestion Multi-devises</h3>
+                    
+                    <div class="content-box">
+                        <h4>Devises Supportées</h4>
+                        <ul>
+                            <li><strong>GNF</strong> : Devise principale pour la Guinée</li>
+                            <li><strong>USD</strong> : Pour les transactions internationales</li>
+                            <li><strong>EUR</strong> : Pour les utilisateurs européens</li>
+                            <li><strong>XOF</strong> : Pour une expansion future en Afrique de l'Ouest</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Processus de Conversion</h4>
+                        <ol>
+                            <li>Les prix sont saisis par les vendeurs dans leur devise préférée</li>
+                            <li>Conversion en temps réel pour l'affichage selon la devise de l'utilisateur</li>
+                            <li>Verrouillage du taux de change au moment de la commande</li>
+                            <li>Paiement dans la devise choisie par l'acheteur</li>
+                            <li>Conversion et versement au vendeur dans sa devise préférée</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Gestion des Risques de Change</h4>
+                        <ul>
+                            <li>Utilisation d'un service de taux de change fiable</li>
+                            <li>Mise à jour quotidienne des taux de référence</li>
+                            <li>Marge de conversion pour couvrir les fluctuations</li>
+                            <li>Alertes en cas de variations importantes</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-            <ul class="feature-list">
-                <li>Optimisation des routes par intelligence artificielle</li>
-                <li>Tracking GPS en temps réel avec notifications proactives</li>
-                <li>Réseau de points de collecte communautaires</li>
-                <li>Livraison par drone pour les zones difficiles d'accès</li>
-                <li>Partenariats avec transporteurs locaux et internationaux</li>
-                <li>Gestion automatisée des stocks avec prédiction de la demande</li>
-                <li>Options de livraison flexible (express, standard, programmée)</li>
-                <li>Système de consigne automatique dans les centres urbains</li>
-            </ul>
+            <!-- Livraison & Logistique Section -->
+            <section id="livraison" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-truck"></i> Livraison & Logistique (Opérations)</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-map-marked-alt"></i> Système de Livraison</h3>
+                    
+                    <div class="content-box">
+                        <h4>Options de Livraison</h4>
+                        <ul>
+                            <li><strong>Livraison Standard</strong> : Délai de 2-3 jours ouvrés within Conakry</li>
+                            <li><strong>Livraison Express</strong> : Livraison le jour même (commandes avant 12h)</li>
+                            <li><strong>Point Relais</strong> : Retrait dans des points partenaires</li>
+                            <li><strong>Livraison Internationale</strong> : Pour les commandes hors Guinée (futur)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Calcul des Frais de Livraison</h4>
+                        <p>Les frais de livraison sont calculés dynamiquement selon :</p>
+                        <ul>
+                            <li>Distance entre l'entrepôt et l'adresse de livraison</li>
+                            <li>Poids et dimensions du colis</li>
+                            <li>Type de service (standard, express)</li>
+                            <li>Zone de livraison (centre-ville, périphérie)</li>
+                            <li>Période (majoration pendant les fêtes)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-warehouse"></i> Gestion Logistique</h3>
+                    
+                    <div class="content-box">
+                        <h4>Centres de Distribution</h4>
+                        <p>Déploiement progressif de centres logistiques :</p>
+                        <ol>
+                            <li><strong>Phase 1</strong> : Un entrepôt principal à Conakry pour stocker les produits des vendeurs</li>
+                            <li><strong>Phase 2</strong> : Points de collecte dans les quartiers pour les vendeurs</li>
+                            <li><strong>Phase 3</strong> : Entrepôts régionaux pour étendre la couverture</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Processus de Livraison</h4>
+                        <ol>
+                            <li>Le vendeur dépose le produit à l'entrepôt ou le prépare pour pickup</li>
+                            <li>L'équipe LUXESHOP vérifie et emballe le produit</li>
+                            <li>Assignation à un livreur selon la localisation</li>
+                            <li>Livraison avec confirmation et preuve (signature/photo)</li>
+                            <li>Notification au client et mise à jour du statut</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-box-open"></i> Gestion des Stocks</h3>
+                    
+                    <div class="content-box">
+                        <h4>Système d'Inventaire</h4>
+                        <ul>
+                            <li>Suivi en temps réel des quantités disponibles</li>
+                            <li>Alertes automatiques pour les stocks faibles</li>
+                            <li>Gestion des variations (tailles, couleurs, etc.)</li>
+                            <li>Inventaire physique régulier pour vérifier l'exactitude</li>
+                            <li>Rapports de mouvement de stock pour les vendeurs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Produits Périssables</h4>
+                        <p>Procédure spéciale pour les produits avec date de péremption :</p>
+                        <ul>
+                            <li>Marquage clair de la date d'expiration</li>
+                            <li>Alertes automatiques 30 jours avant expiration</li>
+                            <li>Promotions automatiques pour écouler les stocks</li>
+                            <li>Retrait automatique du catalogue à l'approche de la date</li>
+                            <li>Destruction sécurisée des produits expirés</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-user-clock"></i> Gestion des Livreurs</h3>
+                    
+                    <div class="content-box">
+                        <h4>Recrutement et Formation</h4>
+                        <ul>
+                            <li>Processus de recrutement rigoureux avec vérification des antécédents</li>
+                            <li>Formation aux standards de service LUXESHOP</li>
+                            <li>Équipement fourni (uniforme, application mobile, etc.)</li>
+                            <li>Assurance et couverture en cas d'accident</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Suivi et Performance</h4>
+                        <ul>
+                            <li>Application mobile dédiée avec GPS pour le suivi en temps réel</li>
+                            <li>Optimisation des tournées de livraison</li>
+                            <li>Évaluation continue basée sur les délais et feedback clients</li>
+                            <li>Système de rémunération avec bonus de performance</li>
+                            <li>Formation continue et recyclage</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-tasks"></i> Contrôle Qualité Logistique</h3>
+                    
+                    <div class="content-box">
+                        <h4>Indicateurs de Performance (KPI)</h4>
+                        <ul>
+                            <li>Délai moyen de traitement des commandes</li>
+                            <li>Taux de livraison dans les temps</li>
+                            <li>Taux de dommages pendant la livraison</li>
+                            <li>Coût moyen de livraison par colis</li>
+                            <li>Satisfaction client concernant la livraison</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Amélioration Continue</h4>
+                        <p>Processus structuré pour optimiser en continu la logistique :</p>
+                        <ul>
+                            <li>Revue hebdomadaire des performances</li>
+                            <li>Retours systématiques des clients sur l'expérience de livraison</li>
+                            <li>Benchmarking avec les standards internationaux</li>
+                            <li>Investissement dans la formation et l'équipement</li>
+                            <li>Expérimentation de nouvelles méthodes et technologies</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-            <h3>🌐 Fonctionnalités Multilingues & Culturelles</h3>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🗣️</span>Support Linguistique</h4>
-                    <p>Interface en Français, Soussou, Peul, Malinké. Traduction automatique des descriptions produits, support vocal dans les langues locales.</p>
+            <!-- Retours & Remboursements Section -->
+            <section id="retours" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-undo"></i> Retours, Remboursements & Litiges</h2>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🎨</span>Adaptation Culturelle</h4>
-                    <p>Design adapté aux préférences locales, calendrier des fêtes religieuses, produits recommandés selon les traditions, et respect des sensibilités culturelles.</p>
+                <div class="subsection">
+                    <h3><i class="fas fa-exchange-alt"></i> Politique de Retours</h3>
+                    
+                    <div class="content-box">
+                        <h4>Conditions Générales</h4>
+                        <ul>
+                            <li><strong>Délai de rétractation</strong> : 14 jours à compter de la réception pour les produits physiques</li>
+                            <li><strong>Exceptions</strong> : Produits personnalisés, périssables, numérique déjà téléchargé</li>
+                            <li><strong>État du produit</strong> : Doit être dans son état d'origine, avec emballage et accessoires</li>
+                            <li><strong>Frais de retour</strong> : À la charge du client sauf si erreur du vendeur</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Processus de Retour</h4>
+                        <ol>
+                            <li>Le client fait une demande de retour via son compte</li>
+                            <li>Le vendeur a 48h pour accepter ou refuser (avec justification)</li>
+                            <li>Si accepté, génération d'une étiquette de retour si applicable</li>
+                            <li>Le client renvoie le produit selon les instructions</li>
+                            <li>À réception, vérification de l'état du produit</li>
+                            <li>Processing du remboursement sous 5 jours ouvrés</li>
+                        </ol>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">📍</span>Géolocalisation Avancée</h4>
-                    <p>Cartographie détaillée de la Guinée, adresses approximatives acceptées, points de repère locaux, et livraison basée sur la géolocalisation.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-money-bill-wave"></i> Processus de Remboursement</h3>
+                    
+                    <div class="content-box">
+                        <h4>Modes de Remboursement</h4>
+                        <ul>
+                            <li><strong>Wallet LUXESHOP</strong> : Option la plus rapide (instantané)</li>
+                            <li><strong>Original payment method</strong> : Remboursement sur le moyen de paiement initial</li>
+                            <li><strong>Virement bancaire</strong> : Pour les montants importants ou cas spécifiques</li>
+                            <li><strong>Crédit boutique</strong> : Option alternative avec bonus incitatif</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Délais de Remboursement</h4>
+                        <ul>
+                            <li>Remboursement wallet : Immédiat après approbation</li>
+                            <li>Carte bancaire : 5-10 jours ouvrés selon la banque</li>
+                            <li>Mobile Money : 24-48 heures</li>
+                            <li>Virement bancaire : 3-5 jours ouvrés</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">👥</span>Communauté Locale</h4>
-                    <p>Forums de discussion par région, groupes d'achat collectif, événements communautaires, et support des initiatives locales.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-gavel"></i> Gestion des Litiges</h3>
+                    
+                    <div class="content-box">
+                        <h4>Processus de Résolution</h4>
+                        <ol>
+                            <li>Ouverture d'un litige par l'acheteur ou le vendeur</li>
+                            <li>Communication via la messagerie dédiée avec preuves</li>
+                            <li>Implication de l'équipe LUXESHOP si pas de résolution amiable</li>
+                            <li>Arbitrage basé sur les preuves et politiques</li>
+                            <li>Décision finale communiquée aux deux parties</li>
+                            <li>Appel possible dans les 7 jours suivant la décision</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Types de Litiges et Résolutions</h4>
+                        <ul>
+                            <li><strong>Produit non reçu</strong> : Enquête de livraison, remboursement ou renvoi</li>
+                            <li><strong>Produit non conforme</strong> : Retour et remboursement ou échange</li>
+                            <li><strong>Service non satisfaisant</strong> : Remboursement partiel ou total</li>
+                            <li><strong>Problème de qualité</strong> : Compensation selon la gravité</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </section>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-ban"></i> Prévention des Abus</h3>
+                    
+                    <div class="content-box">
+                        <h4>Détection des Comportements Abusifs</h4>
+                        <ul>
+                            <li>Surveillance des patterns de retours anormaux</li>
+                            <li>Vérification des preuves fournies lors des litiges</li>
+                            <li>Analyse de la réputation des utilisateurs</li>
+                            <li>Détection des tentatives de fraude</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Mesures Correctives</h4>
+                        <ul>
+                            <li>Avertissements pour les abus mineurs</li>
+                            <li>Limitation des fonctionnalités pour les utilisateurs problématiques</li>
+                            <li>Suspension temporaire ou permanente des comptes</li>
+                            <li>Liste noire des fraudeurs avérés</li>
+                            <li>Actions légales pour les cas graves</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-        <section id="api" class="section">
-            <h2><span class="icon">🔌</span>APIs & Intégrations</h2>
-            
-            <h3>🌐 Architecture API RESTful</h3>
-            <p>
-                Notre API suit les principes REST avec une documentation complète, versioning sémantique, et standards OpenAPI 3.0. Toutes les APIs sont sécurisées, ratées limitées, et optimisées pour la performance.
-            </p>
+            <!-- Sécurité & Conformité Section -->
+            <section id="securite" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-shield-alt"></i> Sécurité, Conformité et Confidentialité</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-lock"></i> Mesures de Sécurité Techniques</h3>
+                    
+                    <div class="content-box">
+                        <h4>Protection des Données</h4>
+                        <ul>
+                            <li>Chiffrement AES-256 des données sensibles en base</li>
+                            <li>HTTPS obligatoire avec HSTS pour toutes les communications</li>
+                            <li>Salage et hachage robuste des mots de passe (bcrypt)</li>
+                            <li>Segmentation réseau pour isoler les composants critiques</li>
+                            <li>Sauvegardes chiffrées et externalisées</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Sécurité des Paiements</h4>
+                        <ul>
+                            <li>Conformité PCI DSS pour le traitement des cartes bancaires</li>
+                            <li>Tokenisation des données de paiement</li>
+                            <li>Détection des fraudes en temps réel</li>
+                            <li>Limites de transaction selon le profil de risque</li>
+                            <li>Validation 3D Secure pour les paiements carte</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-user-shield"></i> Conformité Réglementaire</h3>
+                    
+                    <div class="content-box">
+                        <h4>RGDP et Protection des Données</h4>
+                        <ul>
+                            <li>Register of processing activities</li>
+                            <li>Consentement explicite pour le traitement des données</li>
+                            <li>Droit à l'effacement et à la portabilité des données</li>
+                            <li>Désignation d'un Délégué à la Protection des Données (DPO)</li>
+                            <li>Procédures de notification des violations de données</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Conformité Locale (Guinée)</h4>
+                        <ul>
+                            <li>Respect des lois sur le commerce électronique</li>
+                            <li>Immatriculation auprès des autorités fiscales</li>
+                            <li>Respect de la réglementation sur la publicité</li>
+                            <li>Conformité avec les lois de protection des consommateurs</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-file-contract"></i> Politiques et Conditions</h3>
+                    
+                    <div class="content-box">
+                        <h4>Documents Juridiques</h4>
+                        <ul>
+                            <li>Conditions Générales d'Utilisation (CGU)</li>
+                            <li>Conditions Générales de Vente (CGV)</li>
+                            <li>Politique de Confidentialité</li>
+                            <li>Politique de Cookies</li>
+                            <li>Conditions des vendeurs et prestataires</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Acceptation des Conditions</h4>
+                        <p>Processus d'acceptation robuste :</p>
+                        <ul>
+                            <li>Acceptation explicite lors de l'inscription</li>
+                            <li>Notification des modifications importantes</li>
+                            <li>Archivage des versions acceptées</li>
+                            <li>Option de désaccord entraînant la fermeture du compte</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-first-aid"></i> Plan de Continuité d'Activité</h3>
+                    
+                    <div class="content-box">
+                        <h4>Préparation aux Incidents</h4>
+                        <ul>
+                            <li>Plan de reprise d'activité (PRA) documenté</li>
+                            <li>Sauvegardes automatiques et tests de restauration</li>
+                            <li>Sites de secours pour l'infrastructure critique</li>
+                            <li>Procédures d'urgence pour l'équipe</li>
+                            <li>Communication de crise pour les utilisateurs</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-            <h4>Endpoints Principaux</h4>
-            <div class="api-endpoint">
-                <span class="api-method">GET</span> /api/v1/products - Récupération des produits avec filtres avancés
-            </div>
-            <div class="api-endpoint">
-                <span class="api-method">POST</span> /api/v1/orders - Création de commandes avec validation complète
-            </div>
-            <div class="api-endpoint">
-                <span class="api-method">PUT</span> /api/v1/users/profile - Mise à jour du profil utilisateur
-            </div>
-            <div class="api-endpoint">
-                <span class="api-method">GET</span> /api/v1/analytics/dashboard - Métriques et analytics en temps réel
-            </div>
+            <!-- Monitoring & Maintenance Section -->
+            <section id="monitoring" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line"></i> Monitoring, Sauvegardes & Maintenance</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-desktop"></i> Monitoring en Temps Réel</h3>
+                    
+                    <div class="content-box">
+                        <h4>Supervision Système</h4>
+                        <ul>
+                            <li>Surveillance de la disponibilité des services (uptime)</li>
+                            <li>Monitoring des performances (temps de réponse, charge CPU/RAM)</li>
+                            <li>Alertes sur les seuils critiques</li>
+                            <li>Dashboard unifié avec Grafana</li>
+                            <li>Surveillance du trafic réseau et des tentatives d'intrusion</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Surveillance des Applications</h4>
+                        <ul>
+                            <li>Tracking des erreurs avec Sentry</li>
+                            <li>Monitoring des transactions métier importantes</li>
+                            <li>Mesure de la satisfaction utilisateur (CSAT)</li>
+                            <li>Analyse des parcours utilisateur et points de friction</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-database"></i> Stratégie de Sauvegarde</h3>
+                    
+                    <div class="content-box">
+                        <h4>Plan de Sauvegarde</h4>
+                        <ul>
+                            <li>Sauvegardes complètes quotidiennes</li>
+                            <li>Sauvegardes incrémentales horaires</li>
+                            <li>Conservation des sauvegardes sur 30 jours</li>
+                            <li>Stockage dans au moins 2 zones géographiques différentes</li>
+                            <li>Tests mensuels de restauration</li>
+                            <li>Chiffrement de toutes les sauvegardes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-tools"></i> Maintenance et Mises à Jour</h3>
+                    
+                    <div class="content-box">
+                        <h4>Maintenance Préventive</h4>
+                        <ul>
+                            <li>Mises à jour de sécurité appliquées dans les 24h</li>
+                            <li>Nettoyage régulier des logs et données temporaires</li>
+                            <li>Optimisation des bases de données hebdomadaire</li>
+                            <li>Revue des performances et capacité mensuelle</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Gestion des Mises à Jour</h4>
+                        <ul>
+                            <li>Environnements de staging et de développement</li>
+                            <li>Tests complets avant déploiement en production</li>
+                            <li>Déploiement progressif (canary releases)</li>
+                            <li>Plan de rollback pour chaque déploiement</li>
+                            <li>Communication transparente avec les utilisateurs</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-            <h3>🔗 Intégrations Tierces</h3>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🏦</span>Services Financiers</h4>
-                    <p>APIs bancaires locales, services de change, assurance e-commerce, et solutions de financement participatif.</p>
+            <!-- Roadmap & Lancement Section -->
+            <section id="roadmap" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-map-marked"></i> Roadmap & Plan de Lancement</h2>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">📦</span>Logistique</h4>
-                    <p>DHL, FedEx, transporteurs locaux, services de stockage, et plateformes de tracking international.</p>
+                <div class="subsection">
+                    <h3><i class="fas fa-calendar-alt"></i> Feuille de Route Détaillée</h3>
+                    
+                    <div class="content-box">
+                        <h4>Phase 1 : MVP (3-4 mois)</h4>
+                        <ul>
+                            <li>Développement des fonctionnalités core</li>
+                            <li>Intégration CinetPay</li>
+                            <li>Recrutement des premiers vendeurs tests</li>
+                            <li>Lancement bêta fermée</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Phase 2 : Lancement Officiel (Mois 5-6)</h4>
+                        <ul>
+                            <li>Campagne marketing d'lancement</li>
+                            <li>Ouverture à tous les utilisateurs</li>
+                            <li>Support client opérationnel</li>
+                            <li>Optimisation basée sur les feedbacks</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Phase 3 : Croissance (Mois 7-12)</h4>
+                        <ul>
+                            <li>Déploiement des fonctionnalités avancées</li>
+                            <li>Expansion à d'autres villes de Guinée</li>
+                            <li>Développement des applications mobiles</li>
+                            <li>Programmes de fidélisation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Phase 4 : Maturation (An 2+)</h4>
+                        <ul>
+                            <li>Expansion internationale</li>
+                            <li>Diversification des services</li>
+                            <li>Partnerships stratégiques</li>
+                            <li>Innovation technologique</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">📱</span>Réseaux Sociaux</h4>
-                    <p>Facebook, Instagram, WhatsApp Business, TikTok, et plateformes locales pour le marketing social.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-rocket"></i> Plan de Lancement</h3>
+                    
+                    <div class="content-box">
+                        <h4>Pré-lancement</h4>
+                        <ul>
+                            <li>Site de coming soon avec collecte d'emails</li>
+                            <li>Présélection des vendeurs et prestataires</li>
+                            <li>Tests de charge et de sécurité</li>
+                            <li>Formation de l'équipe support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Lancement</h4>
+                        <ul>
+                            <li>Événement de lancement médiatisé</li>
+                            <li>Campagnes publicitaires ciblées</li>
+                            <li>Programmes d'incentive pour premiers utilisateurs</li>
+                            <li>Support renforcé pendant les premières semaines</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Post-lancement</h4>
+                        <ul>
+                            <li>Analyse intensive des données d'usage</li>
+                            <li>Itérations rapides basées sur les retours</li>
+                            <li>Optimisation de l'acquisition utilisateurs</li>
+                            <li>Planification des prochaines features</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">📊</span>Analytics</h4>
-                    <p>Google Analytics, Mixpanel, Hotjar, et outils d'analyse comportementale avancés.</p>
-                </div>
-            </div>
+            </section>
 
-            <h3>🤖 APIs d'Intelligence Artificielle</h3>
-            <div class="code-block">
-# Exemple d'utilisation de l'API de recommandation
-POST /api/v1/ai/recommendations
-{
-  "user_id": "user_123",
-  "context": "homepage",
-  "limit": 10,
-  "filters": {
-    "category": "electronics",
-    "price_range": [50, 500],
-    "location": "conakry"
-  }
-}
+            <!-- Marketing & Acquisition Section -->
+            <section id="marketing" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-bullhorn"></i> Marketing, Acquisition & Fidélisation</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-bullseye"></i> Stratégie d'Acquisition</h3>
+                    
+                    <div class="content-box">
+                        <h4>Marketing Digital</h4>
+                        <ul>
+                            <li>SEO optimisé pour les recherches locales</li>
+                            <li>Campagnes SEM ciblées sur les mots-clés pertinents</li>
+                            <li>Publicité sur les réseaux sociaux (Facebook, Instagram)</li>
+                            <li>Marketing d'influence avec personnalités locales</li>
+                            <li>Email marketing pour la rétention</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Marketing Traditionnel</h4>
+                        <ul>
+                            <li>Radio spots sur les stations populaires</li>
+                            <li>Affichage dans les zones à fort trafic</li>
+                            <li>Participation aux événements locaux</li>
+                            <li>Partenariats avec les commerces physiques</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-hand-holding-heart"></i> Programmes de Fidélisation</h3>
+                    
+                    <div class="content-box">
+                        <h4>Pour les Acheteurs</h4>
+                        <ul>
+                            <li>Programme de points échangeables contre des rewards</li>
+                            <li>Cashback sur les achats</li>
+                            <li>Offres exclusives pour les membres fidèles</li>
+                            <li>Early access aux soldes et nouveaux produits</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Pour les Vendeurs</h4>
+                        <ul>
+                            <li>Commission réduites après un certain volume</li>
+                            <li>Formations gratuites sur la vente en ligne</li>
+                            <li>Outils marketing avancés pour les top vendeurs</li>
+                            <li>Programme de reconnaissance et récompenses</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-users"></i> Marketing Viral et Parrainage</h3>
+                    
+                    <div class="content-box">
+                        <h4>Programme de Parrainage</h4>
+                        <ul>
+                            <li>Crédits pour le parrain et le filleul</li>
+                            <li>Programme à plusieurs niveaux pour les ambassadeurs</li>
+                            <li>Outils de tracking et dashboard de performance</li>
+                            <li>Paiements automatiques des récompenses</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Marketing de Contenu</h4>
+                        <ul>
+                            <li>Blog avec conseils d'achat et tutoriels</li>
+                            <li>Success stories de vendeurs et prestataires</li>
+                            <li>Contenu vidéo pour démonstrations produits</li>
+                            <li>Newsletter avec sélections curatées</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-Response:
-{
-  "recommendations": [
-    {
-      "product_id": "prod_456",
-      "score": 0.95,
-      "reason": "Based on your recent purchases",
-      "product": { ... }
-    }
-  ],
-  "model_version": "v2.1.0",
-  "generated_at": "2025-01-27T10:30:00Z"
-}
-            </div>
-        </section>
+            <!-- CI/CD & Tests Section -->
+            <section id="cicd" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cogs"></i> CI/CD, Tests & Qualité</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-sync-alt"></i> Intégration Continue</h3>
+                    
+                    <div class="content-box">
+                        <h4>Pipeline CI/CD</h4>
+                        <ol>
+                            <li>Commit du code sur la branche feature</li>
+                            <li>Tests automatiques (unitaires, intégration)</li>
+                            <li>Review du code par un autre développeur</li>
+                            <li>Merge sur la branche develop</li>
+                            <li>Déploiement automatique sur l'environnement de staging</li>
+                            <li>Tests manuels et validation</li>
+                            <li>Merge sur la branche main</li>
+                            <li>Déploiement automatique en production</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Outils CI/CD</h4>
+                        <ul>
+                            <li>GitHub Actions pour l'automatisation</li>
+                            <li>Docker pour containerisation</li>
+                            <li>Ansible pour le déploiement</li>
+                            <li>Monitoring des déploiements avec Datadog</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-vial"></i> Stratégie de Test</h3>
+                    
+                    <div class="content-box">
+                        <h4>Types de Tests</h4>
+                        <ul>
+                            <li><strong>Tests unitaires</strong> : Couverture > 80% du code business</li>
+                            <li><strong>Tests d'intégration</strong> : Validation des interactions entre modules</li>
+                            <li><strong>Tests de bout en bout</strong> : Scénarios utilisateur complets</li>
+                            <li><strong>Tests de performance</strong> : Charge, stress, endurance</li>
+                            <li><strong>Tests de sécurité</strong> : Scans automatiques et manuels</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Environnements de Test</h4>
+                        <ul>
+                            <li><strong>Development</strong> : Pour le développement quotidien</li>
+                            <li><strong>Staging</strong> : Réplique de la production pour les tests finaux</li>
+                            <li><strong>Production</strong> : Avec déploiement progressif et feature flags</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-star"></i> Assurance Qualité</h3>
+                    
+                    <div class="content-box">
+                        <h4>Processus de Revue</h4>
+                        <ul>
+                            <li>Revue de code obligatoire pour chaque changement</li>
+                            <li>Checklist de qualité avant merge</li>
+                            <li>Analyses statiques de code (linting, complexité)</li>
+                            <li>Tests de accessibilité inclus dans le pipeline</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Mesure de la Qualité</h4>
+                        <ul>
+                            <li>Metrics techniques (dette technique, couverture de test)</li>
+                            <li>Metrics produit (satisfaction utilisateur, taux d'erreur)</li>
+                            <li>Feedback utilisateur régulier</li>
+                            <li>Benchmarking avec les standards du marché</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-        <section id="security" class="section">
-            <h2><span class="icon">🔒</span>Sécurité & Conformité</h2>
-            
-            <h3>🛡️ Architecture de Sécurité Multicouche</h3>
-            <p>
-                La sécurité est au cœur de notre architecture. Nous implémentons une approche de sécurité en profondeur avec multiple couches de protection, de la périphérie jusqu'aux données sensibles.
-            </p>
+            <!-- Organisation & Équipe Section -->
+            <section id="equipe" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-users-cog"></i> Organisation & Rôle de l'Équipe</h2>
+                </div>
+                <div class="subsection">
+                    <h3><i class="fas fa-sitemap"></i> Structure Organisationnelle</h3>
+                    
+                    <div class="content-box">
+                        <h4>Équipe Technique</h4>
+                        <ul>
+                            <li><strong>CTO</strong> : Vision technique, architecture</li>
+                            <li><strong>Développeurs Backend</strong> : API, logique métier</li>
+                            <li><strong>Développeurs Frontend</strong> : Interface utilisateur</li>
+                            <li><strong>DevOps</strong> : Infrastructure, déploiement</li>
+                            <li><strong>QA</strong> : Assurance qualité, tests</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Équipe Produit & Marketing</h4>
+                        <ul>
+                            <li><strong>Product Manager</strong> : Roadmap, priorisation</li>
+                            <li><strong>Designers UX/UI</strong> : Expérience utilisateur</li>
+                            <li><strong>Responsable Marketing</strong> : Acquisition, croissance</li>
+                            <li><strong>Content Manager</strong> : Contenu, éditorial</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Équipe Opérations</h4>
+                        <ul>
+                            <li><strong>Responsable Opérations</strong> : Logistique, livraison</li>
+                            <li><strong>Support Client</strong> : Assistance utilisateurs</li>
+                            <li><strong>Gestionnaire Vendeurs</strong> : Onboarding, relation</li>
+                            <li><strong>Livreurs</strong> : Logistique last mile</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-tasks"></i> Méthodologie de Travail</h3>
+                    
+                    <div class="content-box">
+                        <h4>Gestion de Projet</h4>
+                        <ul>
+                            <li>Méthode Agile avec sprints de 2 semaines</li>
+                            <li>Daily standups pour synchronisation</li>
+                            <li>Planning poker pour l'estimation</li>
+                            <li>Rétrospectives pour l'amélioration continue</li>
+                            <li>Tableaux Kanban pour visualisation du workflow</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Outils de Collaboration</h4>
+                        <ul>
+                            <li>Slack pour la communication quotidienne</li>
+                            <li>Jira pour le tracking des tâches</li>
+                            <li>Confluence pour la documentation</li>
+                            <li>GitHub pour le versioning du code</li>
+                            <li>Figma pour le design collaboratif</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🔐</span>Chiffrement</h4>
-                    <p>TLS 1.3 pour le transport, AES-256 pour les données au repos, chiffrement end-to-end pour les communications sensibles, et gestion sécurisée des clés avec HSM.</p>
+            <!-- Checklist de Lancement Section -->
+            <section id="checklist" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-tasks"></i> Checklist de Lancement</h2>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">👤</span>Authentification</h4>
-                    <p>Multi-facteur obligatoire, biométrie mobile, authentification adaptative basée sur le risque, et SSO sécurisé pour les entreprises.</p>
+                <div class="subsection">
+                    <h3><i class="fas fa-clipboard-check"></i> Pré-lancement</h3>
+                    
+                    <div class="content-box">
+                        <h4>Développement</h4>
+                        <ul>
+                            <li><input type="checkbox"> Fonctionnalités core implémentées</li>
+                            <li><input type="checkbox"> Tests automatisés en place</li>
+                            <li><input type="checkbox"> Intégration paiement fonctionnelle</li>
+                            <li><input type="checkbox"> Performance optimisée</li>
+                            <li><input type="checkbox"> Sécurité validée par audit</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Infrastructure</h4>
+                        <ul>
+                            <li><input type="checkbox"> Serveurs provisionnés et configurés</li>
+                            <li><input type="checkbox"> Monitoring et alerting en place</li>
+                            <li><input type="checkbox"> Procédures de sauvegarde testées</li>
+                            <li><input type="checkbox"> SSL certifiés installés</li>
+                            <li><input type="checkbox"> CDN configuré</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Contenu</h4>
+                        <ul>
+                            <li><input type="checkbox"> CGU/CGV rédigées et validées</li>
+                            <li><input type="checkbox"> Politique de confidentialité</li>
+                            <li><input type="checkbox"> FAQ et centre d'aide complété</li>
+                            <li><input type="checkbox"> Contenu marketing préparé</li>
+                            <li><input type="checkbox"> Catalogue initial de produits</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🚫</span>Protection DDoS</h4>
-                    <p>CloudFlare pour la protection périmétrique, rate limiting intelligent, détection d'anomalies en temps réel, et mitigation automatique des attaques.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-rocket"></i> Lancement</h3>
+                    
+                    <div class="content-box">
+                        <h4>Marketing</h4>
+                        <ul>
+                            <li><input type="checkbox"> Campagne pré-lancement</li>
+                            <li><input type="checkbox"> Relations presse</li>
+                            <li><input type="checkbox"> Présence sur les réseaux sociaux</li>
+                            <li><input type="checkbox"> Programme de parrainage activé</li>
+                            <li><input type="checkbox"> Publicité ciblée</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Opérations</h4>
+                        <ul>
+                            <li><input type="checkbox"> Équipe support formée</li>
+                            <li><input type="checkbox"> Processus de livraison testé</li>
+                            <li><input type="checkbox"> Vendeurs onboardés</li>
+                            <li><input type="checkbox"> Procédures de gestion de crise</li>
+                            <li><input type="checkbox"> Communication de lancement</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🔍</span>Monitoring Sécurité</h4>
-                    <p>SIEM avec corrélation d'événements, détection d'intrusion basée sur l'IA, audit trails complets, et réponse automatisée aux incidents.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-chart-line"></i> Post-lancement</h3>
+                    
+                    <div class="content-box">
+                        <h4>Monitoring</h4>
+                        <ul>
+                            <li><input type="checkbox"> Surveillance 24/7 pendant les premières semaines</li>
+                            <li><input type="checkbox"> Collecte et analyse des feedbacks</li>
+                            <li><input type="checkbox"> Tracking des metrics clés</li>
+                            <li><input type="checkbox"> Optimisation continue</li>
+                            <li><input type="checkbox"> Plan d'itération basé sur les données</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <h3>📋 Conformité Réglementaire</h3>
-            <div class="security-badge">PCI DSS Level 1</div>
-            <div class="security-badge">GDPR Compliant</div>
-            <div class="security-badge">ISO 27001</div>
-            <div class="security-badge">SOC 2 Type II</div>
-            <div class="security-badge">BCEAO Compliant</div>
-
-            <p>
-                Nous respectons toutes les réglementations locales et internationales en matière de protection des données, de services financiers, et de commerce électronique. Notre équipe juridique travaille en étroite collaboration avec les régulateurs locaux.
-            </p>
-
-            <h3>🔐 Gestion des Données Sensibles</h3>
-            <ul class="feature-list">
-                <li>Tokenisation des données de paiement avec vault sécurisé</li>
-                <li>Pseudonymisation des données personnelles pour l'analytics</li>
-                <li>Droit à l'oubli automatisé conforme GDPR</li>
-                <li>Chiffrement des communications inter-services</li>
-                <li>Audit trails immutables avec blockchain</li>
-                <li>Sauvegarde chiffrée avec récupération testée</li>
-                <li>Isolation des environnements de développement et production</li>
-                <li>Tests de pénétration réguliers par des tiers certifiés</li>
-            </ul>
-        </section>
-
-        <section id="performance" class="section">
-            <h2><span class="icon">⚡</span>Performance & Optimisation</h2>
-            
-            <h3>🚀 Métriques de Performance</h3>
-            <div class="performance-chart">
-                <h4>Temps de Réponse API (ms)</h4>
-                <div style="display: flex; justify-content: center; align-items: end; height: 150px; gap: 10px;">
-                    <div class="chart-bar" style="height: 30px;" data-value="<50ms"></div>
-                    <div class="chart-bar" style="height: 60px;" data-value="<100ms"></div>
-                    <div class="chart-bar" style="height: 45px;" data-value="<75ms"></div>
-                    <div class="chart-bar" style="height: 80px;" data-value="<120ms"></div>
-                    <div class="chart-bar" style="height: 35px;" data-value="<60ms"></div>
+            <!-- Annexes Section -->
+            <section id="annexes" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-file-alt"></i> Annexes</h2>
                 </div>
-                <p style="margin-top: 20px; color: #666;">Moyenne: 81ms | P95: 150ms | P99: 300ms</p>
-            </div>
-
-            <h3>⚡ Optimisations Frontend</h3>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h4><span class="tech-icon">📦</span>Bundle Optimization</h4>
-                    <p>Code splitting automatique, tree shaking, compression Brotli, lazy loading des composants, et optimisation des images avec WebP/AVIF.</p>
+                <div class="subsection">
+                    <h3><i class="fas fa-book"></i> Glossaire</h3>
+                    
+                    <div class="content-box">
+                        <h4>Termes Techniques</h4>
+                        <ul>
+                            <li><strong>Escrow</strong> : Système de séquestre où les fonds sont bloqués jusqu'à l'achèvement de la transaction</li>
+                            <li><strong>KYC</strong> : Know Your Customer - Processus de vérification d'identité</li>
+                            <li><strong>Mobile Money</strong> : Service de paiement mobile très répandu en Afrique</li>
+                            <li><strong>PWA</strong> : Progressive Web App - Application web avec des fonctionnalités natives</li>
+                            <li><strong>API</strong> : Application Programming Interface - Interface de programmation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Termes Métier</h4>
+                        <ul>
+                            <li><strong>Vendeur</strong> : Utilisateur vendant des produits physiques ou numériques</li>
+                            <li><strong>Prestataire</strong> : Utilisateur offrant des services</li>
+                            <li><strong>Wallet</strong> : Portefeuille numérique pour stocker de l'argent sur la platform</li>
+                            <li><strong>Commision</strong> : Pourcentage prélevé par LUXESHOP sur chaque transaction</li>
+                            <li><strong>Abonnement Premium</strong> : Formule payante pour les vendeurs avec avantages</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🌐</span>CDN Global</h4>
-                    <p>CloudFront avec edge locations en Afrique, cache intelligent, compression automatique, et optimisation des routes réseau.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-link"></i> Références et Resources</h3>
+                    
+                    <div class="content-box">
+                        <h4>Documentations Techniques</h4>
+                        <ul>
+                            <li><a href="#">Documentation Django</a></li>
+                            <li><a href="#">Documentation Django REST Framework</a></li>
+                            <li><a href="#">Documentation CinetPay</a></li>
+                            <li><a href="#">Documentation PostgreSQL</a></li>
+                            <li><a href="#">Guide de style Python</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Outils et Services</h4>
+                        <ul>
+                            <li><a href="#">DigitalOcean</a> - Hébergement cloud</li>
+                            <li><a href="#">Cloudflare</a> - CDN et sécurité</li>
+                            <li><a href="#">Sentry</a> - Gestion des erreurs</li>
+                            <li><a href="#">SendGrid</a> - Envoi d'emails</li>
+                            <li><a href="#">Twilio</a> - Envoi de SMS</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">💾</span>Caching Strategy</h4>
-                    <p>Service Worker pour le cache offline, Redis pour les sessions, CDN pour les assets statiques, et cache applicatif intelligent.</p>
+                
+                <div class="subsection">
+                    <h3><i class="fas fa-history"></i> Historique des Versions</h3>
+                    
+                    <div class="content-box">
+                        <h4>Version 1.0 (Lancement)</h4>
+                        <ul>
+                            <li>Fonctionnalités core de marketplace</li>
+                            <li>Paiements via CinetPay</li>
+                            <li>Gestion basique des commandes</li>
+                            <li>Interface responsive</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h4>Version 1.1 (Améliorations)</h4>
+                        <ul>
+                            <li>Wallet intégré</li>
+                            <li>Notifications push</li>
+                            <li>Amélioration des performances</li>
+                            <li>Corrections de bugs</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">📱</span>Mobile Performance</h4>
-                    <p>PWA optimisée, images adaptatives, fonts optimisées, et fonctionnalité offline pour les connexions instables.</p>
-                </div>
-            </div>
-
-            <h3>🔧 Optimisations Backend</h3>
-            <ul class="feature-list">
-                <li>Connection pooling pour les bases de données</li>
-                <li>Indexation optimisée avec analyse des requêtes</li>
-                <li>Cache distribué avec invalidation intelligente</li>
-                <li>Compression des réponses API (gzip/brotli)</li>
-                <li>Pagination efficace avec curseurs</li>
-                <li>Requêtes asynchrones et parallélisation</li>
-                <li>Monitoring des performances en temps réel</li>
-                <li>Auto-scaling basé sur les métriques de charge</li>
-            </ul>
-
-            <h3>📊 Monitoring & Alerting</h3>
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-number">99.9%</div>
-                    <div class="metric-label">Uptime SLA</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">&lt;2s</div>
-                    <div class="metric-label">Page Load Time</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">&lt;100ms</div>
-                    <div class="metric-label">API Response</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">95+</div>
-                    <div class="metric-label">Lighthouse Score</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="deployment" class="section">
-            <h2><span class="icon">🚀</span>Déploiement & DevOps</h2>
-            
-            <h3>🔄 Pipeline CI/CD</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">Phase 1: Development</div>
-                    <h4>Développement Local</h4>
-                    <p>Environnement Docker local, hot reloading, tests unitaires automatiques, et linting pré-commit avec Husky.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">Phase 2: Integration</div>
-                    <h4>Tests d'Intégration</h4>
-                    <p>Tests automatisés sur GitLab CI, analyse de code avec SonarQube, tests de sécurité SAST/DAST, et validation des APIs.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">Phase 3: Staging</div>
-                    <h4>Environnement de Pré-production</h4>
-                    <p>Déploiement automatique sur staging, tests E2E avec Cypress, tests de charge avec K6, et validation métier.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">Phase 4: Production</div>
-                    <h4>Déploiement Production</h4>
-                    <p>Déploiement blue-green, monitoring en temps réel, rollback automatique en cas d'erreur, et notifications d'équipe.</p>
-                </div>
-            </div>
-
-            <h3>🏗️ Infrastructure as Code</h3>
-            <div class="code-block">
-# Terraform configuration example
-resource "aws_ecs_cluster" "luxeshop_cluster" {
-  name = "luxeshop-production"
-  
-  setting {
-    name  = "containerInsights"
-    value = "enabled"
-  }
-  
-  capacity_providers = ["FARGATE", "FARGATE_SPOT"]
-  
-  default_capacity_provider_strategy {
-    capacity_provider = "FARGATE"
-    weight           = 1
-  }
-}
-
-# Auto-scaling configuration
-resource "aws_appautoscaling_target" "ecs_target" {
-  max_capacity       = 100
-  min_capacity       = 2
-  resource_id        = "service/luxeshop-cluster/api-service"
-  scalable_dimension = "ecs:service:DesiredCount"
-  service_namespace  = "ecs"
-}
-            </div>
-
-            <h3>📈 Stratégie de Déploiement</h3>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🔄</span>Blue-Green Deployment</h4>
-                    <p>Déploiement sans interruption avec bascule instantanée, tests de santé automatiques, et rollback en moins de 30 secondes.</p>
-                </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🎯</span>Canary Releases</h4>
-                    <p>Déploiement progressif avec monitoring des métriques, A/B testing intégré, et validation automatique des performances.</p>
-                </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">🔧</span>Feature Flags</h4>
-                    <p>Activation/désactivation de fonctionnalités en temps réel, déploiement découplé des releases, et tests en production sécurisés.</p>
-                </div>
-                <div class="tech-card">
-                    <h4><span class="tech-icon">📊</span>Monitoring Déploiement</h4>
-                    <p>Métriques de déploiement en temps réel, alertes automatiques, dashboards de santé, et rapports post-déploiement.</p>
-                </div>
-            </div>
-
-            <h3>🌍 Stratégie Multi-Région</h3>
-            <p>
-                Déploiement multi-région pour la résilience et la performance, avec réplication des données, load balancing géographique, et failover automatique. Régions principales: Europe (Frankfurt), Afrique (Cape Town), avec expansion prévue vers d'autres régions africaines.
-            </p>
-        </section>
-
-        <div style="text-align: center; margin: 50px 0;">
-            <a href="index.html" class="back-button">← Retour à l'Accueil</a>
-            <a href="diagramme.html" class="back-button" style="margin-left: 20px;">Voir l'Architecture →</a>
-        </div>
-
-        <footer class="footer">
-            <p><strong>© 2025 LuxeShop Guinée</strong></p>
-            <p style="margin-top: 15px; opacity: 0.8;">
-                Documentation technique complète - Version 2.1.0<br>
-                Dernière mise à jour: 27 Janvier 2025
-            </p>
-            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">
-                Pour toute question technique, contactez notre équipe DevOps à 
-                <strong>tech@luxeshop.gn</strong>
-            </p>
-        </footer>
+            </section>
+        </main>
     </div>
+
+    <script>
+        // Navigation between sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuLinks = document.querySelectorAll('.sidebar-menu a');
+            const sections = document.querySelectorAll('.section');
+            
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and sections
+                    menuLinks.forEach(l => l.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    // Scroll to top of section
+                    window.scrollTo(0, 0);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
